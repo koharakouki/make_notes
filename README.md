@@ -1,24 +1,27 @@
-# README
+# make notes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+テレビ番組や映画、本などエンターテインメント全ての見たい、見たを管理するサイト
 
-Things you may want to cover:
+### サイトテーマ
+エンタメ好きがもっとエンタメを楽しめる
 
-* Ruby version
+### テーマを選んだ理由
+サブスクリプションサービスが普及し、エンタメを楽しみやすくなっている。
+ただ、サービスに加入した数だけ見たいものを保存する「マイリスト」の数は増えていく。
+サブスク以外にもテレビ番組や本などの「マイリスト」も自分の頭の中に存在するはず。
+そんな様々な「マイリスト」を一つにまとめることで、自分の見たい！の優先順位をつけられるようにするため
 
-* System dependencies
+### ターゲットユーザ
+エンタメ好きなすべての人
 
-* Configuration
+### 主な利用シーン
+映画や本などを見たいと思ったとき
+見終わって感想をメモしておきたいと思ったとき
 
-* Database creation
+## 設計書
 
-* Database initialization
+### 機能一覧
+<https://docs.google.com/spreadsheets/d/1h24w8r3UtuNiOmxoTCwX2VrwMMeWtOm4KoNjUMxbg9A/edit#gid=0>
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
