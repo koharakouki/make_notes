@@ -57,7 +57,7 @@ header {
 	height: 300px;
 	margin-top: 60px;
 	margin-bottom: 30px;
-	background: linear-gradient(90deg, #99CC66 0%, #FFFFFF 40%, #FFFFFF 60%, #99CC66 100%);
+	background: linear-gradient(90deg, #93FFAB 0%, #FFFFFF 50%, #93FFAB 100%);
 	padding-top: 60px;
 	&__content--logo {
 		width: 400px;
@@ -106,3 +106,33 @@ header {
 	}
 }
 /*トップページここまで*/
+
+/*アバウトページ*/
+/*アバウトページ上部の説明*/
+.about__explanation--text-box {
+	width: 700px;
+	height: 50px;
+	background-color: #E6FFE9;
+	border-radius: 10px;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+.about__explanation--text {
+	line-height: 50px;
+}
+
+/*アバウトページのできることボックス*/
+.about-boxs {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.about-box {
+	width: 400px;
+	height: 200px;
+	background-color: #E6FFE9;
+	padding: 40px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+}
+/*アバウトページここまで*/
