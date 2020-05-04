@@ -1,0 +1,20 @@
+<div class="main-visual">
+	<div class="main-visual__content">
+		<div class="main-visual__content--logo"></div>
+		<p class="main-visual__content--text">
+			make notesでは、あなたが好きなエンタメをメモすることができます。<br>
+			見た作品は、評価・感想を記入して保存しておきましよう
+		</p>
+		<%= link_to "もっと詳しく", home_about_path, class: "col-xs-2 col-xs-offset-8 main-visual__content--about-link" %>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="top-login">
+			<%= link_to "ログイン", new_user_session_path, class: "top-login__btn btn-gradient-radius" %>
+		</div>
+		<div class="top-signup">
+			<%= link_to "新規登録はこちら", new_user_registration_path, class: "top-signup_btn" %>
+		</div>
+	</div>
+</div>

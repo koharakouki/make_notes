@@ -1,11 +1,23 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/*  header  */
+/* 共通　*/
 
+body {
+	padding-top: 80px;
+}
+
+.h-100 {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+
+/*  header  */
 header {
 	width: 100%;
-	height: 75px;
+	height: 70px;
 	background-color: #C0C0C0;
 	#logo {
 		width: 200px;
@@ -16,10 +28,81 @@ header {
 		display: inline-block;
 	}
 	.nav_item {
-		color: #C0C0C0;
+		color: #777;
 		font-size: 17px;
-		margin: 15px 10px 0;
-		background-color: #669933;
+		margin: 10px 10px 0;
+		background-color: #99CC66;
 		border-radius: 10px;
+		border: 1px solid #808080;
 	}
 }
+/*headerここまで*/
+
+/*  footer  */
+.footer {
+	height: 80px;
+	background-color: #C0C0C0;
+	margin-top: auto;
+	&__text {
+		text-align: center;
+		margin-top: 30px;
+	}
+}
+/*footerここまで*/
+
+/* トップページ　*/
+/*トップページのmain visual*/
+.main-visual {
+	width: 100%;
+	height: 300px;
+	margin-top: 60px;
+	margin-bottom: 30px;
+	background: linear-gradient(90deg, #99CC66 0%, #FFFFFF 40%, #FFFFFF 60%, #99CC66 100%);
+	padding-top: 60px;
+	&__content--logo {
+		width: 400px;
+		height: 100px;
+		background-image: url(logo.png);
+		background-size: contain;
+		margin : 0 auto 30px;
+	}
+	&__content--text {
+		text-align: center;
+		font-size: 16px;
+		color: #777;
+	}
+	&__content--about-link {
+		color: #777;
+		text-decoration: underline;
+	}
+}
+
+/*トップページのログインボタン*/
+.top-login {
+	text-align: center;
+	.btn-gradient-radius {
+		display: inline-block;
+		padding: 7px 50px;
+		border-radius: 25px;
+		text-decoration: none;
+		color: #777;
+	    background-color: #99CC66;
+	    font-size: 20px;
+    	margin-bottom: 20px;
+		&:hover {
+		background-color: #777;
+		text-decoration: none;
+		color: #FFF;
+		}
+	}
+}
+
+/*トップページの新規登録リンク*/
+.top-signup {
+	text-align: center;
+	.top-signup_btn {
+		color: #777;
+		text-decoration: underline;
+	}
+}
+/*トップページここまで*/
