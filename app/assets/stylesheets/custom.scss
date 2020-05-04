@@ -220,4 +220,33 @@ header {
 	padding-top: 30px;
 	margin-top: 20px;
 }
-
+/*facebookリンク*/
+.facebook-box {
+	width: 270px;
+	height: 60px;
+	background-color: #3b5998;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 50px auto;
+}
+/*twitterリンク*/
+.twitter-box {
+	width: 270px;
+	height: 60px;
+	background-color: #00acee;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 50px auto;
+}
+.facebook-box-icon, .twitter-box-icon {
+	color: #FFF;
+	margin-left: 10px;
+	display: inline;
+	margin-right: 20px;
+}
+.facebook-box-text, .twitter-box-text {
+	color: #FFF;
+	font-size: 20px;
+	display: inline;
+}
+/*ログインページここまで*/
