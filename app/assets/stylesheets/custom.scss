@@ -7,6 +7,7 @@ body {
 	padding-top: 80px;
 }
 
+/*フッターを最下部に固定*/
 .h-100 {
 	display: flex;
 	flex-direction: column;
@@ -38,6 +39,7 @@ header {
 }
 /*headerここまで*/
 
+
 /*  footer  */
 .footer {
 	height: 80px;
@@ -49,6 +51,7 @@ header {
 	}
 }
 /*footerここまで*/
+
 
 /* トップページ　*/
 /*トップページのmain visual*/
@@ -76,7 +79,6 @@ header {
 		text-decoration: underline;
 	}
 }
-
 /*トップページのログインボタン*/
 .top-login {
 	text-align: center;
@@ -96,7 +98,6 @@ header {
 		}
 	}
 }
-
 /*トップページの新規登録リンク*/
 .top-signup {
 	text-align: center;
@@ -106,6 +107,7 @@ header {
 	}
 }
 /*トップページここまで*/
+
 
 /*アバウトページ*/
 /*アバウトページ上部の説明*/
@@ -120,7 +122,6 @@ header {
 .about__explanation--text {
 	line-height: 50px;
 }
-
 /*アバウトページのできることボックス*/
 .about-boxs {
 	display: flex;
@@ -136,3 +137,42 @@ header {
 	border-radius: 10px;
 }
 /*アバウトページここまで*/
+
+
+/*新規登録ページ*/
+/*フィールド全体に背景をつける*/
+.form-field-group {
+	width: 650px;
+	height: 350px;
+	background-color: #E6FFE9;
+	margin: 0 auto;
+	padding-top: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+/*各フィールドの下に薄く線を引く*/
+.form-group {
+	border-bottom: 1px solid #CCFFCC;
+	padding-bottom: 45px;
+}
+/*各フィールドを離すため*/
+.field {
+	margin-bottom: 25px;
+}
+/*会員登録ボタン*/
+.signup-button {
+	display: inline-block;
+	padding: 7px 50px;
+	border-radius: 25px;
+	text-decoration: none;
+	color: #777;
+    background-color: #99CC66;
+    font-size: 20px;
+	margin-bottom: 20px;
+	&:hover {
+	background-color: #777;
+	text-decoration: none;
+	color: #FFF;
+	}
+}
+/*新規登録ページここまで*/
