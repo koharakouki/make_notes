@@ -5,7 +5,7 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="row">
-    <div class="form-field-group">
+    <div class="signup-form-all">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
 
@@ -38,7 +38,7 @@
         </div>
 
         <div class="actions">
-          <%= f.submit "会員登録する", class: "col-xs-4 col-xs-offset-4 signup-button" %>
+          <%= f.submit "会員登録する", class: "col-xs-4 col-xs-offset-4 signin-button" %>
         </div>
       <% end %>
     </div>
