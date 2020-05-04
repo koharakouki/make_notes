@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   }
   root 'home#top'
   get 'home/about'
+  # urlの(:id)を(:name)に変更
+  resources :users, param: :name, only: [:edit, :update, :index]
 end
