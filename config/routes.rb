@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  devise_for :admins,controllers: {
+    sessions: 'admins/sessions'
+  }
   devise_for :users, controllers: {
   	sessions:      'devise/users/sessions',
   	registrations: 'devise/users/registrations',
@@ -7,6 +9,12 @@ Rails.application.routes.draw do
   }
   root 'home#top'
   get 'home/about'
-  # urlの(:id)を(:name)に変更
-  resources :users, param: :name, only: [:edit, :update, :index]
+  resources :users, only: [:edit, :update, :index] do
+    resources :genres, only: [:index, :create, :destroy]
+    resources :lists, only: [:show, :index, :create, :edit, :update, :destroy]
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
 end
