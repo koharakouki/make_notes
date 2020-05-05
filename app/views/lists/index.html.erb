@@ -11,16 +11,16 @@
 			</div>
 			<!-- 観たいと観たをタブで切り替え -->
 			<div class="list-index-body p-3">
-				<ul class="nav nav-tabs">
-				    <li class="nav-item">
-				        <a href="#want-to" class="nav-link active" data-toggle="tab">観たい</a>
+				<ul class="nav nav-tabs" role="tablist">
+				    <li class="nav-item active">
+				        <a href="#want-to" class="nav-link top-tabs" data-toggle="tab">観たい</a>
 				    </li>
 				    <li class="nav-item">
-				        <a href="#done" class="nav-link" data-toggle="tab">観た</a>
+				        <a href="#done" class="nav-link top-tabs" data-toggle="tab">観た</a>
 				    </li>
 				</ul>
 				<div class="tab-content">
-					<div id="want-to" class="tab-pane fade action">
+					<div id="want-to" class="tab-pane fade active in">
 					  <%= render 'want_list', lists: @want_list %>
 					</div>
 					<div id="done" class="tab-pane fade">
