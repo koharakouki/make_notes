@@ -10,8 +10,12 @@
   </head>
 
   <body class="h-100">
-      <%= render 'layouts/header' %>
-      <%= yield %>
-      <%= render 'layouts/footer' %>
+    <% if request.url.include? "admin" %>
+      <%= render 'layouts/admin_header' %>
+    <% else %>
+      <%= render "layouts/user_header" %>
+    <% end %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

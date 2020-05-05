@@ -4,7 +4,7 @@
 /* 共通　*/
 
 body {
-	padding-top: 80px;
+	margin-top: 80px;
 }
 
 /*フッターを最下部に固定*/
@@ -24,7 +24,7 @@ body {
 .new-articles {
 	width: 250px;
 	height: 600px;
-	background-color: #999;
+	background-color: #E6FFE9;
 	margin-top: 30px;
 }
 
@@ -44,7 +44,7 @@ header {
 	}
 	.nav_item {
 		color: #777;
-		font-size: 17px;
+		font-size: 15px;
 		margin: 10px 10px 0;
 		background-color: #99CC66;
 		border-radius: 10px;
@@ -305,4 +305,5 @@ header {
 	height: 150px;
 	margin: 5px;
 	border: 1px solid #000;
+	border-radius: 10px;
 }

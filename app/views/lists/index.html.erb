@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="row">
+		<!-- user-infoの表示 -->
+		<div class="col-md-3">
+			<%= render 'shared/user_info', user: @user %>
+		</div>
+		<!-- マイリスト一覧の表示 -->
+		<div class="col-md-7">
+			<div class="list-index-headline">
+				<h3>マイリスト＞<%= @genre.name %></h3>
+			</div>
+			<!-- 観たいと観たをタブで切り替え -->
+			<div class="list-index-body p-3">
+				<ul class="nav nav-tabs">
+				    <li class="nav-item">
+				        <a href="#want-to" class="nav-link active" data-toggle="tab">観たい</a>
+				    </li>
+				    <li class="nav-item">
+				        <a href="#done" class="nav-link" data-toggle="tab">観た</a>
+				    </li>
+				</ul>
+				<div class="tab-content">
+					<div id="want-to" class="tab-pane fade action">
+					  <%= render 'want_list', lists: @want_list %>
+					</div>
+					<div id="done" class="tab-pane fade">
+					  <%= render 'done_list', lists: @done_list %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- リスト新規登録の表示 -->
+		<div class="col-md-2">
+			<%= render 'list_form', list: @list, genres: @genres %>
+		</div>
+	</div>
+</div>

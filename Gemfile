@@ -45,3 +45,4 @@ gem 'rails-i18n'
 gem "simple_calendar", "~> 2.0"
 gem 'dotenv-rails'
 gem 'font-awesome-sass'
+gem 'kaminari','~> 1.1.1'

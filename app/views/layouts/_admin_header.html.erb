@@ -5,8 +5,10 @@
 				<div id="logo"></div>
 			<% end %>
 			<ul class="nav navbar-nav navbar-right">
-		        <li><%= link_to "ログイン", new_user_session_path, class: "nav_item" %></li>
-		        <li><%= link_to "新規登録", new_user_registration_path, class: "nav_item" %></li>
+				<% if admin_signed_in? %>
+					<li><%= link_to "ユーザー一覧", "#", class: "nav_item" %></li>
+					<li><%= link_to "ログアウト", "#", class: "nav_item" %></li>
+			    <% end %>
 		    </ul>
 		</nav>
 	</div>

@@ -1,7 +1,7 @@
 class GenresController < ApplicationController
   def index
   	@user = User.find_by(id: params[:user_id])
-  	@genres = @user.genres.all
+  	@genres = @user.genres.page(params[:page]).per(8)
   	@genre = current_user.genres.build
   end
 

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   attachment :image
   has_many :genres
+  has_many :lists
 
 # フォロー・フォロワーのための関連付け
   has_many :active_relationships, class_name: "Relationship",

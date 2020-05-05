@@ -1,0 +1,22 @@
+<div class="list-form-headline">
+	<h4>リスト新規登録</h4>
+</div>
+
+<div class="list-form">
+	<%= form_for(@list, url: user_lists_path) do |f| %>
+
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+
+		<%= f.label :genre_id %>
+		<%= f.collection_select :genre_id, genres, :id, :name %>
+
+		<%= f.label :media %>
+		<%= f.text_field :media %>
+
+		<%= f.label :start_time %>
+		<%= f.date_field :start_time %>
+
+		<%= f.submit '追加する' %>
+	<% end %>
+</div>
