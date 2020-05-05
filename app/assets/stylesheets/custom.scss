@@ -13,6 +13,20 @@ body {
 	flex-direction: column;
 	min-height: 100vh;
 }
+/*各ページのユーザー情報*/
+.user-info-box {
+	width: 250px;
+	height: 400px;
+	background-color: #E6FFE9;
+	border: 1px solid #C0C0C0;
+	margin-top: 40px;
+}
+.new-articles {
+	width: 250px;
+	height: 600px;
+	background-color: #999;
+	margin-top: 30px;
+}
 
 
 /*  header  */
@@ -143,7 +157,7 @@ header {
 /*フィールド全体に背景をつける*/
 .signup-form-all {
 	width: 650px;
-	height: 350px;
+	height: 450px;
 	background-color: #E6FFE9;
 	margin: 0 auto;
 	padding-top: 40px;
@@ -168,12 +182,29 @@ header {
 	color: #777;
     background-color: #99CC66;
     font-size: 20px;
-	margin-bottom: 20px;
 	&:hover {
 	background-color: #777;
 	text-decoration: none;
 	color: #FFF;
 	}
+}
+.signup-facebook-box {
+	width: 250px;
+	height: 50px;
+	background-color: #3b5998;
+	padding: 5px;
+	border-radius: 10px;
+	display: inline-block;
+	margin-right: 20px;
+}
+/*twitterリンク*/
+.signup-twitter-box {
+	width: 250px;
+	height: 50px;
+	background-color: #00acee;
+	padding: 5px;
+	border-radius: 10px;
+	display: inline-block;
 }
 /*新規登録ページここまで*/
 
@@ -183,7 +214,7 @@ header {
 	width: 500px;
 	height: 350px;
 	background-color: #E6FFE9;
-	padding-top: 40px;
+	padding-top: 60px;
 	margin-top: 20px;
 }
 .signin-button {
@@ -242,7 +273,7 @@ header {
 	color: #FFF;
 	margin-left: 10px;
 	display: inline;
-	margin-right: 20px;
+	margin-right: 10px;
 }
 .facebook-box-text, .twitter-box-text {
 	color: #FFF;
@@ -260,4 +291,18 @@ header {
 	padding-top: 40px;
 	margin-top: 20px;
 	margin-bottom: 20px;
+}
+/*アカウント情報編集ページここまで*/
+
+/*ジャンル一覧ページ*/
+.mylist-box {
+	width: 700px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.genre-box {
+	width: 150px;
+	height: 150px;
+	margin: 5px;
+	border: 1px solid #000;
 }

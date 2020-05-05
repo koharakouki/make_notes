@@ -1,0 +1,22 @@
+<h3>マイリスト</h3>
+
+<% if @user == current_user %>
+	<%= form_with(model: @genre, url: user_genres_path) do |f| %>
+		<div class="col-xs-">
+			<%= f.label :name %>
+			<%= f.text_field :name, placeholder: "映画、テレビ番組など" %>
+		</div>
+
+		<div class="actions">
+			<%= f.submit '追加する', class: "btn btn-primary" %>
+		</div>
+	<% end %>
+<% end %>
+
+<div class="mylist-box">
+	<% @genres.each do |genre| %>
+		<div class="genre-box col-xs-2">
+			<p class="text-center"><%= genre.name %></p>
+		</div>
+	<% end %>
+</div>
