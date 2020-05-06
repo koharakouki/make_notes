@@ -10,7 +10,7 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle nav_item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">マイページ  <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><%= link_to "マイページ", "#" %></li>
+							<li><%= link_to "マイページ", user_genres_path(current_user) %></li>
 							<li><%= link_to "アカウント編集ページ", edit_user_path(current_user) %></li>
 							<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
 						</ul>

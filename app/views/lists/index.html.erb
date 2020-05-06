@@ -5,9 +5,15 @@
 			<%= render 'shared/user_info', user: @user %>
 		</div>
 		<!-- マイリスト一覧の表示 -->
-		<div class="col-md-7">
+		<div class="col-md-9">
 			<div class="list-index-headline">
-				<h3>マイリスト＞<%= @genre.name %></h3>
+				<h3><%= link_to "マイリスト＞", user_genres_path %>
+					<% if @genre.present? %>
+						<%= @genre.name %>
+					<% else %>
+						ALL
+					<% end %>
+				</h3>
 			</div>
 			<!-- 観たいと観たをタブで切り替え -->
 			<div class="list-index-body p-3">
@@ -21,17 +27,27 @@
 				</ul>
 				<div class="tab-content">
 					<div id="want-to" class="tab-pane fade active in">
-					  <%= render 'want_list', lists: @want_list %>
+						<!-- 観たいのリストを表示 -->
+						<div class="col-xs-10">
+						    <%= render 'want_list' %>
+					    </div>
+					    <div class="col-xs-2">
+					    	<!-- 観たいのリスト新規登録 -->
+						    <%= render 'want_list_form', list: @list, genres: @genres %>
+						</div>
 					</div>
 					<div id="done" class="tab-pane fade">
-					  <%= render 'done_list', lists: @done_list %>
+						<div class="col-xs-10">
+							<!-- 観たのリストを表示 -->
+						    <%= render 'done_list' %>
+						</div>
+						<div class="col-xs-2">
+							<!-- 観たのリスト新規登録 -->
+						    <%= render 'done_list_form', list: @list, genres: @genres %>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- リスト新規登録の表示 -->
-		<div class="col-md-2">
-			<%= render 'list_form', list: @list, genres: @genres %>
 		</div>
 	</div>
 </div>

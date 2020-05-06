@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 		when Admin
 		   root_path
 		when User
-		   edit_user_path(resource)
+		   user_genres_path(current_user)
 		end
 	end
 
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 		when Admin
 			root_path
 		when User
-			edit_user_path(resource)
+			user_genres_path(current_user)
 		end
 	end
 

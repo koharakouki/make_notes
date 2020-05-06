@@ -3,10 +3,17 @@ class ListsController < ApplicationController
 	def index
 		@user = User.find_by(id: params[:user_id])
 		@list = List.new
-		@genre = Genre.find(params[:genre_id])
 		@genres = current_user.genres
-		@want_list = @user.lists.where(is_watched: false)
-		@done_list = @user.lists.where(is_watched: true)
+		if params[:genre_id].present?
+			@genre = Genre.find(params[:genre_id])
+		end
+		if @genre.present?
+			@want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id)
+			@done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id)
+		else
+			@want_list = @user.lists.where(is_watched: false)
+			@done_list = @user.lists.where(is_watched: true)
+		end
 	end
 
 	def create
@@ -25,9 +32,16 @@ class ListsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@list = List.find(params[:id])
+		if @list.delete
+			redirect_back(fallback_location: user_genres_path)
+		end
+	end
+
 	private
 
 	def list_params
-		params.require(:list).permit(:title, :genre_id, :media, :start_time, :rate, :impression)
+		params.require(:list).permit(:title, :genre_id, :media, :start_time, :rate, :impression, :is_watched)
 	end
 end

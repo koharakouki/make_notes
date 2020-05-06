@@ -1,0 +1,44 @@
+<div class="list-form-headline">
+	<h4>観た追加</h4>
+</div>
+
+<div class="list-form">
+	<%= form_for(list, url: user_lists_path) do |f| %>
+
+		<%= f.hidden_field :is_watched, value: true %>
+
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+
+		<%= f.label :genre_id %>
+		<%= f.collection_select :genre_id, genres, :id, :name %>
+
+		<%= f.label :media %>
+		<%= f.text_field :media %>
+
+		<%= f.label :start_time %>
+		<%= f.date_field :start_time %>
+
+		<div class="field" id="star">
+		    <%= f.label :rate %>
+		    <%= f.hidden_field :rate, id: :review_star %>
+		</div>
+
+		<%= f.label :impression %>
+		<%= f.text_field :impression %>
+
+		<%= f.submit '追加する' %>
+	<% end %>
+</div>
+
+<!-- 評価機能 -->
+<script>
+$('#star').raty({
+  size     : 36,
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  starHalf : '<%= asset_path('star-half.png') %>',
+  scoreName: 'list[rate]',
+  harf: true,
+});
+</script>
