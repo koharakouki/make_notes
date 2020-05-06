@@ -17,8 +17,8 @@
 	<%= link_to 'ALL', user_lists_path(@user), class: "genre-box" %>
 	<% @genres.each do |genre| %>
 		<%= link_to user_lists_path(@user, { genre_id: genre.id }) do %>
-			<div class="genre-box col-xs-2">
-				<p class="text-center"><%= genre.name %></p>
+			<div class="genre-box">
+				<p><%= genre.name %></p>
 			</div>
 		<% end %>
 	<% end %>

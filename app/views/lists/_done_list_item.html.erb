@@ -1,6 +1,9 @@
 <% lists.each do |list| %>
 	<tr>
-		<td><%= list.title %></td>
+		<td><%= link_to user_list_path(id: list.id) do %>
+				<%= list.title %>
+			<% end %>
+		</td>
 		<td><%= list.genre.name %></td>
 		<td><%= list.media %></td>
 		<td><% if list.start_time.present? %>

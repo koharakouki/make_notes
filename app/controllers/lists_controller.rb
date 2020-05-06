@@ -24,6 +24,11 @@ class ListsController < ApplicationController
 		end
 	end
 
+	def show
+		@user = User.find_by(id: params[:user_id])
+		@list = List.find(params[:id])
+	end
+
 	def update
 		@list = List.find(params[:list_id])
 		@list.is_watched = true
@@ -35,7 +40,7 @@ class ListsController < ApplicationController
 	def destroy
 		@list = List.find(params[:id])
 		if @list.delete
-			redirect_back(fallback_location: user_genres_path)
+			redirect_to user_genres_path(@list.user.id)
 		end
 	end
 
