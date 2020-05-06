@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<!-- user-infoの表示 -->
+		<div class="col-md-3">
+			<%= render 'shared/user_info', user: @user %>
+		</div>
+
+		<!-- follower or followingのリスト表示 -->
+		<div class="col-md-7">
+			<!-- follower or followingでタブ切り替え -->
+			<div class="list-index-body p-3">
+				<ul class="nav nav-tabs" role="tablist">
+				    <li class="nav-item active">
+				        <a href="#follow" class="nav-link top-tabs" data-toggle="tab">following</a>
+				    </li>
+				    <li class="nav-item">
+				        <a href="#follower" class="nav-link top-tabs" data-toggle="tab">followers</a>
+				    </li>
+				</ul>
+				<div class="tab-content">
+					<div id="follow" class="tab-pane fade active in">
+						<%= render 'follow_list', users: @following %>
+					</div>
+					<div id="follower" class="tab-pane fade">
+						<%= render 'follow_list', users: @followers %>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- おすすめユーザー表示(もっと見るで下にいけるように) -->
+		<div class="col-md-2">
+		</div>
+	</div>
+</div>

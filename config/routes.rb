@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :destroy]
     resources :lists, only: [:show, :index, :create, :edit, :update, :destroy]
     member do
-      get :following, :followers
+      get :show_follow
     end
   end
   resources :relationships, only: [:create, :destroy]

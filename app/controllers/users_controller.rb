@@ -7,27 +7,21 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update(user_params)
-			redirect edit_user_path
+			redirect_to user_genres_path(current_user)
 		else
 			render 'edit'
 		end
 	end
 
-	def following
-		@user = User.find(params[:id]) || current_user
-		@users = @user.following.all
-		render 'follow_user'
-	end
-
-	def followers
+	def show_follow
 		@user = User.find(params[:id])
-		@users = @user.followers.all
-		render 'follower_user'
+		@following = @user.following.all
+		@followers = @user.followers.all
 	end
 
 	private
 
 	def user_params
-		params.require(:user).permit(:name, :image)
+		params.require(:user).permit(:name, :image, :introduction)
 	end
 end

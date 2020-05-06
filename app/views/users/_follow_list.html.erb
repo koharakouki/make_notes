@@ -1,0 +1,13 @@
+<% users.each do |user| %>
+	<%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no_image_mini.png") %>
+	<%= link_to user_genres_path(user) do %>
+		<%= user.name %>
+	<% end %>
+	<%= link_to show_follow_user_path(user) do %>
+		<p>フォロー数: <%= user.following.count %></p>
+	<% end %>
+	<%= link_to show_follow_user_path(user) do %>
+		<p>フォロワー数: <%= user.followers.count %></p>
+	<% end %>
+	<%= user.introduction %>
+<% end %>
