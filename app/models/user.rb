@@ -35,4 +35,10 @@ class User < ApplicationRecord
   def followers?(other_user)
     followers.include?(other_user)
   end
+
+  def self.search(content)
+    if content
+      where(['name LIKE ?', "%#{content}%"])
+    end
+  end
 end
