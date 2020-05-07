@@ -1,6 +1,7 @@
 class RelationshipsController < ApplicationController
 
 	def create
+		# @user = User.find_by(id: params[:user_id])
 		@user = User.find(params[:followed_id])
 		current_user.follow(@user)
 		respond_to do |format|
@@ -10,6 +11,7 @@ class RelationshipsController < ApplicationController
     end
 
 	def destroy
+		# @user = User.find_by(id: params[:user_id])
 		@user = Relationship.find(params[:id]).followed
 		current_user.unfollow(@user)
 		respond_to do |format|
