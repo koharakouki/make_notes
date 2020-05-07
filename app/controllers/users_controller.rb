@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
  	def index
  		@users = User.page(params[:page]).per(10)
+ 		#フォロワーランキング
+		@rank_users = User.find(Relationship.group(:followed_id).order('count(followed_id) DESC').pluck(:followed_id))
  	end
 
 	def edit
@@ -21,6 +23,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@following = @user.following.all
 		@followers = @user.followers.all
+		@rank_users = User.find(Relationship.group(:followed_id).order('count(followed_id) DESC').pluck(:followed_id))
 	end
 
 	def calendar
