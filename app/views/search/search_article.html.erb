@@ -19,19 +19,23 @@
 				</div>
 			</div>
 			<div class="index-article-body">
-				<% @articles.each do |article| %>
-					<div class="col-md-10">
-						<%= link_to article_path(article) do %>
-							<%= article.article_title %>
-						<% end %>
-						<% if article.is_spoiler == true %>
-							<span>ネタバレ</span>
-							<p>この記事はネタバレを含みます</p>
-						<% else %>
-							<p><%= article.content.slice(0..100) %></p>
-						<% end %>
-						<!-- いいねの数も表示する！！！！！！！！！！！！！！！！！！！！！！！！！！！ -->
-					</div>
+				<% if @articles.any? %>
+					<% @articles.each do |article| %>
+						<div class="col-md-10">
+							<%= link_to article_path(article) do %>
+								<%= article.article_title %>
+							<% end %>
+							<% if article.is_spoiler == true %>
+								<span>ネタバレ</span>
+								<p>この記事はネタバレを含みます</p>
+							<% else %>
+								<p><%= article.content.slice(0..100) %></p>
+							<% end %>
+							<!-- いいねの数も表示する！！！！！！！！！！！！！！！！！！！！！！！！！！！ -->
+						</div>
+					<% end %>
+				<% else %>
+					<p>検索結果はありませんでした。</p>
 				<% end %>
 			</div>
 		</div>
