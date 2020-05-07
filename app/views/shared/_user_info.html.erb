@@ -6,15 +6,15 @@
 	    <tbody>
 	      <tr></tr>
 	      <tr>
-	        <td>
-	          <b>ユーザ名</b><span><%= user.name %></span>
-	        </td>
+	         <td>
+	            <b>ユーザ名</b><span><%= user.name %></span>
+	         </td>
 	      </tr>
 	      <tr>
-	        <td>
-	          <b>自己紹介</b>
-	          <p class="text-center"><%= user.introduction %></p>
-	        </td>
+	         <td>
+	            <b>自己紹介</b>
+	            <p class="text-center"><%= user.introduction %></p>
+	         </td>
 	      </tr>
 	      <tr>
 	      	<td>
@@ -22,24 +22,34 @@
 	      	</td>
 	      </tr>
 	      <% if user_signed_in? %>
-	        <% if current_user != user %>
-	          <tr>
-	            <td>
-	              <div class="text-center">
-	              	<%= render 'users/follow_form', user: user %>
-	              </div>
-	            </td>
-	          </tr>
-	        <% else %>
-	          <tr>
-	            <td>
-	              <div class="text-center">
-	                  <%= link_to "記事を書く", new_article_path ,class: "btn btn-info" %>
-	              </div>
-	            </td>
-	          </tr>
-	        <% end %>
+	         <% if current_user != user %>
+	            <tr>
+	               <td>
+	                  <div class="text-center">
+	              	      <%= render 'users/follow_form', user: user %>
+	                  </div>
+	               </td>
+	            </tr>
+	         <% else %>
+	            <tr>
+	               <td>
+	                  <div class="text-center">
+	                     <%= link_to "記事を書く", new_article_path ,class: "btn btn-info" %>
+	                  </div>
+	               </td>
+	            </tr>
+	         <% end %>
+	         <tr>
+               <td>
+            	<!-- カレンダー表示 -->
+            	   <div class="text-center">
+                     <%= link_to "カレンダーを見る", calendar_user_path(user) ,class: "btn btn-success" %>
+                  </div>
+               </td>
+            </tr>
 	      <% end %>
-	    </tbody>
+	   </tbody>
 	</table>
 </div>
+
+

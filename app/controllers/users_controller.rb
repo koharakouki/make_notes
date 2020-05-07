@@ -23,6 +23,11 @@ class UsersController < ApplicationController
 		@followers = @user.followers.all
 	end
 
+	def calendar
+		@user = User.find(params[:id])
+		@watched_lists = @user.lists.where(is_watched: true)
+	end
+
 	private
 
 	def user_params

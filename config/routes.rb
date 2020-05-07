@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :lists, only: [:show, :index, :create, :edit, :update, :destroy]
     member do
       get :show_follow
+      get :calendar
     end
   end
   resources :relationships, only: [:create, :destroy]
