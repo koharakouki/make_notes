@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row">
+		<!-- user-infoの表示 -->
+		<div class="col-md-3">
+			<%= render 'shared/user_info', user: current_user %>
+		</div>
+		<!-- 記事作成ブロックの表示 -->
+		<div class="col-md-8">
+			<div class="new-article-headline">
+				<h3>記事を書く</h3>
+			</div>
+			<div class="new-article-body">
+				<%= form_for(@article) do |f| %>
+          <%= f.label :article_title, '作品タイトル' %>
+          <%= f.text_field :article_title %>
+
+          <label>ネタバレ（選択してください）</label>
+          <%= f.radio_button :is_spoiler, true %>
+          <%= f.label :is_spoiler, '有り', { value: true, style: 'display: inline-block;' } %>
+          <%= f.radio_button :is_spoiler, false %>
+          <%= f.label :is_spoiler, '無し', { value: false, style: 'display: inline-block;' } %>
+
+          <%= f.label :content, '本文' %>
+          <%= f.text_area :content %>
+
+          <%= f.submit '投稿する', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

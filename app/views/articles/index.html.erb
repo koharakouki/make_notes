@@ -1,0 +1,33 @@
+<div class="container">
+	<div class="row">
+		<!-- user-infoの表示 -->
+		<div class="col-md-3">
+			<%= render 'shared/user_info', user: current_user %>
+		</div>
+		<!-- 記事一覧ブロックの表示 -->
+		<div class="col-md-7">
+			<div class="index-article-headline">
+				<h4>記事を探す</h4>
+			</div>
+			<div class="index-article-body">
+				<% @articles.each do |article| %>
+					<div class="col-md-10">
+						<%= link_to article_path(article) do %>
+							<%= article.article_title %>
+						<% end %>
+						<% if article.is_spoiler == true %>
+							<span>ネタバレ</span>
+							<p>この記事はネタバレを含みます</p>
+						<% else %>
+							<p><%= article.content.slice(0..100) %></p>
+						<% end %>
+						<!-- いいねの数も表示する！！！！！！！！！！！！！！！！！！！！！！！！！！！ -->
+					</div>
+				<% end %>
+			</div>
+		</div>
+		<!-- おすすめ記事の一覧を表示 -->
+		<div class="col-md-2">
+		</div>
+	</div>
+</div>

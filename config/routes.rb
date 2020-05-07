@@ -18,4 +18,8 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
   get '/search', to: 'search#search'
+  resources :articles, only: [:new, :create, :show, :index] do
+    resource :article_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+  end
 end

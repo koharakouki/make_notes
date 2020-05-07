@@ -6,8 +6,10 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   attachment :image
-  has_many :genres
-  has_many :lists
+  has_many :genres, dependent: :destroy
+  has_many :lists, dependent: :destroy
+  has_many :articles
+  has_many :favorites, dependent: :destroy
 
 # フォロー・フォロワーのための関連付け
   has_many :active_relationships, class_name: "Relationship",
