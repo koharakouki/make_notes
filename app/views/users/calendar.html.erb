@@ -1,0 +1,18 @@
+<div class="container">
+	<div class="row">
+		<!-- user-infoの表示 -->
+		<div class="col-md-3">
+			<%= render 'shared/user_info', user: @user %>
+		</div>
+		<!-- カレンダーの表示 -->
+		<div class="col-md-9">
+			<h3><%= @user.name %>さんのカレンダー</h3>
+			<%= month_calendar events: @watched_lists do |date, watched_lists| %>
+				<%= date.day %>
+				<% watched_lists.each do |watched_list| %>
+				   <%= watched_list.title %>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
