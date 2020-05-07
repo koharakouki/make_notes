@@ -18,6 +18,8 @@
 					<% end %>
 				</div>
 			</div>
+			<!-- いいねした記事のみを表示 -->
+			<%= link_to 'いいねした記事を表示', articles_path(favorite: "good") %>
 			<div class="index-article-body">
 				<% @articles.each do |article| %>
 					<div class="col-md-10">
