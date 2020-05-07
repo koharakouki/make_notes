@@ -6,7 +6,7 @@
 			<% end %>
 			<ul class="nav navbar-nav navbar-right">
 				<% if user_signed_in? %>
-					<li><%= link_to "記事一覧", "#", class: "nav_item" %></li>
+					<li><%= link_to "記事一覧", articles_path, class: "nav_item" %></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle nav_item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">マイページ  <span class="caret"></span></a>
 						<ul class="dropdown-menu">
