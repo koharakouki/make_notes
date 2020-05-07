@@ -5,15 +5,35 @@
 			<%= render 'shared/user_info', user: current_user %>
 		</div>
 		<!-- 記事詳細の表示 -->
-		<div class="col-md-7">
+		<div class="col-md-8">
 			<%= @article.article_title %>
 			<%= @article.user.name %>
-			<!-- いいねを作ってないからとりあえずコメントアウト -->
-			<%#= @article.favorites.count %>
 			<div id="favorites_buttons_<%= @article.id %>">
 				<%= render 'articles/favorite', article: @article %>
 			</div>
 			<p><%= @article.content %></p>
+			<!-- ここからコメントブロック -->
+			<div class="article-comment-box">
+				<div class="article-comment-form">
+					<%= form_with(model: [@article, @article_comment], local: true) do |f| %>
+						<%= f.label :content %>
+						<%= f.text_field :content %>
+
+						<%= f.submit 'コメントする', class: "btn btn-primary" %>
+					<% end %>
+				</div>
+				<div class="article_comment_index">
+					<% @article_comments.each do |article_comment| %>
+						<%= attachment_image_tag article_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
+						<%= article_comment.content %>
+						<% if article_comment.user == current_user || current_admin %>
+							<%= link_to '削除する',
+								article_article_comments_path(id: article_comment.id, article_id: article_comment.article_id),
+								method: :delete, class: "btn btn-danger" %>
+						<% end %>
+					<% end %>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :lists, dependent: :destroy
   has_many :articles
   has_many :favorites, dependent: :destroy
+  has_many :article_comments
 
 # フォロー・フォロワーのための関連付け
   has_many :active_relationships, class_name: "Relationship",
