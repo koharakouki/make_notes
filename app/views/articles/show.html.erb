@@ -10,6 +10,9 @@
 			<%= @article.user.name %>
 			<!-- いいねを作ってないからとりあえずコメントアウト -->
 			<%#= @article.favorites.count %>
+			<div id="favorites_buttons_<%= @article.id %>">
+				<%= render 'articles/favorite', article: @article %>
+			</div>
 			<p><%= @article.content %></p>
 		</div>
 	</div>

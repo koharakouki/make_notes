@@ -1,13 +1,13 @@
 class FavoritesController < ApplicationController
 
 	def create
-		@article = Article.find(params[:id])
+		@article = Article.find(params[:article_id])
 		favorite = current_user.favorites.build(article_id: @article.id)
 		favorite.save
 	end
 
 	def destroy
-     @article = Article.find(params[:id])
+     @article = Article.find(params[:article_id])
      favorite = current_user.favorites.find_by(article_id: @article.id)
      favorite.destroy
 	end
