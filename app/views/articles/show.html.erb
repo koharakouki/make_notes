@@ -1,0 +1,16 @@
+<div class="container">
+	<div class="row">
+		<!-- user-infoの表示 -->
+		<div class="col-md-3">
+			<%= render 'shared/user_info', user: current_user %>
+		</div>
+		<!-- 記事詳細の表示 -->
+		<div class="col-md-7">
+			<%= @article.article_title %>
+			<%= @article.user.name %>
+			<!-- いいねを作ってないからとりあえずコメントアウト -->
+			<%#= @article.favorites.count %>
+			<p><%= @article.content %></p>
+		</div>
+	</div>
+</div>
