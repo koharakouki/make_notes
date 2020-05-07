@@ -1,0 +1,21 @@
+<div class="article-comment-form">
+	<%= form_with(model: [article, article_comment], remote: true) do |f| %>
+		<%= f.label :content %>
+		<%= f.text_field :content, placeholder: "コメントを入力" %>
+
+		<%= f.submit 'コメントする', class: "btn btn-primary" %>
+	<% end %>
+</div>
+<div class="article_comment_index">
+	<% article_comments.each do |article_comment| %>
+		<div class="col-xs-8">
+			<%= attachment_image_tag article_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %>
+			<%= article_comment.content %>
+			<% if article_comment.user == current_user || current_admin %>
+				<%= link_to '削除する',
+					article_article_comments_path(id: article_comment.id, article_id: article_comment.article_id),
+					method: :delete, remote: true, class: "btn btn-danger" %>
+			<% end %>
+		</div>
+	<% end %>
+</div>
