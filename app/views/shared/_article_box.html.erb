@@ -1,3 +1,14 @@
 <div class="new-articles">
-	<p>新着記事</p>
+	<h5>新着記事</h5>
+	<% articles.each do |article| %>
+		<%= link_to article_path(article) do %>
+			<%= article.article_title %>
+		<% end %>
+		<% if article.is_spoiler == true %>
+			<span>ネタバレ</span>
+			<p>この記事はネタバレを含みます</p>
+		<% else %>
+			<p><%= article.content.slice(0..30) %></p>
+		<% end %>
+	<% end %>
 </div>

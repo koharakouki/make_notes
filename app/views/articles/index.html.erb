@@ -5,7 +5,7 @@
 			<%= render 'shared/user_info', user: current_user %>
 		</div>
 		<!-- 記事一覧ブロックの表示 -->
-		<div class="col-md-7">
+		<div class="col-md-8">
 			<div class="index-article-headline">
 				<h4>記事を探す</h4>
 				<div class="search-form">
@@ -18,7 +18,7 @@
 					<% end %>
 				</div>
 			</div>
-			<!-- いいねした記事のみを表示 -->
+			<!-- いいねした記事のみを表示リンク -->
 			<%= link_to 'いいねした記事を表示', articles_path(favorite: "good") %>
 			<div class="index-article-body">
 				<% @articles.each do |article| %>
@@ -32,13 +32,10 @@
 						<% else %>
 							<p><%= article.content.slice(0..100) %></p>
 						<% end %>
-						<!-- いいねの数も表示する！！！！！！！！！！！！！！！！！！！！！！！！！！！ -->
+						<%= article.favorites.count %>
 					</div>
 				<% end %>
 			</div>
-		</div>
-		<!-- おすすめ記事の一覧を表示 -->
-		<div class="col-md-2">
 		</div>
 	</div>
 </div>

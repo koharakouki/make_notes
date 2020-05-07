@@ -1,0 +1,8 @@
+<div class="new-articles">
+	<h5>おすすめユーザー</h5>
+	<% rank_users.each do |user| %>
+		<%= link_to user_genres_path(user) do %>
+			<%= user.name %>
+		<% end %>
+	<% end %>
+</div>

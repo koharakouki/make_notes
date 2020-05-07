@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
 				end
 			end
 		else
-			@articles = Article.page(params[:page]).per(10)
+			@articles = Article.order(created_at: :desc).page(params[:page]).per(10)
 		end
 	end
 
