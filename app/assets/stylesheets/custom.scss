@@ -59,13 +59,17 @@ nav {
 .footer {
 	height: 80px;
 	margin-top: auto;
-	padding-top: 30px;
+	// padding-top: 30px;
 	border-top: 1px solid #C0C0C0;
 	display: flex;
-	flex-direction: column;
 	align-items: center;
-	.footer__admin-link {
-		color: #000;
+	justify-content: space-between;
+	.footer__img {
+		width: 30px;
+		height: 30px;
+		background-image: url(favicon.ico);
+		background-size: contain;
+		flex-shrink: 10;
 	}
 }
 // ------------------------------------------------------------
