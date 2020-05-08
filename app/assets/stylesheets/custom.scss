@@ -7,8 +7,9 @@
 // ----------------------------------------------------------
 body {
 	padding-top: 90px;
+	background-color: #EEEEEE;
 }
-// *フッターを最下部に固定*
+// (フッターを最下部に固定)
 .h-100 {
 	display: flex;
 	flex-direction: column;
@@ -17,7 +18,7 @@ body {
 //-----------------------------------------------------------
 
 
-// _admin_header/_user_header
+// layouts/_admin_header, _user_header
 // ----------------------------------------------------------
 nav {
 	height: 70px;
@@ -54,12 +55,11 @@ nav {
 }
 // ------------------------------------------------------------
 
-// footer
+// layouts/_footer
 // ------------------------------------------------------------
 .footer {
 	height: 80px;
 	margin-top: auto;
-	// padding-top: 30px;
 	border-top: 1px solid #C0C0C0;
 	display: flex;
 	align-items: center;
@@ -71,10 +71,114 @@ nav {
 		background-size: contain;
 		flex-shrink: 10;
 	}
+	.footer__admin-link {
+		margin-left: 20px;
+	}
 }
 // ------------------------------------------------------------
 
+// home/top
+// ------------------------------------------------------------
+// (main-visual)
+.main-visual__content {
+	height: 300px;
+	margin: 60px 0 40px 0;
+	background: linear-gradient(90deg, #93FFAB 0%, #FFFFFF 50%, #93FFAB 100%);
+	box-sizing : border-box;
+	display: flex;
+	justify-content: center;
+   flex-direction: column;
+   align-items: center;
+	.main-visual__content--logo {
+		width: 400px;
+		height: 100px;
+		background-image: url(logo.png);
+		background-size: contain;
+		margin-bottom: 30px;
+	}
+	p {
+		text-align: center;
+		font-size: 16px;
+		color: #777;
+	}
+}
+// (ログイン・新規登録リンク)
+.top-login {
+	text-align: center;
+	.btn-gradient-radius {
+		display: inline-block;
+		padding: 7px 50px;
+		border-radius: 25px;
+		text-decoration: none;
+		color: #777;
+	   background-color: #99CC66;
+	   font-size: 20px;
+    	margin-bottom: 20px;
+		&:hover {
+		background-color: #777;
+		text-decoration: none;
+		color: #FFF;
+		}
+	}
+}
+.top-signup {
+	text-align: center;
+	.top-signup_btn {
+		color: #777;
+		text-decoration: underline;
+	}
+}
+// (How to make notes)
+.how-to-box {
+	border: 3px dashed #BBB;
+	margin: 30px 0;
+	.about__explanation {
+		margin-bottom: 20px;
+	}
+	.about-boxs {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		.about-box {
+			width: 400px;
+			height: 270px;
+			background-color: #93FFAB;
+			padding: 20px;
+			margin-bottom: 20px;
+			border-radius: 10px;
+			.img-want {
+				width: 160px;
+				height: 103px;
+				background-image: url(want_to.png);
+				background-size: contain;
+				margin: 20px auto;
+			}
+			.img-done {
+				width: 180px;
+				height: 103px;
+				background-image: url(done.png);
+				background-size: contain;
+				margin: 20px auto;
+			}
+			.img-article {
+				width: 160px;
+				height: 103px;
+				background-image: url(article.png);
+				background-size: contain;
+				margin: 20px auto;
+			}
+			.img-follow {
+				width: 160px;
+				height: 103px;
+				background-image: url(follow.png);
+				background-size: contain;
+				margin: 20px auto;
+			}
+		}
+	}
+}
 
+// ------------------------------------------------------------
 
 
 // /* 共通　*/
