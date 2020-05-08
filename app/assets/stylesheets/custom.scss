@@ -1,309 +1,385 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* 共通　*/
+// 新しいCSS
 
+// 共通
+// ----------------------------------------------------------
 body {
-	margin-top: 80px;
+	padding-top: 90px;
 }
-
-/*フッターを最下部に固定*/
+// *フッターを最下部に固定*
 .h-100 {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
 }
-/*各ページのユーザー情報*/
-.user-info-box {
-	width: 250px;
-	height: 400px;
-	background-color: #E6FFE9;
-	border: 1px solid #C0C0C0;
-	margin-top: 40px;
-}
-.new-articles {
-	width: 250px;
-	height: 600px;
-	background-color: #E6FFE9;
-	margin-top: 30px;
-}
+//-----------------------------------------------------------
 
 
-/*  header  */
-header {
-	width: 100%;
+// _admin_header/_user_header
+// ----------------------------------------------------------
+nav {
 	height: 70px;
 	background-color: #C0C0C0;
-	#logo {
+	.navbar-toggle {
+		margin-top: 15px;
+	}
+	.brand-logo {
+	display: flex;
+	justify-content: center;
+   align-items: center;
+   width: 260px;
+   min-height: 70px;
+   padding: 10px 30px;
+	   #logo {
 		width: 200px;
 		height: 50px;
-		margin: 13px 0 0 30px;
 		background-image: url(logo.png);
 		background-size: contain;
 		display: inline-block;
+		}
 	}
 	.nav_item {
-		color: #777;
-		font-size: 15px;
-		margin: 10px 10px 0;
-		background-color: #99CC66;
-		border-radius: 10px;
-		border: 1px solid #808080;
-	}
-}
-/*headerここまで*/
-
-
-/*  footer  */
-.footer {
-	height: 80px;
-	background-color: #C0C0C0;
-	margin-top: auto;
-	&__text {
-		text-align: center;
-		margin-top: 30px;
-	}
-}
-/*footerここまで*/
-
-
-/* トップページ　*/
-/*トップページのmain visual*/
-.main-visual {
-	width: 100%;
-	height: 300px;
-	margin-top: 60px;
-	margin-bottom: 30px;
-	background: linear-gradient(90deg, #93FFAB 0%, #FFFFFF 50%, #93FFAB 100%);
-	padding-top: 60px;
-	&__content--logo {
-		width: 400px;
-		height: 100px;
-		background-image: url(logo.png);
-		background-size: contain;
-		margin : 0 auto 30px;
-	}
-	&__content--text {
-		text-align: center;
-		font-size: 16px;
-		color: #777;
-	}
-	&__content--about-link {
-		color: #777;
-		text-decoration: underline;
-	}
-}
-/*トップページのログインボタン*/
-.top-login {
-	text-align: center;
-	.btn-gradient-radius {
-		display: inline-block;
-		padding: 7px 50px;
-		border-radius: 25px;
-		text-decoration: none;
-		color: #777;
-	    background-color: #99CC66;
-	    font-size: 20px;
-    	margin-bottom: 20px;
+	color: #777;
+	font-size: 15px;
+	margin: 10px 10px 0;
+	background-color: #99CC66;
+	border-radius: 10px;
+	border: 1px solid #808080;
 		&:hover {
-		background-color: #777;
-		text-decoration: none;
-		color: #FFF;
+			background-color: #CCC;
 		}
 	}
 }
-/*トップページの新規登録リンク*/
-.top-signup {
-	text-align: center;
-	.top-signup_btn {
-		color: #777;
-		text-decoration: underline;
-	}
-}
-/*トップページここまで*/
+// ------------------------------------------------------------
 
-
-/*アバウトページ*/
-/*アバウトページ上部の説明*/
-.about__explanation--text-box {
-	width: 700px;
-	height: 50px;
-	background-color: #E6FFE9;
-	border-radius: 10px;
-	margin-top: 10px;
-	margin-bottom: 30px;
-}
-.about__explanation--text {
-	line-height: 50px;
-}
-/*アバウトページのできることボックス*/
-.about-boxs {
+// footer
+// ------------------------------------------------------------
+.footer {
+	height: 80px;
+	margin-top: auto;
+	// padding-top: 30px;
+	border-top: 1px solid #C0C0C0;
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-.about-box {
-	width: 400px;
-	height: 200px;
-	background-color: #E6FFE9;
-	padding: 40px;
-	margin-bottom: 20px;
-	border-radius: 10px;
-}
-/*アバウトページここまで*/
-
-
-/*新規登録ページ*/
-/*フィールド全体に背景をつける*/
-.signup-form-all {
-	width: 650px;
-	height: 450px;
-	background-color: #E6FFE9;
-	margin: 0 auto;
-	padding-top: 40px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-/*各フィールドの下に薄く線を引く*/
-.form-group {
-	border-bottom: 1px solid #CCFFCC;
-	padding-bottom: 45px;
-}
-/*各フィールドを離すため*/
-.field {
-	margin-bottom: 25px;
-}
-/*会員登録ボタン*/
-.signup-button {
-	display: inline-block;
-	padding: 7px 50px;
-	border-radius: 25px;
-	text-decoration: none;
-	color: #777;
-    background-color: #99CC66;
-    font-size: 20px;
-	&:hover {
-	background-color: #777;
-	text-decoration: none;
-	color: #FFF;
+	align-items: center;
+	justify-content: space-between;
+	.footer__img {
+		width: 30px;
+		height: 30px;
+		background-image: url(favicon.ico);
+		background-size: contain;
+		flex-shrink: 10;
 	}
 }
-.signup-facebook-box {
-	width: 250px;
-	height: 50px;
-	background-color: #3b5998;
-	padding: 5px;
-	border-radius: 10px;
-	display: inline-block;
-	margin-right: 20px;
-}
-/*twitterリンク*/
-.signup-twitter-box {
-	width: 250px;
-	height: 50px;
-	background-color: #00acee;
-	padding: 5px;
-	border-radius: 10px;
-	display: inline-block;
-}
-/*新規登録ページここまで*/
+// ------------------------------------------------------------
 
-/*ログインページ*/
-/*フィールド全体に背景をつける*/
-.signin-form-all {
-	width: 500px;
-	height: 350px;
-	background-color: #E6FFE9;
-	padding-top: 60px;
-	margin-top: 20px;
-}
-.signin-button {
-	display: inline-block;
-	padding: 7px 10px;
-	border-radius: 25px;
-	text-decoration: none;
-	color: #777;
-    background-color: #99CC66;
-    font-size: 20px;
-	margin-bottom: 20px;
-	margin-top: 10px;
-	border: 1px solid #808080;
-	&:hover {
-	background-color: #777;
-	text-decoration: none;
-	color: #FFF;
-	}
-}
-.go-signup, .forget-password {
-	color: #777;
-	text-decoration: underline;
-	font-size: 12px;
-}
-.forget-password {
-	margin-left: 30px;
-}
 
-/*SNSアカウントブロック*/
-.sns-signin-box {
-	width: 400px;
-	height: 350px;
-	background-color: #E6FFE9;
-	padding-top: 30px;
-	margin-top: 20px;
-}
-/*facebookリンク*/
-.facebook-box {
-	width: 270px;
-	height: 60px;
-	background-color: #3b5998;
-	padding: 10px;
-	border-radius: 10px;
-	margin: 50px auto;
-}
-/*twitterリンク*/
-.twitter-box {
-	width: 270px;
-	height: 60px;
-	background-color: #00acee;
-	padding: 10px;
-	border-radius: 10px;
-	margin: 50px auto;
-}
-.facebook-box-icon, .twitter-box-icon {
-	color: #FFF;
-	margin-left: 10px;
-	display: inline;
-	margin-right: 10px;
-}
-.facebook-box-text, .twitter-box-text {
-	color: #FFF;
-	font-size: 20px;
-	display: inline;
-}
-/*ログインページここまで*/
 
-/*アカウント情報編集ページ*/
-.user-edit-form-all {
-	width: 650px;
-	height: 450px;
-	background-color: #E6FFE9;
-	margin: 0 auto;
-	padding-top: 40px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-/*アカウント情報編集ページここまで*/
 
-/*ジャンル一覧ページ*/
-.mylist-box {
-	width: 700px;
-	display: flex;
-	flex-wrap: wrap;
-}
-.genre-box {
-	width: 150px;
-	height: 150px;
-	margin: 5px;
-	border: 1px solid #000;
-	border-radius: 10px;
-}
+// /* 共通　*/
+
+// body {
+// 	margin-top: 80px;
+// }
+
+// /*フッターを最下部に固定*/
+// .h-100 {
+// 	display: flex;
+// 	flex-direction: column;
+// 	min-height: 100vh;
+// }
+// /*各ページのユーザー情報*/
+// .user-info-box {
+// 	width: 250px;
+// 	height: 400px;
+// 	background-color: #E6FFE9;
+// 	border: 1px solid #C0C0C0;
+// 	margin-top: 40px;
+// }
+// .new-articles {
+// 	width: 250px;
+// 	height: 600px;
+// 	background-color: #E6FFE9;
+// 	margin-top: 30px;
+// }
+
+
+// /*  header  */
+// header {
+// 	width: 100%;
+// 	height: 70px;
+// 	background-color: #C0C0C0;
+// 	#logo {
+// 		width: 200px;
+// 		height: 50px;
+// 		margin: 13px 0 0 30px;
+// 		background-image: url(logo.png);
+// 		background-size: contain;
+// 		display: inline-block;
+// 	}
+// 	.nav_item {
+// 		color: #777;
+// 		font-size: 15px;
+// 		margin: 10px 10px 0;
+// 		background-color: #99CC66;
+// 		border-radius: 10px;
+// 		border: 1px solid #808080;
+// 	}
+// }
+// /*headerここまで*/
+
+
+// /*  footer  */
+// .footer {
+// 	height: 80px;
+// 	background-color: #C0C0C0;
+// 	margin-top: auto;
+// 	&__text {
+// 		text-align: center;
+// 		margin-top: 30px;
+// 	}
+// }
+// /*footerここまで*/
+
+
+// /* トップページ　*/
+// /*トップページのmain visual*/
+// .main-visual {
+// 	width: 100%;
+// 	height: 300px;
+// 	margin-top: 60px;
+// 	margin-bottom: 30px;
+// 	background: linear-gradient(90deg, #93FFAB 0%, #FFFFFF 50%, #93FFAB 100%);
+// 	padding-top: 60px;
+// 	&__content--logo {
+// 		width: 400px;
+// 		height: 100px;
+// 		background-image: url(logo.png);
+// 		background-size: contain;
+// 		margin : 0 auto 30px;
+// 	}
+// 	&__content--text {
+// 		text-align: center;
+// 		font-size: 16px;
+// 		color: #777;
+// 	}
+// 	&__content--about-link {
+// 		color: #777;
+// 		text-decoration: underline;
+// 	}
+// }
+// /*トップページのログインボタン*/
+// .top-login {
+// 	text-align: center;
+// 	.btn-gradient-radius {
+// 		display: inline-block;
+// 		padding: 7px 50px;
+// 		border-radius: 25px;
+// 		text-decoration: none;
+// 		color: #777;
+// 	    background-color: #99CC66;
+// 	    font-size: 20px;
+//     	margin-bottom: 20px;
+// 		&:hover {
+// 		background-color: #777;
+// 		text-decoration: none;
+// 		color: #FFF;
+// 		}
+// 	}
+// }
+// /*トップページの新規登録リンク*/
+// .top-signup {
+// 	text-align: center;
+// 	.top-signup_btn {
+// 		color: #777;
+// 		text-decoration: underline;
+// 	}
+// }
+// /*トップページここまで*/
+
+
+// /*アバウトページ*/
+// /*アバウトページ上部の説明*/
+// .about__explanation--text-box {
+// 	width: 700px;
+// 	height: 50px;
+// 	background-color: #E6FFE9;
+// 	border-radius: 10px;
+// 	margin-top: 10px;
+// 	margin-bottom: 30px;
+// }
+// .about__explanation--text {
+// 	line-height: 50px;
+// }
+// /*アバウトページのできることボックス*/
+// .about-boxs {
+// 	display: flex;
+// 	flex-wrap: wrap;
+// 	justify-content: center;
+// }
+// .about-box {
+// 	width: 400px;
+// 	height: 200px;
+// 	background-color: #E6FFE9;
+// 	padding: 40px;
+// 	margin-bottom: 20px;
+// 	border-radius: 10px;
+// }
+// /*アバウトページここまで*/
+
+
+// /*新規登録ページ*/
+// /*フィールド全体に背景をつける*/
+// .signup-form-all {
+// 	width: 650px;
+// 	height: 450px;
+// 	background-color: #E6FFE9;
+// 	margin: 0 auto;
+// 	padding-top: 40px;
+// 	margin-top: 20px;
+// 	margin-bottom: 20px;
+// }
+// /*各フィールドの下に薄く線を引く*/
+// .form-group {
+// 	border-bottom: 1px solid #CCFFCC;
+// 	padding-bottom: 45px;
+// }
+// /*各フィールドを離すため*/
+// .field {
+// 	margin-bottom: 25px;
+// }
+// /*会員登録ボタン*/
+// .signup-button {
+// 	display: inline-block;
+// 	padding: 7px 50px;
+// 	border-radius: 25px;
+// 	text-decoration: none;
+// 	color: #777;
+//     background-color: #99CC66;
+//     font-size: 20px;
+// 	&:hover {
+// 	background-color: #777;
+// 	text-decoration: none;
+// 	color: #FFF;
+// 	}
+// }
+// .signup-facebook-box {
+// 	width: 250px;
+// 	height: 50px;
+// 	background-color: #3b5998;
+// 	padding: 5px;
+// 	border-radius: 10px;
+// 	display: inline-block;
+// 	margin-right: 20px;
+// }
+// /*twitterリンク*/
+// .signup-twitter-box {
+// 	width: 250px;
+// 	height: 50px;
+// 	background-color: #00acee;
+// 	padding: 5px;
+// 	border-radius: 10px;
+// 	display: inline-block;
+// }
+// /*新規登録ページここまで*/
+
+// /*ログインページ*/
+// /*フィールド全体に背景をつける*/
+// .signin-form-all {
+// 	width: 500px;
+// 	height: 350px;
+// 	background-color: #E6FFE9;
+// 	padding-top: 60px;
+// 	margin-top: 20px;
+// }
+// .signin-button {
+// 	display: inline-block;
+// 	padding: 7px 10px;
+// 	border-radius: 25px;
+// 	text-decoration: none;
+// 	color: #777;
+//     background-color: #99CC66;
+//     font-size: 20px;
+// 	margin-bottom: 20px;
+// 	margin-top: 10px;
+// 	border: 1px solid #808080;
+// 	&:hover {
+// 	background-color: #777;
+// 	text-decoration: none;
+// 	color: #FFF;
+// 	}
+// }
+// .go-signup, .forget-password {
+// 	color: #777;
+// 	text-decoration: underline;
+// 	font-size: 12px;
+// }
+// .forget-password {
+// 	margin-left: 30px;
+// }
+
+// /*SNSアカウントブロック*/
+// .sns-signin-box {
+// 	width: 400px;
+// 	height: 350px;
+// 	background-color: #E6FFE9;
+// 	padding-top: 30px;
+// 	margin-top: 20px;
+// }
+// /*facebookリンク*/
+// .facebook-box {
+// 	width: 270px;
+// 	height: 60px;
+// 	background-color: #3b5998;
+// 	padding: 10px;
+// 	border-radius: 10px;
+// 	margin: 50px auto;
+// }
+// /*twitterリンク*/
+// .twitter-box {
+// 	width: 270px;
+// 	height: 60px;
+// 	background-color: #00acee;
+// 	padding: 10px;
+// 	border-radius: 10px;
+// 	margin: 50px auto;
+// }
+// .facebook-box-icon, .twitter-box-icon {
+// 	color: #FFF;
+// 	margin-left: 10px;
+// 	display: inline;
+// 	margin-right: 10px;
+// }
+// .facebook-box-text, .twitter-box-text {
+// 	color: #FFF;
+// 	font-size: 20px;
+// 	display: inline;
+// }
+// /*ログインページここまで*/
+
+// /*アカウント情報編集ページ*/
+// .user-edit-form-all {
+// 	width: 650px;
+// 	height: 450px;
+// 	background-color: #E6FFE9;
+// 	margin: 0 auto;
+// 	padding-top: 40px;
+// 	margin-top: 20px;
+// 	margin-bottom: 20px;
+// }
+// /*アカウント情報編集ページここまで*/
+
+// /*ジャンル一覧ページ*/
+// .mylist-box {
+// 	width: 700px;
+// 	display: flex;
+// 	flex-wrap: wrap;
+// }
+// .genre-box {
+// 	width: 150px;
+// 	height: 150px;
+// 	margin: 5px;
+// 	border: 1px solid #000;
+// 	border-radius: 10px;
+// }
