@@ -1,26 +1,36 @@
-<header class="navbar navbar-fixed-top">
-	<div class="container">
-		<nav>
-			<%= link_to root_path do %>
-				<div id="logo"></div>
-			<% end %>
-			<ul class="nav navbar-nav navbar-right">
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#user-header">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<div class="brand-logo">
+				<%= link_to root_path do %>
+					<div class="navbar-brand" id="logo"></div>
+				<% end %>
+			</div>
+		</div>
+		<div class="collapse navbar-collapse navbar-right" id="user-header">
+			<ul class="nav navbar-nav">
 				<% if user_signed_in? %>
-					<li><%= link_to "ユーザーを探す", users_path, class: "nav_item" %></li>
-					<li><%= link_to "記事を探す", articles_path, class: "nav_item" %></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle nav_item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">マイページ  <span class="caret"></span></a>
+					<li class="nav_item"><%= link_to "ユーザーを探す", users_path %></li>
+					<li class="nav_item"><%= link_to "記事を探す", articles_path %></li>
+					<li class="dropdown nav_item">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">マイページ  <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><%= link_to "マイページ", user_genres_path(current_user) %></li>
 							<li><%= link_to "アカウント編集ページ", edit_user_path(current_user) %></li>
 							<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
 						</ul>
 					</li>
-			    <% else %>
-			        <li><%= link_to "ログイン", new_user_session_path, class: "nav_item" %></li>
-			        <li><%= link_to "新規登録", new_user_registration_path, class: "nav_item" %></li>
-			    <% end %>
-		    </ul>
-		</nav>
+			   <% else %>
+			         <li class="nav_item"><%= link_to "ログイン", new_user_session_path %></li>
+			         <li class="nav_item"><%= link_to "新規登録", new_user_registration_path %></li>
+			   <% end %>
+		   </ul>
+		</div>
 	</div>
-</header>
+</nav>

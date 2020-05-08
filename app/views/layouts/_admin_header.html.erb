@@ -1,17 +1,27 @@
-<header class="navbar navbar-fixed-top">
-	<div class="container">
-		<nav>
-			<%= link_to admin_root_path do %>
-				<div id="logo"></div>
-			<% end %>
-			<ul class="nav navbar-nav navbar-right">
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#admin-header">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<div class="brand-logo">
+				<%= link_to admin_root_path do %>
+					<div class="navbar-brand" id="logo"></div>
+				<% end %>
+			</div>
+		</div>
+		<div class="collapse navbar-collapse navbar-right" id="admin-header">
+			<ul class="nav navbar-nav">
 				<% if admin_signed_in? %>
-					<li><%= link_to "ユーザー一覧", admin_users_path, class: "nav_item" %></li>
-					<li><%= link_to "記事一覧", admin_articles_path, class: "nav_item" %></li>
-					<li><%= link_to "チャート", admin_root_path, class: "nav_item" %></li>
-					<li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav_item" %></li>
-			    <% end %>
-		    </ul>
-		</nav>
+					<li class="nav_item"><%= link_to "ユーザー一覧", admin_users_path %></li>
+					<li class="nav_item"><%= link_to "記事一覧", admin_articles_path %></li>
+					<li class="nav_item"><%= link_to "チャート", admin_root_path %></li>
+					<li class="nav_item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+			   <% end %>
+		   </ul>
+		</div>
 	</div>
-</header>
+</nav>

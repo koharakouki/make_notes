@@ -1,4 +1,5 @@
-<footer class="footer">
-	<p class="footer__text">©︎make notes</p>
-	<p><%= link_to '管理者ログイン', new_admin_session_path %></p>
-</footer>
+<div class="footer container width-full">
+	<div class="footer__copyright">©︎make notes</div>
+   <%= link_to 'admin?', new_admin_session_path,class: "footer__admin-link" %>
+</div>
+

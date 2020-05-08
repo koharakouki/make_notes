@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   }
 
   root 'home#top'
-  get 'home/about'
   resources :users, only: [:edit, :update, :index] do
     resources :genres, only: [:index, :create, :destroy]
     resources :lists, only: [:show, :index, :create, :edit, :update, :destroy]
