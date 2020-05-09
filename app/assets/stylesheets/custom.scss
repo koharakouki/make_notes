@@ -67,8 +67,9 @@ nav {
 	.footer__img {
 		width: 30px;
 		height: 30px;
-		background-image: url(favicon.ico);
+		background-image: url(favicon30.png);
 		background-size: contain;
+		background-color: #EEE;
 		flex-shrink: 10;
 	}
 	.footer__admin-link {
@@ -154,22 +155,22 @@ nav {
 				margin: 20px auto;
 			}
 			.img-done {
-				width: 180px;
-				height: 103px;
+				width: 130px;
+				height: 120px;
 				background-image: url(done.png);
 				background-size: contain;
-				margin: 20px auto;
+				margin: 5px auto 12px;
 			}
 			.img-article {
-				width: 160px;
-				height: 103px;
+				width: 102px;
+				height: 105px;
 				background-image: url(article.png);
 				background-size: contain;
-				margin: 20px auto;
+				margin: 10px auto;
 			}
 			.img-follow {
-				width: 160px;
-				height: 103px;
+				width: 190px;
+				height: 87px;
 				background-image: url(follow.png);
 				background-size: contain;
 				margin: 20px auto;
