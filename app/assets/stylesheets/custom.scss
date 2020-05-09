@@ -11,11 +11,101 @@ body {
 }
 // (フッターを最下部に固定)
 .h-100 {
-	display: flex;
-	flex-direction: column;
 	min-height: 100vh;
+	position: relative;/*←相対位置*/
+   padding-bottom: 80px;/*←footerの高さ*/
+   box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
 //-----------------------------------------------------------
+
+// よく使うパーシャル
+// ----------------------------------------------------------
+// (_user_info)
+.user-info-box {
+	background-color: #CCC;
+	border-radius: 10px;
+	margin-top: 20px;
+	padding: 30px 0;
+}
+.prof-img {
+	border-radius: 50%;
+	margin-bottom: 20px;
+}
+.intro-title {
+	margin-bottom: 10px;
+}
+
+// (_stats)
+.stats {
+	display: flex;
+	justify-content: center;
+	a {
+		flex-basis: 90px;
+	}
+	.stat {
+		font-size: 15px;
+		color: #000;
+	}
+	span {
+		color: #000;
+	}
+}
+
+// (_article_box)
+.new-articles {
+	width: 300px;
+	position: relative;
+   margin: 2em 0;
+   padding: 2em 1em;
+   border: solid 3px #99CC66;
+   border-radius: 8px;
+	.new-articles-headline {
+	   position: absolute;
+	   display: inline-block;
+	   top: -13px;
+	   left: 10px;
+	   padding: 0 9px;
+	   line-height: 1;
+	   font-size: 19px;
+	   background: #FFF;
+	   color: #777;
+	   background-color: #EEE;
+	}
+	.article {
+		margin: 15px auto;
+		width: 260px;
+		height: 70px;
+		background-color: #CCCC99;
+		border-radius: 10px;
+		padding: 5px;
+		.spoiler-true {
+			width: 80px;
+			height: 25px;
+			background-color: #CD5C5C;
+			color: #000;
+			padding: 3px 12px;
+			border-radius: 3px;
+		}
+		.spoiler-false {
+			width: 80px;
+			height: 25px;
+			background-color: #CCC;
+			color: #000;
+			padding: 3px 12px;
+			border-radius: 3px;
+		}
+		.article-text {
+			font-size: 15px;
+			color: #000;
+			padding: 10px;
+		}
+	}
+	.new-articles-more {
+		color: #777;
+		text-decoration: underline;
+	}
+}
+// ----------------------------------------------------------
 
 
 // layouts/_admin_header, _user_header
@@ -57,25 +147,32 @@ nav {
 
 // layouts/_footer
 // ------------------------------------------------------------
-.footer {
-	height: 80px;
-	margin-top: auto;
-	border-top: 1px solid #C0C0C0;
+footer {
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	.footer__img {
-		width: 30px;
-		height: 30px;
-		background-image: url(favicon30.png);
-		background-size: contain;
-		background-color: #EEE;
-		flex-shrink: 10;
-	}
-	.footer__admin-link {
-		margin-left: 20px;
+	justify-content: center;
+	margin-top: 20px;
+	.footer {
+		height: 80px;
+		border-top: 1px solid #C0C0C0;
+		position: absolute;/*←絶対位置*/
+	   bottom: 0; /*下に固定*/
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		.footer__img {
+			width: 30px;
+			height: 30px;
+			background-image: url(favicon30.png);
+			background-size: contain;
+			background-color: #EEE;
+			flex-shrink: 10;
+		}
+		.footer__admin-link {
+			margin-left: 20px;
+		}
 	}
 }
+
 // ------------------------------------------------------------
 
 // home/top
@@ -466,17 +563,6 @@ nav {
 // 	margin-top: 30px;
 // }
 
-// /*アカウント情報編集ページ*/
-// .user-edit-form-all {
-// 	width: 650px;
-// 	height: 450px;
-// 	background-color: #E6FFE9;
-// 	margin: 0 auto;
-// 	padding-top: 40px;
-// 	margin-top: 20px;
-// 	margin-bottom: 20px;
-// }
-// /*アカウント情報編集ページここまで*/
 
 // /*ジャンル一覧ページ*/
 // .mylist-box {

@@ -1,14 +1,23 @@
 <div class="new-articles">
-	<h5>新着記事</h5>
-	<% articles.each do |article| %>
-		<%= link_to article_path(article) do %>
-			<%= article.article_title %>
-		<% end %>
-		<% if article.is_spoiler == true %>
-			<span>ネタバレ</span>
-			<p>この記事はネタバレを含みます</p>
-		<% else %>
-			<p><%= article.content.slice(0..30) %></p>
-		<% end %>
+	<span class="new-articles-headline">新着記事</span>
+	<% articles.first(6).each do |article| %>
+		<div class="article">
+			<% if article.is_spoiler == true %>
+				<span class="spoiler-true">ネタバレ有</span>
+				<%= link_to article_path(article) do %>
+					<p class="article-text"><%= article.article_title.slice(0..30) %></p>
+				<% end %>
+			<% else %>
+				<span class="spoiler-false">ネタバレ無</span>
+				<%= link_to article_path(article) do %>
+					<p class="article-text"><%= article.article_title.slice(0..30) %></p>
+				<% end %>
+		　　<% end %>
+		</div>
 	<% end %>
+	<div class="new-articles-more text-center">
+		<%= link_to 'もっと見る', articles_path, class: "more-article-text" %>
+	</div>
 </div>
+
+
