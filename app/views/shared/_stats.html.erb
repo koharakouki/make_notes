@@ -4,12 +4,12 @@
     <strong id="following" class="stat">
       <%= user.following.count %>
     </strong>
-    フォロー
+    <span>フォロー</span>
   </a>
   <a href="<%= show_follow_user_path(user) %>">
     <strong id="followers" class="stat">
       <%= user.followers.count %>
     </strong>
-    フォロワー
+    <span>フォロワー</span>
   </a>
 </div>
