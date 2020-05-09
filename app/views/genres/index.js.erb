@@ -1,0 +1,2 @@
+$('#genres').append("<%= escape_javascript(render partial: 'genres/genres', locals: { user: @user, genres: @genres }) %>");
+$("#view_more").replaceWith("<%= escape_javascript(link_to_next_page(@genres, 'もっと見る', remote: true, id: 'view_more')) %>");

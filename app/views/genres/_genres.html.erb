@@ -1,0 +1,5 @@
+<% genres.each do |genre| %>
+	<%= link_to user_lists_path(user, { genre_id: genre.id }), class: "genre-box" do %>
+			<span><%= genre.name %></span>
+	<% end %>
+<% end %>
