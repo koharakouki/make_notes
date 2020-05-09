@@ -192,33 +192,123 @@ nav {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	border-radius: 10px;
-}
-// // (各フィールドの下に薄く線を引く)
-.form-group {
-	border-bottom: 1px solid #CCFFCC;
-	padding-bottom: 20px;
-}
-// // (会員登録ボタン)
-.signup-button {
-	display: inline-block;
-	padding: 7px 50px;
-	border-radius: 25px;
-	text-decoration: none;
-	color: #777;
-   background-color: #99CC66;
-   font-size: 20px;
-	&:hover {
-	background-color: #777;
-	text-decoration: none;
-	color: #FFF;
+	// // (各フィールドの下に薄く線を引く)
+	.form-group {
+		border-bottom: 1px solid #CCFFCC;
+		padding-bottom: 20px;
+	}
+	// // (会員登録ボタン)
+	.signup-button {
+		display: inline-block;
+		padding: 7px 50px;
+		border-radius: 25px;
+		text-decoration: none;
+		color: #777;
+	   background-color: #99CC66;
+	   font-size: 20px;
+		&:hover {
+		background-color: #777;
+		text-decoration: none;
+		color: #FFF;
+		}
+	}
+	.sns-box {
+		width: 600px;
+		height: 60px;
+		margin: 15px auto;
+		display: flex;
+		justify-content: space-around;
+		.facebook-box {
+			width: 250px;
+			height: 50px;
+			background-color: #3b5998;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			color: #FFF;
+			padding: 10px;
+			border-radius: 10px;
+			.facebook-box-text {
+				font-size: 20px;
+				margin-bottom: 0;
+			}
+		}
+		.twitter-box {
+			width: 250px;
+			height: 50px;
+			background-color: #00acee;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			color: #FFF;
+			padding: 10px;
+			border-radius: 10px;
+			.twitter-box-text {
+				font-size: 20px;
+				margin-bottom: 0;
+			}
+		}
 	}
 }
-.sns-box {
-	width: 600px;
-	height: 60px;
-	margin: 15px auto;
-	display: flex;
-	justify-content: space-around;
+// ------------------------------------------------------------
+
+// devise/shared/_error_messages
+// ------------------------------------------------------------
+.devise-error {
+	background-color: #FFCCCC;
+	border-radius: 10px;
+	list-style: none;
+	border: 1px solid #FF6666;
+	li {
+		text-align: center;
+	}
+}
+// ------------------------------------------------------------
+
+// sessions/new
+// ------------------------------------------------------------
+.signin-form-all {
+	width: 500px;
+	height: 350px;
+	background-color: #E6FFE9;
+	padding-top: 60px;
+	margin-top: 20px;
+	.form-group {
+		border-bottom: 1px solid #CCFFCC;
+		padding-bottom: 20px;
+	}
+	.signin-button {
+		display: inline-block;
+		padding: 7px 10px;
+		border-radius: 25px;
+		text-decoration: none;
+		color: #777;
+	   background-color: #99CC66;
+	   font-size: 20px;
+		margin-bottom: 20px;
+		margin-top: 10px;
+		border: 1px solid #808080;
+		&:hover {
+		background-color: #777;
+		text-decoration: none;
+		color: #FFF;
+		}
+	}
+	.go-signup, .forget-password {
+		color: #777;
+		text-decoration: underline;
+		font-size: 12px;
+	}
+	.forget-password {
+		margin-left: 30px;
+	}
+}
+.signin-sns-box {
+	width: 400px;
+	height: 350px;
+	background-color: #E6FFE9;
+	padding-top: 30px;
+	margin-top: 20px;
 	.facebook-box {
 		width: 250px;
 		height: 50px;
@@ -229,6 +319,7 @@ nav {
 		color: #FFF;
 		padding: 10px;
 		border-radius: 10px;
+		margin: 40px auto;
 		.facebook-box-text {
 			font-size: 20px;
 			margin-bottom: 0;
@@ -244,6 +335,7 @@ nav {
 		color: #FFF;
 		padding: 10px;
 		border-radius: 10px;
+		margin: 20px auto;
 		.twitter-box-text {
 			font-size: 20px;
 			margin-bottom: 0;
@@ -252,33 +344,113 @@ nav {
 }
 // ------------------------------------------------------------
 
-// devise/shared/_error_messages
+// admin/sessions/new
 // ------------------------------------------------------------
-.devise-error {
+.admin-signin-form-all {
+	width: 650px;
+	height: 300px;
+	background-color: #E6FFE9;
+	margin: 0 auto;
+	padding-top: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+	.form-group {
+		border-bottom: 1px solid #CCFFCC;
+		padding-bottom: 20px;
+	}
+	.signin-button {
+		display: inline-block;
+		padding: 7px 10px;
+		border-radius: 25px;
+		text-decoration: none;
+		color: #777;
+	   background-color: #99CC66;
+	   font-size: 20px;
+		margin-bottom: 20px;
+		margin-top: 10px;
+		border: 1px solid #808080;
+		&:hover {
+		background-color: #777;
+		text-decoration: none;
+		color: #FFF;
+		}
+	}
+}
+// ------------------------------------------------------------
+
+// users/edit
+// ------------------------------------------------------------
+.user-edit-form-all {
+	width: 650px;
+	height: 550px;
+	background-color: #E6FFE9;
+	margin: 0 auto;
+	padding-top: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	.form-group {
+		border-bottom: 1px solid #CCFFCC;
+		padding-bottom: 20px;
+	}
+	.edit-button {
+		display: inline-block;
+		padding: 7px 10px;
+		border-radius: 25px;
+		text-decoration: none;
+		color: #777;
+	   background-color: #99CC66;
+	   font-size: 20px;
+		margin-bottom: 20px;
+		margin-top: 10px;
+		border: 1px solid #808080;
+		&:hover {
+		background-color: #777;
+		text-decoration: none;
+		color: #FFF;
+		}
+	}
+	#img_prev {
+		margin-bottom: 10px;
+		border-radius: 50%;
+	}
+	.img-box {
+		display: flex;
+		align-items: center;
+		border-bottom: 1px solid #CCFFCC;
+		padding-bottom: 20px;
+		margin-bottom: 20px;
+	}
+}
+// ------------------------------------------------------------
+
+// shared/_error_messages
+// ------------------------------------------------------------
+.error {
 	background-color: #FFCCCC;
 	border-radius: 10px;
 	list-style: none;
+	border: 1px solid #FF6666;
 	li {
 		text-align: center;
 	}
 }
-
 // ------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
 
 
 
 // /* 共通　*/
 
-// body {
-// 	margin-top: 80px;
-// }
-
-// /*フッターを最下部に固定*/
-// .h-100 {
-// 	display: flex;
-// 	flex-direction: column;
-// 	min-height: 100vh;
-// }
 // /*各ページのユーザー情報*/
 // .user-info-box {
 // 	width: 250px;
@@ -293,138 +465,6 @@ nav {
 // 	background-color: #E6FFE9;
 // 	margin-top: 30px;
 // }
-
-
-
-
-// /*新規登録ページ*/
-// /*フィールド全体に背景をつける*/
-// .signup-form-all {
-// 	width: 650px;
-// 	height: 450px;
-// 	background-color: #E6FFE9;
-// 	margin: 0 auto;
-// 	padding-top: 40px;
-// 	margin-top: 20px;
-// 	margin-bottom: 20px;
-// }
-// /*各フィールドの下に薄く線を引く*/
-// .form-group {
-// 	border-bottom: 1px solid #CCFFCC;
-// 	padding-bottom: 45px;
-// }
-// /*各フィールドを離すため*/
-// .field {
-// 	margin-bottom: 25px;
-// }
-// /*会員登録ボタン*/
-// .signup-button {
-// 	display: inline-block;
-// 	padding: 7px 50px;
-// 	border-radius: 25px;
-// 	text-decoration: none;
-// 	color: #777;
-//    background-color: #99CC66;
-//    font-size: 20px;
-// 	&:hover {
-// 	background-color: #777;
-// 	text-decoration: none;
-// 	color: #FFF;
-// 	}
-// }
-// .signup-facebook-box {
-// 	width: 250px;
-// 	height: 50px;
-// 	background-color: #3b5998;
-// 	padding: 5px;
-// 	border-radius: 10px;
-// 	display: inline-block;
-// 	margin-right: 20px;
-// }
-// /*twitterリンク*/
-// .signup-twitter-box {
-// 	width: 250px;
-// 	height: 50px;
-// 	background-color: #00acee;
-// 	padding: 5px;
-// 	border-radius: 10px;
-// 	display: inline-block;
-// }
-// /*新規登録ページここまで*/
-
-// /*ログインページ*/
-// /*フィールド全体に背景をつける*/
-// .signin-form-all {
-// 	width: 500px;
-// 	height: 350px;
-// 	background-color: #E6FFE9;
-// 	padding-top: 60px;
-// 	margin-top: 20px;
-// }
-// .signin-button {
-// 	display: inline-block;
-// 	padding: 7px 10px;
-// 	border-radius: 25px;
-// 	text-decoration: none;
-// 	color: #777;
-//     background-color: #99CC66;
-//     font-size: 20px;
-// 	margin-bottom: 20px;
-// 	margin-top: 10px;
-// 	border: 1px solid #808080;
-// 	&:hover {
-// 	background-color: #777;
-// 	text-decoration: none;
-// 	color: #FFF;
-// 	}
-// }
-// .go-signup, .forget-password {
-// 	color: #777;
-// 	text-decoration: underline;
-// 	font-size: 12px;
-// }
-// .forget-password {
-// 	margin-left: 30px;
-// }
-
-// /*SNSアカウントブロック*/
-// .sns-signin-box {
-// 	width: 400px;
-// 	height: 350px;
-// 	background-color: #E6FFE9;
-// 	padding-top: 30px;
-// 	margin-top: 20px;
-// }
-// /*facebookリンク*/
-// .facebook-box {
-// 	width: 270px;
-// 	height: 60px;
-// 	background-color: #3b5998;
-// 	padding: 10px;
-// 	border-radius: 10px;
-// 	margin: 50px auto;
-// }
-// /*twitterリンク*/
-// .twitter-box {
-// 	width: 270px;
-// 	height: 60px;
-// 	background-color: #00acee;
-// 	padding: 10px;
-// 	border-radius: 10px;
-// 	margin: 50px auto;
-// }
-// .facebook-box-icon, .twitter-box-icon {
-// 	color: #FFF;
-// 	margin-left: 10px;
-// 	display: inline;
-// 	margin-right: 10px;
-// }
-// .facebook-box-text, .twitter-box-text {
-// 	color: #FFF;
-// 	font-size: 20px;
-// 	display: inline;
-// }
-// /*ログインページここまで*/
 
 // /*アカウント情報編集ページ*/
 // .user-edit-form-all {

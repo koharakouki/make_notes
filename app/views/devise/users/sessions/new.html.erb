@@ -2,23 +2,23 @@
   <div class="row">
     <h2 class="col-xs-4 col-xs-offset-1">ログイン</h2>
   </div>
+  <%= render "devise/users/shared/error_messages", resource: resource %>
 
   <!-- メールアドレス・パスワードを直接入力してログインブロック -->
   <div class="row">
-    <%= render "devise/shared/error_messages", resource: resource %>
     <div class="signin-form-all col-xs-5 col-xs-offset-1 ">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-        <div class="form-group">
-          <%= f.label :email, class: "col-xs-3 col-xs-offset-1" %>
-          <div class="col-xs-7 field">
+        <div class="form-group row">
+          <%= f.label :email, class: "col-xs-3 col-xs-offset-2" %>
+          <div class="col-xs-6">
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
           </div>
         </div>
 
-        <div class="form-group">
-          <%= f.label :password, class: "col-xs-3 col-xs-offset-1" %>
-          <div class="col-xs-7 field">
+        <div class="form-group row">
+          <%= f.label :password, class: "col-xs-3 col-xs-offset-2" %>
+          <div class="col-xs-6">
             <%= f.password_field :password, placeholder: "6文字以上で入力してください", autocomplete: "new-password", class: "form-control" %>
           </div>
         </div>
@@ -33,14 +33,14 @@
     </div>
 
   <!-- SNSアカウントでログインブロック -->
-    <div class="sns-signin-box col-xs-4 col-xs-offset-1 ">
+    <div class="signin-sns-box col-xs-4 col-xs-offset-1 ">
       <h4 class="text-center">SNSアカウントでログインする</h4>
        <div class="facebook-box">
-        <p class="facebook-box-icon"><%= icon('fab', 'facebook-f fa-3x') %></p>
+        <div class="facebook-box-icon"><%= icon('fab', 'facebook-f fa-3x') %></div>
         <p class="facebook-box-text">facebookでログイン</p>
        </div>
        <div class="twitter-box">
-        <p class="twitter-box-icon"><%= icon('fab', 'twitter fa-3x') %></p>
+        <div class="twitter-box-icon"><%= icon('fab', 'twitter fa-3x') %></div>
         <p class="twitter-box-text">twitterでログイン</p>
        </div>
     </div>

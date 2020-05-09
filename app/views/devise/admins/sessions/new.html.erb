@@ -2,31 +2,29 @@
   <div class="row">
     <h2 class="col-xs-4 col-xs-offset-1">管理者ログイン</h2>
   </div>
+  <%= render "devise/users/shared/error_messages", resource: resource %>
 
   <!-- メールアドレス・パスワードを直接入力してログインブロック -->
-  <div class="row">
-    <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="signin-form-all">
+    <div class="admin-signin-form-all">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-        <div class="form-group">
-          <%= f.label :email, class: "col-xs-3 col-xs-offset-1" %>
-          <div class="col-xs-7 field">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-          </div>
+      <div class="form-group row">
+        <%= f.label :email, 'メールアドレス', class: "col-xs-3 col-xs-offset-2" %>
+        <div class="col-xs-6">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
+      </div>
 
-        <div class="form-group">
-          <%= f.label :password, class: "col-xs-3 col-xs-offset-1" %>
-          <div class="col-xs-7 field">
-            <%= f.password_field :password, placeholder: "6文字以上で入力してください", autocomplete: "new-password", class: "form-control" %>
-          </div>
+      <div class="form-group row">
+        <%= f.label :password, 'パスワード', class: "col-xs-3 col-xs-offset-2" %>
+        <div class="col-xs-6">
+          <%= f.password_field :password, placeholder: "6文字以上で入力してください", autocomplete: "new-password", class: "form-control" %>
         </div>
+      </div>
 
-        <div class="actions">
-          <%= f.submit "ログイン", class: "col-xs-4 col-xs-offset-4 signin-button" %>
-        </div>
-      <% end %>
-    </div>
+      <div class="actions">
+        <%= f.submit "ログイン", class: "col-xs-4 col-xs-offset-4 signin-button" %>
+      </div>
+    <% end %>
   </div>
 </div>
