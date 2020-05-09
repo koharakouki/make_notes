@@ -1,26 +1,31 @@
-<h3>マイリスト</h3>
+<div class="genre-header row">
+	<div class="genre-header-headline col-xs-3">
+		<h3>マイリスト</h3>
+	</div>
+	<div class="col-xs-5 col-xs-offset-4">
+		<% if @user == current_user %>
+			<%= form_with(model: @genre, url: user_genres_path) do |f| %>
+				<div class="row row-0 genre-header-addform">
+					<div class="form-group col-xs-7">
+						<%= f.text_field :name, placeholder: "ジャンルを追加", class: "form-control" %>
+					</div>
 
-<% if @user == current_user %>
-	<%= form_with(model: @genre, url: user_genres_path) do |f| %>
-		<div class="col-xs-">
-			<%= f.label :name %>
-			<%= f.text_field :name, placeholder: "映画、テレビ番組など" %>
-		</div>
-
-		<div class="actions">
-			<%= f.submit '追加する', class: "btn btn-primary" %>
-		</div>
-	<% end %>
-<% end %>
-
-<div class="mylist-box">
-	<%= link_to 'ALL', user_lists_path(@user), class: "genre-box" %>
-	<% @genres.each do |genre| %>
-		<%= link_to user_lists_path(@user, { genre_id: genre.id }) do %>
-			<div class="genre-box">
-				<p><%= genre.name %></p>
-			</div>
+					<div class="actions col-xs-2">
+						<%= f.submit '追加', class: "btn btn-primary" %>
+					</div>
+				</div>
+			<% end %>
 		<% end %>
-	<% end %>
-	<%= paginate @genres, class: "paginate" %>
+	</div>
+</div>
+
+
+<div id="mylist-genres-box">
+	<%= link_to user_lists_path(@user), class: "genre-box" do %>
+		<span>ALL</span>
+   <% end %>
+   <div id="genres">
+		<%= render 'genres', user: @user, genres: @genres %>
+	</div>
+	<div class="more"><%= link_to_next_page @genres, 'もっと見る', remote: true, id: 'view_more', class: "btn btn-success" %></div>
 </div>

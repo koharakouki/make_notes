@@ -1,7 +1,7 @@
 class GenresController < ApplicationController
   def index
   	@user = User.find_by(id: params[:user_id])
-  	@genres = @user.genres.page(params[:page]).per(8)
+  	@genres = @user.genres.page(params[:page]).per(30)
   	@genre = current_user.genres.build
     # おすすめ記事の場合
     # @rank_article = Article.find(Favorite.group(:article_id).order('count(article_id) desc').pluck(:article_id))
@@ -12,7 +12,12 @@ class GenresController < ApplicationController
   def create
   	@genre = current_user.genres.build(genre_params)
   	if @genre.save
-  		redirect_to user_genres_path
+      @user = User.find_by(id: params[:user_id])
+      @genres = @user.genres.page(params[:page]).per(30)
+      respond_to do |format|
+        format.html { redirect_to request.referer }
+        format.js
+      end
   	end
   end
 
