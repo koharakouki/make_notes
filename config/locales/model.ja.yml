@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      genre: ジャンル
+    attributes:
+      user:
+        name: ユーザーネーム
+        email: メールアドレス
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: パスワード(確認用)
+        remember_me: ログインを記憶
+      genre:
+        name: ジャンル名

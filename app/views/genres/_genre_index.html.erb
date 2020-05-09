@@ -2,12 +2,12 @@
 	<div class="genre-header-headline col-xs-3">
 		<h3>マイリスト</h3>
 	</div>
-	<div class="col-xs-5 col-xs-offset-4">
+	<div class="col-xs-6 col-xs-offset-3">
 		<% if @user == current_user %>
 			<%= form_with(model: @genre, url: user_genres_path) do |f| %>
 				<div class="row row-0 genre-header-addform">
 					<div class="form-group col-xs-7">
-						<%= f.text_field :name, placeholder: "ジャンルを追加", class: "form-control" %>
+						<%= f.text_field :name, placeholder: "ジャンル　(8文字以内)", class: "form-control" %>
 					</div>
 
 					<div class="actions col-xs-2">
