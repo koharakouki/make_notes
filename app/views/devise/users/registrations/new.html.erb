@@ -2,57 +2,56 @@
   <div class="row">
     <h2 class="col-xs-4 col-xs-offset-2">新規会員登録</h2>
   </div>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render "devise/users/shared/error_messages", resource: resource %>
 
-  <div class="row">
-    <div class="signup-form-all">
+  <div class="signup-form-all">
+    <div class="signup-form">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-
-        <div class="form-group">
-          <%= f.label :name, class: "col-xs-4 col-xs-offset-2" %>
-          <div class="col-xs-5 field">
+        <div class="form-group row">
+          <%= f.label :name, class: "col-xs-3 col-xs-offset-2" %>
+          <div class="col-xs-5">
             <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
           </div>
         </div>
 
-        <div class="form-group">
-          <%= f.label :email, class: "col-xs-4 col-xs-offset-2" %>
-          <div class="col-xs-5 field">
+        <div class="form-group row">
+          <%= f.label :email, class: "col-xs-3 col-xs-offset-2" %>
+          <div class="col-xs-5">
             <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
           </div>
         </div>
 
-        <div class="form-group">
-          <%= f.label :password, class: "col-xs-4 col-xs-offset-2" %>
-          <div class="col-xs-5 field">
+        <div class="form-group row">
+          <%= f.label :password, class: "col-xs-3 col-xs-offset-2" %>
+          <div class="col-xs-5">
             <%= f.password_field :password, placeholder: "6文字以上で入力してください", autocomplete: "new-password", class: "form-control" %>
           </div>
         </div>
 
-        <div class="form-group">
-          <%= f.label :password_confirmation, class: "col-xs-4 col-xs-offset-2" %>
-          <div class="col-xs-5 field">
+        <div class="form-group row">
+          <%= f.label :password_confirmation, class: "col-xs-3 col-xs-offset-2" %>
+          <div class="col-xs-5">
             <%= f.password_field :password_confirmation, placeholder: "もう一度入力してください", autocomplete: "new-password", class: "form-control" %>
           </div>
         </div>
 
-        <div class="actions">
-          <%= f.submit "会員登録する", class: "col-xs-4 col-xs-offset-4 signin-button" %>
+        <div class="actions row">
+          <%= f.submit "会員登録する", class: "col-xs-4 col-xs-offset-4 signup-button" %>
         </div>
       <% end %>
-      <!-- SNSアカウントでログイン -->
-      <div class="col-xs-12">
-        <div class="signup-facebook-box col-xs-5 col-xs-offset-1">
-          <p class="facebook-box-icon"><%= icon('fab', 'facebook-f fa-3x') %></p>
-          <p class="facebook-box-text">facebookでログイン</p>
-        </div>
-        <div class="signup-twitter-box col-xs-6">
-          <p class="twitter-box-icon"><%= icon('fab', 'twitter fa-3x') %></p>
-          <p class="twitter-box-text">twitterでログイン</p>
-        </div>
-      </div>
-      <!-- SNSアカウントでログイン -->
     </div>
+    <!-- SNSアカウントでログイン -->
+    <div class="row sns-box">
+      <div class="facebook-box">
+        <div class="facebook-box-icon"><%= icon('fab', 'facebook-f fa-3x') %></div>
+        <p class="facebook-box-text">facebookでログイン</p>
+      </div>
+      <div class="twitter-box">
+         <div class="twitter-box-icon"><%= icon('fab', 'twitter fa-3x') %></div>
+        <p class="twitter-box-text">twitterでログイン</p>
+      </div>
+    </div>
+    <!-- SNSアカウントでログイン -->
   </div>
 </div>
