@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       genre: ジャンル
+      article: 記事
     attributes:
       user:
         name: ユーザーネーム
@@ -13,3 +14,6 @@ ja:
         remember_me: ログインを記憶
       genre:
         name: ジャンル名
+      article:
+        article_title: 記事タイトル
+        content: 本文

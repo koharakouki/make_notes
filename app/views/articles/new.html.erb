@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
 		<!-- user-infoの表示 -->
 		<div class="col-md-3">
@@ -6,25 +6,38 @@
 		</div>
 		<!-- 記事作成ブロックの表示 -->
 		<div class="col-md-8">
-			<div class="new-article-headline">
-				<h3>記事を書く</h3>
+      <%= render "shared/error_messages", object: @article %>
+			<div class="new-article-headline row">
+				<h3 class="col-xs-3 col-xs-offset-1">記事を書く</h3>
 			</div>
-			<div class="new-article-body">
+
+			<div class="new-article-body col-xs-7 col-xs-offset-2">
 				<%= form_for(@article) do |f| %>
-          <%= f.label :article_title, '作品タイトル' %>
-          <%= f.text_field :article_title %>
 
-          <label>ネタバレ（選択してください）</label>
-          <%= f.radio_button :is_spoiler, true %>
-          <%= f.label :is_spoiler, '有り', { value: true, style: 'display: inline-block;' } %>
-          <%= f.radio_button :is_spoiler, false %>
-          <%= f.label :is_spoiler, '無し', { value: false, style: 'display: inline-block;' } %>
+          <div class="form-group row">
+            <%= f.label :article_title, '記事タイトル' %>
+            <%= f.text_field :article_title, placeholder: "35文字以内", class: "form-control" %>
+          </div>
 
-          <%= f.label :content, '本文' %>
-          <%= f.text_area :content %>
+          <div class="form-group row">
+            <label>ネタバレ（選択してください）</label>
+            <%= f.radio_button :is_spoiler, true %>
+            <%= f.label :is_spoiler, '有り', { value: true, style: 'display: inline-block;' } %>
 
-          <%= f.submit '投稿する', class: 'btn btn-primary' %>
+            <%= f.radio_button :is_spoiler, false %>
+            <%= f.label :is_spoiler, '無し', { value: false, style: 'display: inline-block;' } %>
+          </div>
+
+          <div class="form-group row">
+            <%= f.label :content, '本文' %>
+            <%= f.text_area :content, class: "form-control", size: "100x15" %>
+          </div>
+
+          <div class="actions col-xs-3 col-xs-offset-10">
+            <%= f.submit '投稿する', class: 'btn btn-primary' %>
+          </div>
         <% end %>
+
       </div>
     </div>
   </div>
