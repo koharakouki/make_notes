@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :introduction, length: { maximum: 100 }, allow_nil: true
+  VALID_EMAIL_REGIX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 255 },
+      format: { with: VALID_EMAIL_REGIX }, uniqueness: { case_sensitive: false }
   attachment :image
   has_many :genres, dependent: :destroy
   has_many :lists, dependent: :destroy

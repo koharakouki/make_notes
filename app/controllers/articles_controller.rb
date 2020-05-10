@@ -18,14 +18,16 @@ class ArticlesController < ApplicationController
 		# いいねした記事のみを表示する（複雑になってしまったので他の方法考える）
 		# いいねした記事のみを表示リンクのパラメータに[:favorite]を持たせる
 		if params[:favorite].present?
-			@articles = []
+			articles = []
 			Article.all.each do |article|
 				article.favorites.each do |favorite|
 					if favorite.user_id == current_user.id
-						@articles << favorite.article
+						articles << favorite.article
 					end
 				end
 			end
+			配列に対してのページネーションなので記述の仕方が違う
+			@articles = Kaminari.paginate_array(articles).page(params[:page]).per(8)
 		else
 			@articles = Article.order(created_at: :desc).page(params[:page]).per(8)
 		end
@@ -34,7 +36,7 @@ class ArticlesController < ApplicationController
 	def show
 		@article = Article.find(params[:id])
 		@article_comment = ArticleComment.new
-		@article_comments = ArticleComment.where(article_id: @article.id)
+		@article_comments = ArticleComment.where(article_id: @article.id).page(params[:page]).per(10)
 	end
 
 	private

@@ -1,21 +1,51 @@
 <div class="article-comment-form">
 	<%= form_with(model: [article, article_comment], remote: true) do |f| %>
-		<%= f.label :content %>
-		<%= f.text_field :content, placeholder: "コメントを入力" %>
+		<div class="form-group row">
+			<div class="col-xs-8 col-xs-offset-1">
+				<%= f.text_field :content, placeholder: "コメントを入力", class: "form-control" %>
+			</div>
+			<div class="col-xs-2">
+				<%= f.submit 'コメントする', class: "btn btn-primary" %>
+			</div>
+		</div>
 
-		<%= f.submit 'コメントする', class: "btn btn-primary" %>
 	<% end %>
 </div>
 <div class="article_comment_index">
 	<% article_comments.each do |article_comment| %>
-		<div class="col-xs-8">
-			<%= attachment_image_tag article_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %>
-			<%= article_comment.content %>
-			<% if article_comment.user == current_user || current_admin %>
-				<%= link_to '削除する',
-					article_article_comments_path(id: article_comment.id, article_id: article_comment.article_id),
-					method: :delete, remote: true, class: "btn btn-danger" %>
-			<% end %>
+		<div class="article-comment">
+			<div class="article-comment-header row">
+				<div class="article-comment-user col-xs-2">
+					<%= attachment_image_tag article_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class: "comment-logo" %>
+					<p><%= article_comment.user.name %></p>
+				</div>
+
+				<div class="article-comment-delete col-xs-3 col-xs-offset-5">
+					<% if article_comment.user == current_user || current_admin %>
+						<%= link_to '削除する',
+							article_article_comments_path(id: article_comment.id, article_id: article_comment.article_id),
+							method: :delete, remote: true, class: "btn btn-danger" %>
+					<% end %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="article-comment-body col-xs-9 col-xs-offset-1">
+					<p><%= article_comment.content %></p>
+				</div>
+			</div>
 		</div>
 	<% end %>
 </div>
+
+<!-- <script type="text/javascript">
+	$(window).on('scroll', function() {
+    scrollHeight = $(document).height();
+    scrollPosition = $(window).height() + $(window).scrollTop();
+    if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
+          $('.jscroll').jscroll({
+            contentSelector: '.article_comment_index',
+            nextSelector: 'span.next:last .article-comment'
+          });
+    }
+});
+</script> -->

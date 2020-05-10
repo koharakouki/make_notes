@@ -610,4 +610,51 @@ footer {
 }
 // ------------------------------------------------------------
 
+// articles/show
+// ------------------------------------------------------------
 
+.article-show-header{
+	display: flex;
+	align-items: center;
+	border-bottom: 2px solid #808080;
+	border-radius: 3px;
+	margin-bottom: 30px;
+	.article-user-info {
+		display: flex;
+		justify-content: center;
+	   align-items: center;
+	   .article-user-logo {
+	   	margin-top: 10px;
+	   }
+	}
+	.fa-heart {
+		font-size: 20px;
+	}
+}
+.article-show-body {
+	border: 1px #000;
+	border-style: dashed;
+	padding: 20px;
+	margin-bottom: 30px;
+}
+.article-comment {
+	margin-bottom: 10px;
+	.article-comment-header {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.article-comment-user {
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			margin-bottom: 10px;
+		}
+		.comment-logo {
+			border-radius: 50%;
+		}
+	}
+	.article-comment-body p {
+		border-bottom: 1px solid #DDDDDD;
+	}
+}
+// ------------------------------------------------------------
