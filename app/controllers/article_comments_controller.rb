@@ -8,7 +8,7 @@ class ArticleCommentsController < ApplicationController
 			# create.js.erbに渡すためにインスタンス変数にそれぞれ代入する
 			@article = Article.find(params[:article_id])
 			@article_comment = ArticleComment.new
-			@article_comments = ArticleComment.where(article_id: @article.id)
+			@article_comments = ArticleComment.where(article_id: @article.id).page(params[:page]).per(10)
 			respond_to do |format|
 	         format.html { redirect_to request.referer }
 	         format.js
@@ -26,7 +26,7 @@ class ArticleCommentsController < ApplicationController
 			# destroy.js.erbに渡すためにインスタンス変数にそれぞれ代入する
 			@article = Article.find(params[:article_id])
 			@article_comment = ArticleComment.new
-			@article_comments = ArticleComment.where(article_id: @article.id)
+			@article_comments = ArticleComment.where(article_id: @article.id).page(params[:page]).per(10)
 			respond_to do |format|
 	         format.html { redirect_to request.referer }
 	         format.js
