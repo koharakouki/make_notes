@@ -47,7 +47,7 @@
 									<strong><%= user.followers.count %></strong> follower
 								<% end %>
 							</div>
-							<div class="user-index-follo-button col-md-2">
+							<div class="user-index-follow-button col-md-2">
 								<% if user != current_user %>
 									<%= render 'users/follow_form', user: user %>
 								<% end %>

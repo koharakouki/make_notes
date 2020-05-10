@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
 
-	 def search
+	def search
 	 	if params[:model] == "user"
 	 	   @users = User.page(params[:page]).per(10).search(params[:search])
 	 	   @rank_users = User.find(Relationship.group(:followed_id).order('count(followed_id) DESC').pluck(:followed_id))
@@ -11,5 +11,5 @@ class SearchController < ApplicationController
 			# @articles = Article.page(params[:page]).per(8).search(params[:search])
 			render 'search_article'
 		end
-	 end
+	end
 end

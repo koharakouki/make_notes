@@ -19,10 +19,16 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def destroy
+		@user = User.find(params[:id])
+		@user.delete
+		redirect_back(fallback_location: root_path)
+	end
+
 	def show_follow
 		@user = User.find(params[:id])
-		@following = @user.following.all
-		@followers = @user.followers.all
+		@following = @user.following.page(params[:page]).per(20)
+		@followers = @user.followers.page(params[:page]).per(20)
 		@rank_users = User.find(Relationship.group(:followed_id).order('count(followed_id) DESC').pluck(:followed_id))
 	end
 

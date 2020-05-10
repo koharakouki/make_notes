@@ -1,22 +1,24 @@
-<div class="article-comment-form">
-	<%= form_with(model: [article, article_comment], remote: true) do |f| %>
-		<div class="form-group row">
-			<div class="col-xs-8 col-xs-offset-1">
-				<%= f.text_field :content, placeholder: "コメントを入力", class: "form-control" %>
+<% if current_user.present? %>
+	<div class="article-comment-form">
+		<%= form_with(model: [article, article_comment], remote: true) do |f| %>
+			<div class="form-group row">
+				<div class="col-xs-8 col-xs-offset-1">
+					<%= f.text_field :content, placeholder: "コメントを入力", class: "form-control" %>
+				</div>
+				<div class="col-xs-2">
+					<%= f.submit 'コメントする', class: "btn btn-primary" %>
+				</div>
 			</div>
-			<div class="col-xs-2">
-				<%= f.submit 'コメントする', class: "btn btn-primary" %>
-			</div>
-		</div>
 
-	<% end %>
-</div>
+		<% end %>
+	</div>
+<% end %>
 <div class="article_comment_index">
 	<% article_comments.each do |article_comment| %>
 		<div class="article-comment">
 			<div class="article-comment-header row">
 				<div class="article-comment-user col-xs-2">
-					<%= attachment_image_tag article_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50", class: "comment-logo" %>
+					<%= attachment_image_tag article_comment.user, :image, :fill, 50, 50, fallback: "no_image.png", size: "50x50", class: "comment-logo" %>
 					<p><%= article_comment.user.name %></p>
 				</div>
 

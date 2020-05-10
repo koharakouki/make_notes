@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }
 
   root 'home#top'
-  resources :users, only: [:edit, :update, :index] do
+  resources :users, only: [:edit, :update, :index , :destroy] do
     resources :genres, only: [:index, :create, :destroy]
     resources :lists, only: [:show, :index, :create, :edit, :update, :destroy]
     member do
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
   get '/search', to: 'search#search'
-  resources :articles, only: [:new, :create, :show, :index] do
+  resources :articles, only: [:new, :create, :show, :index, :destroy] do
     resource :article_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end

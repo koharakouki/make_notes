@@ -1,1 +1,70 @@
-<p>ここにユーザー一覧を表示</p>
+管理者側のユーザー一覧 -->
+<div class="container-fluid">
+	<div class="row">
+		<div class="user-index col-md-8 col-md-offset-2">
+			<div class="user-index-headline row">
+				<h3 class="col-md-offset-1">ユーザー一覧</h3>
+			</div>
+			<div class="row">
+				<div class="search-form col-md-6">
+					<%= search_form_for @q, url: admin_users_path do |f| %>
+						<div class="form-group col-md-8 col-md-offset-1">
+						  <%= f.search_field :name_cont, class: "form-control" %>
+						</div>
+						<div class="actions col-xs-3">
+						  <%= f.submit "検索", class: "button is-info btn btn-primary" %>
+						</div>
+					<% end %>
+				</div>
+			</div>
+			<div class="user-index-body">
+				<% if @users.any? %>
+					<% @users.each do |user| %>
+						<div class="user-index-box">
+							<div class="user-index-info row">
+								<div class="user-index-img col-md-1">
+									<%= attachment_image_tag(user, :image, :fill, 60, 60, fallback: "no_image_mini.png", size: "60x60") %>
+								</div>
+								<div class="user-index-name col-md-3">
+									<%= user.name %>
+								</div>
+
+								<div class="user-index-email col-md-3">
+									<%= user.email %>
+								</div>
+
+								<div class="user-index-following-count col-md-2">
+									<strong><%= user.following.count %></strong> following
+								</div>
+								<div class="user-index-follower-count col-md-2">
+									<strong><%= user.followers.count %></strong> follower
+								</div>
+								<div class="user-index-follo-button col-md-2">
+									<% if user != current_admin %>
+										<%= link_to '退会', user_path(user), class: "btn btn-danger", method: :delete, data: { confirm: '本当に削除しますか？' } %>
+									<% end %>
+								</div>
+							</div>
+							<div class="user-index-intro">
+								<p><%= user.introduction.to_s.slice(0..100) %></p>
+							</div>
+						</div>
+					<% end %>
+				<% else %>
+					<div class="col-md-offset-1">
+						<h3>検索結果はありませんでした</h3>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 検索後フォームを空にする -->
+<!-- <script type="text/javascript">
+$(function() {
+  $('#user_search').submit(function(){
+    $('#q_name_cont').reset();
+   });
+ });
+</script>

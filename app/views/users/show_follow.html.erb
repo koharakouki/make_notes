@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
 		<!-- user-infoの表示 -->
 		<div class="col-md-3">
@@ -6,7 +6,7 @@
 		</div>
 
 		<!-- follower or followingのリスト表示 -->
-		<div class="col-md-7">
+		<div class="col-md-6 show-follow-list">
 			<!-- follower or followingでタブ切り替え -->
 			<div class="list-index-body p-3">
 				<ul class="nav nav-tabs" role="tablist">
@@ -18,7 +18,7 @@
 				    </li>
 				</ul>
 				<div class="tab-content">
-					<div id="follow" class="tab-pane fade active in">
+					<div id="follow" class="tab-pane fade active in ">
 						<%= render 'follow_list', users: @following %>
 					</div>
 					<div id="follower" class="tab-pane fade">
@@ -34,3 +34,4 @@
 		</div>
 	</div>
 </div>
+
