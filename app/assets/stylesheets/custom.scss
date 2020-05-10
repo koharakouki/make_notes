@@ -9,6 +9,7 @@ body {
 	padding-top: 90px;
 	margin-bottom: 20px;
 	background-color: #EEEEEE;
+	font-family: "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
 }
 // (フッターを最下部に固定)
 .h-100 {
@@ -75,7 +76,7 @@ body {
 	.article {
 		margin: 15px auto;
 		width: 260px;
-		height: 70px;
+		height: 75px;
 		// background-color: #CCCC99;
 		border: 1px solid #CCC;
 		border-radius: 10px;
@@ -105,6 +106,38 @@ body {
 	.new-articles-more {
 		color: #777;
 		text-decoration: underline;
+	}
+}
+
+// (_sidebar-user)
+.recomend-users {
+	width: 270px;
+	position: relative;
+   margin: 2em 0;
+   padding: 2em 1em;
+   border: solid 3px #99CC66;
+   border-radius: 8px;
+	.recomend-users-headline {
+	   position: absolute;
+	   display: inline-block;
+	   top: -13px;
+	   left: 10px;
+	   padding: 0 9px;
+	   line-height: 1;
+	   font-size: 19px;
+	   background: #FFF;
+	   color: #777;
+	   background-color: #EEE;
+	}
+	.recomend-user {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		border-bottom: 1px solid #DDD;
+		padding-bottom: 10px;
+	}
+	.recomend-user-img img {
+		border-radius: 50%;
 	}
 }
 // ----------------------------------------------------------
@@ -655,6 +688,36 @@ footer {
 	}
 	.article-comment-body p {
 		border-bottom: 1px solid #DDDDDD;
+	}
+}
+// ------------------------------------------------------------
+
+// users/index
+// ------------------------------------------------------------
+.user-index-box {
+	padding: 10px;
+	border-bottom: 1px solid #DDD;
+	&:nth-child(1) {
+		border-top: 1px solid #DDD;
+	}
+	.user-index-info {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		margin-bottom: 10px;
+		.user-index-img img {
+			border-radius: 50%;
+		}
+		.user-index-name {
+			text-align: center;
+			font-size: 16px;
+			& a {
+				color: #000;
+			}
+		}
+		& a {
+			color: #000;
+		}
 	}
 }
 // ------------------------------------------------------------

@@ -45,7 +45,7 @@ class User < ApplicationRecord
 
   def self.search(content)
     if content
-      where(['name or introduction LIKE ?', "%#{content}%"])
+      where('name LIKE ? OR introduction LIKE ?', "%#{content}%", "%#{content}%")
     end
   end
 end
