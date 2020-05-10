@@ -9,6 +9,8 @@ class ArticlesController < ApplicationController
 		@article.user_id = current_user.id
 		if @article.save
 			redirect_to articles_path
+		else
+			render 'new'
 		end
 	end
 
@@ -25,7 +27,7 @@ class ArticlesController < ApplicationController
 				end
 			end
 		else
-			@articles = Article.order(created_at: :desc).page(params[:page]).per(10)
+			@articles = Article.order(created_at: :desc).page(params[:page]).per(8)
 		end
 	end
 
