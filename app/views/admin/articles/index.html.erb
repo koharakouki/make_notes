@@ -1,1 +1,60 @@
-<p>ここに記事一覧を表示</p>
+<!-- 管理者側の記事一覧 -->
+<div class="container-fluid">
+	<div class="row">
+
+		<div class="article-index col-md-8 col-md-offset-2">
+			<div class="article-index-headline row">
+				<h3 class="col-md-offset-1">記事一覧</h3>
+			</div>
+ 			<div class="row">
+				<div class="search-form col-md-6">
+					<%= search_form_for @q, url: admin_articles_path do |f| %>
+						<div class="form-group col-md-8 col-md-offset-1">
+						  <%= f.search_field :article_title_cont, class: "form-control" %>
+						</div>
+						<div class="actions col-xs-3">
+						  <%= f.submit "検索", class: "button is-info btn btn-primary" %>
+						</div>
+					<% end %>
+				</div>
+			</div>
+
+			<div class="article-index-body row">
+				<% if @articles.any? %>
+					<% @articles.each do |article| %>
+						<div class="article-index-item col-md-9 col-md-offset-1">
+							<div class="article-index-header row">
+								<div class="article-title col-md-9">
+									<%= link_to admin_article_path(article) do %>
+										<%= article.article_title %>
+									<% end %>
+								</div>
+								<div class="article-index-fav col-md-1">
+									<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i><%= article.favorites.count %>
+								</div>
+								<% if article.is_spoiler == true %>
+									<div class="article-spoiler col-md-2 spoiler-true"><span>ネタバレ</span></div>
+								<% end %>
+							</div>
+							<div class="article-index-body row">
+								<div class="article-index-text">
+									<div class="col-md-12"><p><%= article.content.slice(0..70) %></p></div>
+								</div>
+							</div>
+						</div>
+						<div class="article-index-delete-button col-md-2">
+							<%= link_to '削除する', article_path(article), method: :delete, class: "btn btn-danger" %>
+						</div>
+					<% end %>
+				<% else %>
+					<div class="col-md-offset-1">
+						<h3>検索結果はありませんでした</h3>
+					</div>
+				<% end %>
+				<div class="col-md-offset-5">
+					<%= paginate @articles %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

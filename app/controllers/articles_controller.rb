@@ -39,6 +39,12 @@ class ArticlesController < ApplicationController
 		@article_comments = ArticleComment.where(article_id: @article.id).page(params[:page]).per(10)
 	end
 
+	def destroy
+		@article = Article.find(params[:id])
+		@article.delete
+		redirect_back(fallback_location: root_path)
+	end
+
 	private
 
 	def article_params

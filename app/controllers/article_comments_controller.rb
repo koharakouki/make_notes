@@ -21,7 +21,7 @@ class ArticleCommentsController < ApplicationController
 
 	def destroy
 		article_comment = ArticleComment.find(params[:id])
-		if article_comment.user == current_user
+		if article_comment.user == current_user || current_admin
 			article_comment.destroy
 			# destroy.js.erbに渡すためにインスタンス変数にそれぞれ代入する
 			@article = Article.find(params[:article_id])

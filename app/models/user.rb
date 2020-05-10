@@ -12,9 +12,9 @@ class User < ApplicationRecord
   attachment :image
   has_many :genres, dependent: :destroy
   has_many :lists, dependent: :destroy
-  has_many :articles
+  has_many :articles, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :article_comments
+  has_many :article_comments, dependent: :destroy
 
 # フォロー・フォロワーのための関連付け
   has_many :active_relationships, class_name: "Relationship",
@@ -45,7 +45,7 @@ class User < ApplicationRecord
 
   def self.search(content)
     if content
-      where(['name or introduction LIKE ?', "%#{content}%"])
+      where('name LIKE ? OR introduction LIKE ?', "%#{content}%", "%#{content}%")
     end
   end
 end
