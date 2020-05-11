@@ -35,6 +35,11 @@ body {
 .intro-title {
 	margin-bottom: 10px;
 }
+.want-done-button {
+	border-top: 1px solid #DDD;
+	display: flex;
+	justify-content: center;
+}
 
 // (_stats)
 .stats {
@@ -739,10 +744,108 @@ footer {
 	text-align: center;
 	& ul {
 		list-style: none;
+		padding: 0;
 		& li {
 			padding: 10px;
-			border: 1px solid #DDD;
+			border-bottom: 1px solid #DDD;
 		}
 	}
 }
+// ------------------------------------------------------------
 
+
+// lists/show ------------------------------------------------------------
+.list-show-body {
+	padding-top: 20px;
+	.list-show-title, .list-show-start_time, .list-show-media, .list-show-rate {
+		padding: 15px 0;
+		border-bottom: 1px solid #DDD;
+	}
+	.list-show-impression {
+		padding: 10px 0 20px;
+		.list-show-impression-body {
+			padding: 10px;
+			border: 1px solid #000;
+		}
+	}
+}
+// (モーダルのレイアウト)
+.modal-header {
+	background-color: #99CC66;
+	padding: 0;
+}
+.modal-body .form-group, .rate-field {
+	border-bottom: 1px solid #DDD;
+	padding: 10px;
+}
+.modal-title {
+	margin: 10px 0;
+}
+// ------------------------------------------------------------
+
+// lists/_want_list_item ------------------------------------------------------------
+.clickable {
+	cursor: pointer;
+}
+// ------------------------------------------------------------
+
+// lists/show ------------------------------------------------------------
+.edit-delete-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.list-edit-button {
+		margin-right: 20px;
+	}
+}
+// ------------------------------------------------------------
+
+
+// ジャンル選択のレイアウト ------------------------------------------------------------
+.genre-select {
+	overflow: hidden;
+	margin: 0 auto;
+	text-align: center;
+	margin-left: 15px;
+}
+.genre-select select {
+	width: 100%;
+	padding-right: 1em;
+	cursor: pointer;
+	text-indent: 0.01px;
+	text-overflow: ellipsis;
+	border: none;
+	outline: none;
+	background: transparent;
+	background-image: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+.genre-select select::-ms-expand {
+    display: none;
+}
+.genre-select.cp_sl01 {
+	position: relative;
+	border: 1px solid #CCC;
+	border-radius: 5px;
+	background: #FFF;
+}
+.genre-select.cp_sl01::before {
+	position: absolute;
+	top: 0.8em;
+	right: 0.9em;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #666666;
+	pointer-events: none;
+}
+.genre-select.cp_sl01 select {
+	padding: 8px 20px 8px 8px;
+	color: #666666;
+}
+// ------------------------------------------------------------

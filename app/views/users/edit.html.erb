@@ -8,7 +8,7 @@
   		<%= form_with(model: @user, local: true) do |f| %>
       <div class="img-box row">
   			<div class="col-xs-4 col-xs-offset-3">
-  				<div><%= attachment_image_tag @user, :image, :fill, 150, 150, size: "150x150",
+  				<div><%= attachment_image_tag @user, :image, :fill, 160, 160, size: "160x160",
                   fallback: "no_image.png", id: "img_prev" %></div>
   			</div>
 				<p class="col-xs-3"><label class="btn btn-info btn-md" style="width: 150px;">画像選択

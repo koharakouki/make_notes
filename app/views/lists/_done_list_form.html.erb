@@ -1,35 +1,65 @@
-<div class="list-form-headline">
-	<h4>観た追加</h4>
+<div class="modal-header text-center">
+	<h3>観たへ追加</h3>
 </div>
 
-<div class="list-form">
-	<%= form_for(list, url: user_lists_path) do |f| %>
-
+<div class="modal-body">
+	<%= form_for(list, url: user_lists_path(user_id: current_user.id), remote: true) do |f| %>
+		<div class="done-error-message"></div>
 		<%= f.hidden_field :is_watched, value: true %>
 
-		<%= f.label :title %>
-		<%= f.text_field :title %>
+		<%= hidden_field_tag :add_done, 'done' %>
 
-		<%= f.label :genre_id %>
-		<%= f.collection_select :genre_id, genres, :id, :name %>
+ 		<div class="form-group row">
+    		<%= f.label :title, 'Title', class: "col-md-3 col-md-offset-1" %>
+    		<div class="col-md-6">
+	    		<%= f.text_field :title, class: "form-control" %>
+	    	</div>
+    	</div>
 
-		<%= f.label :media %>
-		<%= f.text_field :media %>
-
-		<%= f.label :start_time %>
-		<%= f.date_field :start_time %>
-
-		<div class="field" id="star">
-		    <%= f.label :rate %>
-		    <%= f.hidden_field :rate, id: :review_star %>
+		<div class="form-group row">
+			<%= f.label :genre_id, class: "col-md-3 col-md-offset-1" %>
+			<div class="col-md-5 genre-select cp_sl01">
+				<%= f.collection_select :genre_id, genres, :id, :name %>
+			</div>
 		</div>
 
-		<%= f.label :impression %>
-		<%= f.text_field :impression %>
+   	<div class="form-group row">
+    		<%= f.label :start_time, 'Date', class: "col-md-3 col-md-offset-1" %>
+    		<div class="col-md-6">
+	    		<%= f.date_field :start_time, class: "form-control" %>
+	    	</div>
+    	</div>
 
-		<%= f.submit '追加する' %>
+    	<div class="form-group row">
+    		<%= f.label :media, 'Wath to see', class: "col-md-3 col-md-offset-1" %>
+    		<div class="col-md-6">
+	    		<%= f.text_field :media, class: "form-control" %>
+	    	</div>
+    	</div>
+
+ 		<div class="field row rate-field" id="star">
+	      <%= f.label :rate, "Rate", class: "col-md-3 col-md-offset-1" %>
+	      <%= f.hidden_field :rate, id: :review_star %>
+	   </div>
+
+	   <div class="form-group">
+	   	<div class="row">
+			   <%= f.label :impression, class: "col-md-3 col-md-offset-1" %>
+			</div>
+		   <div class="row">
+		   	<div class="col-md-10 col-md-offset-1">
+				   <%= f.text_area :impression, class: "form-control", size: "50x7" %>
+				</div>
+			</div>
+		</div>
+</div>
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+		<%= f.submit "保存する", class: "btn btn-primary form_submit" %>
 	<% end %>
 </div>
+
 
 <!-- 評価機能 -->
 <script>

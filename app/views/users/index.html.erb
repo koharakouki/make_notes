@@ -29,7 +29,7 @@
 				<% @users.each do |user| %>
 					<div class="user-index-box">
 						<div class="user-index-info row">
-							<div class="user-index-img col-md-2">
+							<div class="user-index-img col-md-2 text-center">
 								<%= attachment_image_tag(user, :image, :fill, 60, 60, fallback: "no_image_mini.png", size: "60x60") %>
 							</div>
 							<div class="user-index-name col-md-3">
@@ -47,11 +47,11 @@
 									<strong><%= user.followers.count %></strong> follower
 								<% end %>
 							</div>
-							<div class="user-index-follow-button col-md-2">
-								<% if user != current_user %>
-									<%= render 'users/follow_form', user: user %>
-								<% end %>
-							</div>
+<!-- 							<div class="user-index-follow-button col-md-2">
+								<%# if user != current_user %>
+									<%#= render 'users/follow_form', user: user %>
+								<%# end %>
+							</div> -->
 						</div>
 						<div class="user-index-intro">
 							<p><%= user.introduction.to_s.slice(0..100) %></p>

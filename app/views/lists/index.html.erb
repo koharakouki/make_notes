@@ -1,9 +1,10 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
-		<!-- user-infoの表示 -->
+		<!-- ユーザー情報の表示 -->
 		<div class="col-md-3">
 			<%= render 'shared/user_info', user: @user %>
 		</div>
+
 		<!-- マイリスト一覧の表示 -->
 		<div class="col-md-9">
 			<div class="list-index-headline">
@@ -15,8 +16,9 @@
 					<% end %>
 				</h3>
 			</div>
-			<!-- 観たいと観たをタブで切り替え -->
+
 			<div class="list-index-body p-3">
+				<!-- 観たいと観たをタブで切り替え -->
 				<ul class="nav nav-tabs" role="tablist">
 				    <li class="nav-item active">
 				        <a href="#want-to" class="nav-link top-tabs" data-toggle="tab">観たい</a>
@@ -25,28 +27,22 @@
 				        <a href="#done" class="nav-link top-tabs" data-toggle="tab">観た</a>
 				    </li>
 				</ul>
+
 				<div class="tab-content">
 					<div id="want-to" class="tab-pane fade active in">
-						<!-- 観たいのリストを表示 -->
+						<!-- 観たいリストを表示 -->
 						<div class="col-xs-10">
-						    <%= render 'want_list' %>
-					    </div>
-					    <div class="col-xs-2">
-					    	<!-- 観たいのリスト新規登録 -->
-						    <%= render 'want_list_form', list: @list, genres: @genres %>
-						</div>
+						   <%= render 'want_list' %>
+					   </div>
 					</div>
 					<div id="done" class="tab-pane fade">
 						<div class="col-xs-10">
-							<!-- 観たのリストを表示 -->
-						    <%= render 'done_list' %>
-						</div>
-						<div class="col-xs-2">
-							<!-- 観たのリスト新規登録 -->
-						    <%= render 'done_list_form', list: @list, genres: @genres %>
+							<!-- 観たリストを表示 -->
+						   <%= render 'done_list' %>
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>

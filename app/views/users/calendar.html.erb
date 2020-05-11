@@ -13,7 +13,7 @@
 			<!-- 0件の時はボタンを表示しない -->
 				<% if watched_lists.count > 0 %>
 					<div class="text-center">
-						<button type="button" class="calendar-modal btn btn-outline-info btn-sm p-1" data-toggle="modal" data-target="#watched-<%= date.day %>">
+						<button type="button" class="calendar-modal btn btn-success" data-toggle="modal" data-target="#watched-<%= date.day %>">
 							<%= watched_lists.count %>件
 						</button>
 					</div>
@@ -29,9 +29,6 @@
 						<div class="modal-content">
 							<div class="modal-header">
 								<h5 class="modal-title" id="watchedTitle"><%= date.day %>日に観た作品</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-									<span aria-hidden="true">&times;</span>
-								</button>
 							</div>
 							<div class="modal-body">
 								<ul>

@@ -19,8 +19,26 @@ class ListsController < ApplicationController
 	def create
 		@list = List.new(list_params)
 		@list.user_id = current_user.id
-		if @list.save!
-			redirect_back(fallback_location: user_genres_path)
+		if params[:add_want].present?
+			respond_to do |format|
+				if @list.save
+	            format.html { redirect_to request.referer }
+	            format.js { render 'want_success'}
+	         else
+	         	format.html { redirect_to request.referer }
+				   format.js { render 'want_error'}
+			   end
+			end
+		elsif params[:add_done].present?
+			respond_to do |format|
+				if @list.save
+	            format.html { redirect_to request.referer }
+	            format.js { render 'done_success'}
+	         else
+	         	format.html { redirect_to request.referer }
+				   format.js { render 'done_error'}
+			   end
+			end
 		end
 	end
 
@@ -32,9 +50,14 @@ class ListsController < ApplicationController
 
 	def update
 		@list = List.find(params[:list_id])
-		@list.is_watched = true
-		if @list.update(list_params)
-			redirect_back(fallback_location: user_genres_path)
+		respond_to do |format|
+			if @list.update(list_params)
+			　　format.html { redirect_to request.referer }
+            format.js { render 'success'}
+         else
+         	format.html { redirect_to request.referer }
+            format.js { render 'error'}
+         end
 		end
 	end
 

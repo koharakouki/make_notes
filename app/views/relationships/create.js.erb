@@ -1,2 +1,4 @@
 $("#follow_form").html("<%= escape_javascript(render partial: 'users/unfollow', locals: { user: @user }) %>");
-$("#followers").html('<%= @user.followers.count %>');
+// $("#followers").html('<%= @user.followers.count %>');
+$("#stats").html("<%= escape_javascript(render partial: 'shared/stats', locals: { user: @user }) %>");
+
