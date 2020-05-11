@@ -1,0 +1,9 @@
+$('input[type="text"], input[type="date"]').val('');
+$('.update-want-error-message').text("");
+$(':text').val('');
+$('.modal').modal('hide');
+
+// モーダルで編集した後にリロードして編集内容を表示させる処理
+$('#edit-<%= @list.id %>').on('hidden.bs.modal', function () {
+ location.reload();
+})

@@ -50,14 +50,37 @@ class ListsController < ApplicationController
 
 	def update
 		@list = List.find(params[:list_id])
-		respond_to do |format|
-			if @list.update(list_params)
-			　　format.html { redirect_to request.referer }
-            format.js { render 'success'}
-         else
-         	format.html { redirect_to request.referer }
-            format.js { render 'error'}
-         end
+		if params[:edit_list].present?
+			respond_to do |format|
+				if @list.update(list_params)
+					format.html { redirect_to request.referer }
+	            format.js { render 'edit_success'}
+	         else
+	         	format.html { redirect_to request.referer }
+	            format.js { render 'edit_error'}
+	         end
+			end
+		elsif params[:update_want].present?
+			respond_to do |format|
+				if @list.update(list_params)
+					if params[:genre_id].present?
+						@genre = Genre.find(params[:genre_id])
+					end
+					if @genre.present?
+						@want_list = current_user.lists.where(is_watched: false).where(genre_id: @genre.id)
+					else
+						@want_list = current_user.lists.where(is_watched: false)
+					end
+					format.html { redirect_to user_lists_path(current_user.id) }
+	            format.js { render 'update_want_success'}
+	         else
+	         	format.html { redirect_to request.referer }
+	            format.js { render 'update_want_error'}
+	         end
+			end
+		else
+			@list.update(list_params)
+			redirect_to request.referer
 		end
 	end
 

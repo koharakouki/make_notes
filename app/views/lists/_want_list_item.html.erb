@@ -1,8 +1,8 @@
 <% lists.each do |list| %>
 	<tr>
 		<!-- 作品タイトルをクリックしてモーダルでデータを編集する処理 -->
-		<td><a class="clickable" type="text" data-toggle="modal" data-target="#edit"><%= list.title %></a>
-			<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-hidden="true">
+		<td><a class="clickable" type="text" data-toggle="modal" data-target="#edit-<%= list.id %>"><%= list.title %></a>
+			<div class="modal fade" id="edit-<%= list.id %>" tabindex="-1" role="dialog" aria-hidden="true">
 			    <div class="modal-dialog" role="document">
 			        <div class="modal-content">
 
@@ -11,7 +11,11 @@
 				      	</div>
 
 			      		<div class="modal-body">
-					      	<%= form_for(list, url: user_list_path(id: list.id)) do |f| %>
+					      	<%= form_for(list, url: user_list_path(id: list.id), remote: true) do |f| %>
+
+				      			<div class="update-want-error-message"></div>
+						      	<%= hidden_field_tag :update_want, 'update-want' %>
+
 					          	<!-- どのリストかを判断するためにパラメータに:list_idを渡す -->
 					          	<%= hidden_field_tag :list_id, "#{list.id}" %>
 
@@ -57,8 +61,8 @@
 
 		<!-- 観たへ追加ボタンを押すとモーダルで評価や感想を入力できる -->
 		<td><button type="button" class="btn btn-primary mt-5"
-				data-toggle="modal" data-target="#watched">観たへ追加</button>
-			<div class="modal fade" id="watched" tabindex="-1" role="dialog" aria-hidden="true">
+				data-toggle="modal" data-target="#watched-<%= list.id %>">観たへ追加</button>
+			<div class="modal fade" id="watched-<%= list.id %>" tabindex="-1" role="dialog" aria-hidden="true">
 			    <div class="modal-dialog" role="document">
 			      <div class="modal-content">
 
@@ -69,6 +73,7 @@
 
 			         <div class="modal-body">
 				         <%= form_for(list, url: user_list_path(id: list.id)) do |f| %>
+
 			          	<!-- どのリストかを判断するためにパラメーターに:list_idを渡す -->
 				          	<%= hidden_field_tag :list_id, "#{list.id}" %>
 
