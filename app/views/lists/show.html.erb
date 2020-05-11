@@ -1,77 +1,122 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
 		<!-- user-infoの表示 -->
 		<div class="col-md-3">
 			<%= render 'shared/user_info', user: @user %>
 		</div>
 		<!-- リスト詳細の表示 -->
-		<div class="col-md-7">
+		<div class="col-md-6">
 			<div class="list-show-headline">
-				<h3><%= link_to "マイリスト＞", user_genres_path %>
+				<h3><%= link_to "マイリスト", user_genres_path %>＞
 					<%= @list.genre.name %>
 				</h3>
 			</div>
 			<div class="list-show-body">
-				<h4>作品タイトル</h4>
-				<p><%= @list.title %></p>
-
-				<h4>日時</h4>
-				<% if @list.start_time %>
-					<% date = @list.start_time %>
-					<p><%= date.strftime("%Y年%m月%d日") %></p>
-				<% end %>
-
-				<h4>メディア</h4>
-				<p><%= @list.media %></p>
-
-				<h4>評価</h4>
-				<div id="star-rate-<%= @list.id %>">
-					<script>
-					$('#star-rate-<%= @list.id %>').raty({
-						size: 36,
-						starOff:  '<%= asset_path('star-off.png') %>',
-						starOn : '<%= asset_path('star-on.png') %>',
-						starHalf: '<%= asset_path('star-half.png') %>',
-						half: true,
-						readOnly: true,
-						score: <%= @list.rate %>,
-					});
-					</script>
+				<div class="list-show-title row">
+					<h4 class="col-md-4 col-md-offset-2">Title</h4>
+					<h4 class="col-md-5"><%= @list.title %></h4>
 				</div>
 
-				<h4>感想</h4>
-				<p><%= @list.impression %></p>
+				<div class="list-show-start_time row">
+					<h4 class="col-md-4 col-md-offset-2">Date</h4>
+					<% if @list.start_time %>
+						<% date = @list.start_time %>
+						<h4 class="col-md-5"><%= date.strftime("%Y年 %m月%d日") %></h4>
+					<% end %>
+				</div>
 
-				<!-- 編集＆削除のボタン表示 -->
-				<button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#edit_modal">編集する</button>
+				<div class="list-show-media row">
+					<h4 class="col-md-4 col-md-offset-2">What to see</h4>
+					<h4 class="col-md-5"><%= @list.media %></h4>
+				</div>
+
+				<div class="list-show-rate row">
+					<h4 class="col-md-4 col-md-offset-2">Rate</h4>
+					<h4 id="star-rate-<%= @list.id %>" class="col-md-5">
+						<script>
+						$('#star-rate-<%= @list.id %>').raty({
+							size: 36,
+							starOff:  '<%= asset_path('star-off.png') %>',
+							starOn : '<%= asset_path('star-on.png') %>',
+							starHalf: '<%= asset_path('star-half.png') %>',
+							half: true,
+							readOnly: true,
+							score: <%= @list.rate %>,
+						});
+						</script>
+					</h4>
+				</div>
+
+				<div class="list-show-impression col-md-offset-2">
+					<div class="list-show-impression-title">
+						<h4>Impression</h4>
+					</div>
+					<div class="list-show-impression-body">
+						<p><%= @list.impression %></p>
+					</div>
+				</div>
+			</div>
+
+			<!-- 編集＆削除のボタン表示 -->
+			<div class="edit-delete-button col-md-offset-9">
+				<button type="button" class="btn btn-primary list-edit-button" data-toggle="modal" data-target="#edit_modal">編集する</button>
 				<%= link_to '削除する', user_list_path(@list), class: "btn btn-danger", method: :delete %>
+
+				<!-- 編集ボタンのモーダル表示 -->
 				<div class="modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-hidden="true">
 				    <div class="modal-dialog" role="document">
-				        <div class="modal-content">
-				      	    <%= form_for(@list, url: user_list_path(list_id: @list.id)) do |f| %>
-					      	   <div class="modal-body">
-				      	    		<%= f.label :title, '作品タイトル' %>
-				      	    		<%= f.text_field :title %>
+				         <div class="modal-content">
+				        	<div class="error-message"></div>
+				        		<div class="modal-header text-center">
+				        			<h3>編集</h3>
+				        		</div>
+					      	<div class="modal-body">
+				      	    	<%= form_for(@list, url: user_list_path(list_id: @list.id), remote: true) do |f| %>
 
-				      	    		<%= f.label :start_time, '日時' %>
-				      	    		<%= f.date_field :start_time %>
+				      	    		<%= f.hidden_field :is_watched, value: true %>
 
-				      	    		<%= f.label :media, 'メディア' %>
-				      	    		<%= f.text_field :media %>
+				      	    		<div class="form-group row">
+					      	    		<%= f.label :title, 'Title', class: "col-md-3 col-md-offset-1" %>
+					      	    		<div class="col-md-6">
+						      	    		<%= f.text_field :title, class: "form-control" %>
+						      	    	</div>
+					      	    	</div>
 
-				      	    		<div class="field" id="star">
-									      <%= f.label :rate %>
+				      	    		<div class="form-group row">
+					      	    		<%= f.label :start_time, 'Date', class: "col-md-3 col-md-offset-1" %>
+					      	    		<div class="col-md-6">
+						      	    		<%= f.date_field :start_time, class: "form-control" %>
+						      	    	</div>
+					      	    	</div>
+
+					      	    	<div class="form-group row">
+					      	    		<%= f.label :media, 'Wath to see', class: "col-md-3 col-md-offset-1" %>
+					      	    		<div class="col-md-6">
+						      	    		<%= f.text_field :media, class: "form-control" %>
+						      	    	</div>
+					      	    	</div>
+
+				      	    		<div class="field row rate-field" id="edit-star">
+									      <%= f.label :rate, class: "col-md-3 col-md-offset-1" %>
 									      <%= f.hidden_field :rate, id: :review_star %>
 									   </div>
 
-									   <%= f.label :impression %>
-									   <%= f.text_area :impression %>
-								   </div>
+									   <div class="form-group">
+									   	<div class="row">
+											   <%= f.label :impression, class: "col-md-3 col-md-offset-1" %>
+											</div>
+										   <div class="row">
+										   	<div class="col-md-10 col-md-offset-1">
+												   <%= f.text_area :impression, class: "form-control", size: "50x7" %>
+												</div>
+											</div>
+										</div>
+								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
 									<%= f.submit "保存する", class: "btn btn-primary form_submit" %>
-								</div>
-							<% end %>
+								<% end %>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -84,9 +129,9 @@
 	</div>
 </div>
 
-<!-- 評価機能 -->
+<!-- 評価機能の処理 -->
 <script>
-$('#star').raty({
+$('#edit-star').raty({
   size     : 36,
   starOff:  '<%= asset_path('star-off.png') %>',
   starOn : '<%= asset_path('star-on.png') %>',

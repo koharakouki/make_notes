@@ -22,11 +22,14 @@
 	      </tr>
 	      <tr>
 	      	<td>
-	      		<%= render 'shared/stats', user: user %>
+	      		<div id="stats">
+		      		<%= render 'shared/stats', user: user %>
+		      	</div>
 	      	</td>
 	      </tr>
 	      <% if user_signed_in? %>
 	         <% if current_user != user %>
+	         	<!-- ユーザーフォローボタンを表示 -->
 	            <tr>
 	               <td>
 	                  <div class="text-center">
@@ -35,6 +38,7 @@
 	               </td>
 	            </tr>
 	         <% else %>
+	         	<!-- 記事を書くボタンの表示 -->
 	            <tr>
 	               <td>
 	                  <div class="text-center">
@@ -42,8 +46,32 @@
 	                  </div>
 	               </td>
 	            </tr>
+		         <!-- 観たいと観たのモーダルを表示 -->
+		         <tr class="want-done-button">
+		         	<!-- 観たい！ボタン -->
+		         	<td>
+		         		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#want-modal">観たい！</button>
+		         		<div class="modal fade" id="want-modal" tabindex="-1" role="dialog" aria-hidden="true">
+				    			<div class="modal-dialog" role="document">
+				         		<div class="modal-content">
+				         			<%= render 'lists/want_list_form', list: List.new, genres: current_user.genres %>
+				         		</div>
+				         	</div>
+				         </div>
+		         	</td>
+		         	<!-- 観た！ボタン -->
+		         	<td>
+		         		<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#done-modal">観た！</button>
+		         		<div class="modal fade" id="done-modal" tabindex="-1" role="dialog" aria-hidden="true">
+				    			<div class="modal-dialog" role="document">
+				         		<div class="modal-content">
+				         			<%= render 'lists/done_list_form', list: List.new, genres: current_user.genres %>
+				         		</div>
+				         	</div>
+				         </div>
+		         	</td>
+		         <tr>
 	         <% end %>
-	         <tr>
                <td>
             	<!-- カレンダー表示 -->
             	   <div class="text-center">

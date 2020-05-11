@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
 					end
 				end
 			end
-			配列に対してのページネーションなので記述の仕方が違う
+			# 配列に対してのページネーションなので記述の仕方が違う
 			@articles = Kaminari.paginate_array(articles).page(params[:page]).per(8)
 		else
 			@articles = Article.order(created_at: :desc).page(params[:page]).per(8)
