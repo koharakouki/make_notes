@@ -1,6 +1,11 @@
 $('.edit-list-error-message').text('');
 $('.modal').modal('hide');
-$('.list-show-body').html("<%= j(render partial: 'lists/list_show_body') %>");
-// $('input[type="text"], input[type="date"], textarea').val('');
-// $('#star').raty('score', 0);
+// ↓非同期にするとモーダルが消えなくなってしまう
+// $('.list-show-body').html("<%= j(render partial: 'lists/list_show_body') %>");
+// // $('input[type="text"], input[type="date"], textarea').val('');
+// // $('#star').raty('score', 0);
 
+// モーダルで編集した後にリロードして編集内容を表示させる処理
+$('.list-show-body').on('hidden.bs.modal', function () {
+ location.reload();
+})
