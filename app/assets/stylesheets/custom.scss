@@ -40,6 +40,9 @@ body {
 	display: flex;
 	justify-content: center;
 }
+.user-info-name {
+	font-size: 20px;
+}
 
 // (_stats)
 .stats {
@@ -849,3 +852,10 @@ footer {
 	color: #666666;
 }
 // ------------------------------------------------------------
+
+// モーダルのエラーメッセージ　------------------------------------------------------------
+.update-want-error-message, .edit-list-error-message, .want-error-message, .done-error-message {
+	background-color: #FFCCCC;
+	border-radius: 10px;
+	list-style: none;
+}
