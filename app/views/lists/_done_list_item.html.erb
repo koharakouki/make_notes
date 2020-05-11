@@ -11,19 +11,39 @@
 				<%= date.strftime("%Y年%m月%d日") %>
 			<% end %>
 		</td>
-		<td id="star-rate-<%= list.id %>">
-			<script>
-			$('#star-rate-<%= list.id %>').raty({
-				size: 36,
-				starOff:  '<%= asset_path('star-off.png') %>',
-				starOn : '<%= asset_path('star-on.png') %>',
-				starHalf: '<%= asset_path('star-half.png') %>',
-				half: true,
-				readOnly: true,
-				score: <%= list.rate %>,
-			});
-			</script>
-		</td>
+		<% if list.rate.present? %>
+			<td id="star-rate-<%= list.id %>">
+				<script>
+				$('#star-rate-<%= list.id %>').raty({
+					size: 36,
+					starOff:  '<%= asset_path('star-off.png') %>',
+					starOn : '<%= asset_path('star-on.png') %>',
+					starHalf: '<%= asset_path('star-half.png') %>',
+					half: true,
+					readOnly: true,
+					score: <%= list.rate %>,
+				});
+				</script>
+			</td>
+		<% else %>
+			<td id="star-rate-<%= list.id %>">
+				<script>
+				$('#star-rate-<%= list.id %>').raty({
+					size: 36,
+					starOff:  '<%= asset_path('star-off.png') %>',
+					starOn : '<%= asset_path('star-on.png') %>',
+					starHalf: '<%= asset_path('star-half.png') %>',
+					half: true,
+					readOnly: true,
+					score: function() {
+	             return $(this).attr('title');
+	             },
+				});
+				</script>
+			</td>
+		<% end %>
+
+
 		<td><%= link_to '削除', user_list_path(id: list.id), method: :delete, class: "btn btn-danger" %></td>
 	</tr>
 <% end %>
