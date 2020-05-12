@@ -48,11 +48,6 @@
 										<strong><%= user.followers.count %></strong> follower
 									<% end %>
 								</div>
-								<div class="user-index-follo-button col-md-2">
-									<% if user != current_user %>
-										<%= render 'users/follow_form', user: user %>
-									<% end %>
-								</div>
 							</div>
 							<div class="user-index-intro">
 								<p><%= user.introduction.to_s.slice(0..100) %></p>
