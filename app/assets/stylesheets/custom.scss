@@ -18,6 +18,16 @@ body {
    padding-bottom: 80px;/*←footerの高さ*/
    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
+
+th {
+	font-size: 17px;
+	text-align: center;
+}
+
+td {
+	text-align: center;
+	font-size: 15px;
+}
 //-----------------------------------------------------------
 
 // よく使うパーシャル ----------------------------------------------------------
@@ -865,7 +875,9 @@ footer {
 .list-index-headline {
 	display: flex;
 	align-items: center;
+	margin-bottom: 20px;
 	.want-done-link {
 		display: flex
 	}
 }
+// ------------------------------------------------------------
