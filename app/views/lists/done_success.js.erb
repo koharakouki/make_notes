@@ -3,3 +3,6 @@ $('.done-error-message').text('');
 $(':text').val('');
 $('#star').raty('score', 0);
 $('.modal').modal('hide');
+$('#done-modal').on('hidden.bs.modal', function () {
+ location.reload();
+})

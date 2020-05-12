@@ -8,11 +8,11 @@ class ListsController < ApplicationController
 			@genre = Genre.find(params[:genre_id])
 		end
 		if @genre.present?
-			@want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id)
-			@done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id)
+			@want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id).page(params[:page]).per(15)
+			@done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id).page(params[:page]).per(15)
 		else
-			@want_list = @user.lists.where(is_watched: false)
-			@done_list = @user.lists.where(is_watched: true)
+			@want_list = @user.lists.where(is_watched: false).page(params[:page]).per(15)
+			@done_list = @user.lists.where(is_watched: true).page(params[:page]).per(15)
 		end
 	end
 

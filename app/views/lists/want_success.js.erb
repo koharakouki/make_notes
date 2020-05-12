@@ -2,3 +2,6 @@ $('input[type="text"], input[type="date"]').val('');
 $('.want-error-message').text("");
 $(':text').val('');
 $('.modal').modal('hide');
+$('#want-modal').on('hidden.bs.modal', function () {
+ location.reload();
+})
