@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 	def after_sign_up_path_for(resource)
 		case resource
 		when User
-		   user_genres_path(current_user)
+		  user_genres_path(current_user)
 		end
 	end
 

@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+	before_action :correct_user, only: [:create, :update, :destroy]
 
 	# def index
 	# 	@user = User.find_by(id: params[:user_id])
@@ -62,22 +63,22 @@ class ListsController < ApplicationController
 		if params[:add_want].present?
 			respond_to do |format|
 				if @list.save
-	            format.html { redirect_to request.referer }
-	            format.js { render 'want_success'}
-	         else
-	         	format.html { redirect_to request.referer }
-				   format.js { render 'want_error'}
-			   end
+	        format.html { redirect_to request.referer }
+	        format.js { render 'want_success'}
+        else
+         	format.html { redirect_to request.referer }
+			    format.js { render 'want_error'}
+		    end
 			end
 		elsif params[:add_done].present?
 			respond_to do |format|
 				if @list.save
-	            format.html { redirect_to request.referer }
-	            format.js { render 'done_success'}
-	         else
-	         	format.html { redirect_to request.referer }
-				   format.js { render 'done_error'}
-			   end
+	        format.html { redirect_to request.referer }
+	        format.js { render 'done_success'}
+        else
+        	format.html { redirect_to request.referer }
+		      format.js { render 'done_error'}
+	      end
 			end
 		end
 	end
@@ -94,11 +95,11 @@ class ListsController < ApplicationController
 			respond_to do |format|
 				if @list.update(list_params)
 					format.html { redirect_to request.referer }
-	            format.js { render 'edit_success'}
-	         else
-	         	format.html { redirect_to request.referer }
-	            format.js { render 'edit_error'}
-	         end
+	        format.js { render 'edit_success'}
+	      else
+	        format.html { redirect_to request.referer }
+	        format.js { render 'edit_error'}
+	      end
 			end
 		elsif params[:update_want].present?
 			respond_to do |format|
@@ -112,11 +113,11 @@ class ListsController < ApplicationController
 						@want_list = current_user.lists.where(is_watched: false).order(created_at: :desc).page(params[:page]).per(15)
 					end
 					format.html { redirect_to user_lists_path(current_user.id) }
-	            format.js { render 'update_want_success'}
-	         else
-	         	format.html { redirect_to request.referer }
-	            format.js { render 'update_want_error'}
-	         end
+	        format.js { render 'update_want_success'}
+	      else
+	        format.html { redirect_to request.referer }
+	        format.js { render 'update_want_error'}
+	      end
 			end
 		else
 			@list.update!(list_params)
@@ -128,39 +129,46 @@ class ListsController < ApplicationController
 		@list = List.find(params[:id])
 		if @list.is_watched == true
 			respond_to do |format|
-		      if @list.delete
-			      if params[:genre_id].present?
-						@genre = Genre.find(params[:genre_id])
-					end
+	      if @list.delete
+		      if params[:genre_id].present?
+					  @genre = Genre.find(params[:genre_id])
+				  end
 					if @genre.present?
 						@done_list = current_user.lists.where(is_watched: true).where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
 					else
 						@done_list = current_user.lists.where(is_watched: true).order(updated_at: :desc).page(params[:page]).per(15)
 					end
 					format.html { redirect_to done_path(current_user, { genre_id: @list.genre.id }) }
-			      format.js { render 'done' }
-			   end
+			    format.js { render 'done' }
+		    end
 			end
 		elsif @list.is_watched == false
 			respond_to do |format|
-		      if @list.delete
-		      	if params[:genre_id].present?
-						@genre = Genre.find(params[:genre_id])
-					end
+	      if @list.delete
+	      	if params[:genre_id].present?
+					  @genre = Genre.find(params[:genre_id])
+				  end
 					if @genre.present?
 						@want_list = current_user.lists.where(is_watched: false).where(genre_id: @genre.id).order(created_at: :desc).page(params[:page]).per(15)
 					else
 						@want_list = current_user.lists.where(is_watched: false).order(created_at: :desc).page(params[:page]).per(15)
 					end
-			      format.js { render 'want' }
-			   end
+		      format.js { render 'want' }
+		    end
 			end
 		end
 	end
 
-	private
+	private #-----------------------------------------------------------------------------------------------
 
 	def list_params
 		params.require(:list).permit(:title, :genre_id, :media, :start_time, :rate, :impression, :is_watched)
+	end
+
+	def correct_user
+		@user = User.find_by(id: params[:user_id])
+		if @user != current_user
+			redirect_to root_path
+		end
 	end
 end

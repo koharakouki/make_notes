@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update]
 
  	def index
  		@users = User.page(params[:page]).per(10)
@@ -37,9 +39,17 @@ class UsersController < ApplicationController
 		@watched_lists = @user.lists.where(is_watched: true)
 	end
 
-	private
+	private #----------------------------------------------------------------------
 
 	def user_params
 		params.require(:user).permit(:name, :image, :introduction)
 	end
+
+	def correct_user
+		@user = User.find(params[:id])
+		if @user != current_user
+			redirect_to root_path
+		end
+	end
+
 end
