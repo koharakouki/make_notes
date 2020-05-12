@@ -12,4 +12,5 @@ class SearchController < ApplicationController
 			render 'search_article'
 		end
 	end
+
 end

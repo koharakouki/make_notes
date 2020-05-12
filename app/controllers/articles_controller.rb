@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+	before_action :authenticate_user!, only: [:new, :create]
 
 	def new
 		@article = Article.new
@@ -15,8 +16,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def index
-		# いいねした記事のみを表示する（複雑になってしまったので他の方法考える）
-		# いいねした記事のみを表示リンクのパラメータに[:favorite]を持たせる
+		# いいねした記事のみを表示するためにリンクのパラメータに[:favorite]を持たせる
 		if params[:favorite].present?
 			articles = []
 			Article.all.each do |article|
@@ -45,9 +45,10 @@ class ArticlesController < ApplicationController
 		redirect_back(fallback_location: root_path)
 	end
 
-	private
+	private #-------------------------------------------------------------------------
 
 	def article_params
 		params.require(:article).permit(:article_title, :content, :is_spoiler)
 	end
+
 end

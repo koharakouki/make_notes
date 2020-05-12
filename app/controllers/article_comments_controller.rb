@@ -10,9 +10,9 @@ class ArticleCommentsController < ApplicationController
 			@article_comment = ArticleComment.new
 			@article_comments = ArticleComment.where(article_id: @article.id).page(params[:page]).per(10)
 			respond_to do |format|
-	         format.html { redirect_to request.referer }
-	         format.js
-		   end
+	          format.html { redirect_to request.referer }
+	          format.js
+		  end
 		else
 			# flash[:notice] = 'コメントを追加できませんでした'
 			redirect_to request.referer
@@ -28,13 +28,13 @@ class ArticleCommentsController < ApplicationController
 			@article_comment = ArticleComment.new
 			@article_comments = ArticleComment.where(article_id: @article.id).page(params[:page]).per(10)
 			respond_to do |format|
-	         format.html { redirect_to request.referer }
-	         format.js
-		   end
+	        format.html { redirect_to request.referer }
+	        format.js
+		  end
 		end
 	end
 
-	private
+	private #----------------------------------------------------------------------
 
 	def article_comment_params
 		params.require(:article_comment).permit(:content)
