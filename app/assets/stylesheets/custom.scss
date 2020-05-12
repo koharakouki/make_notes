@@ -859,3 +859,13 @@ footer {
 	border-radius: 10px;
 	list-style: none;
 }
+// ------------------------------------------------------------
+
+// lists/want,done ------------------------------------------------------------
+.list-index-headline {
+	display: flex;
+	align-items: center;
+	.want-done-link {
+		display: flex
+	}
+}

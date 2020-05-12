@@ -131,7 +131,7 @@
 			</div>
 		</td>
 
-		<td><%= link_to '削除', user_list_path(id: list.id), method: :delete, class: "btn btn-danger" %></td>
+		<td><%= link_to '削除', user_list_path(id: list.id), method: :delete, class: "btn btn-danger", remote: true %></td>
 	</tr>
 <% end %>
 

@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   }
 
   root 'home#top'
-  resources :users, only: [:edit, :update, :index , :destroy] do
+  resources :users, only: [:edit, :update, :destroy, :index] do
     resources :genres, only: [:index, :create, :destroy]
-    resources :lists, only: [:show, :index, :create, :edit, :update, :destroy]
+    resources :lists, only: [:show, :create, :edit, :update, :destroy]
     member do
       get :show_follow
       get :calendar
@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     resource :article_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
+
+  get '/users/:user_id/want', to: 'lists#want', as: 'want'
+  get '/users/:user_id/done', to: 'lists#done', as: 'done'
 
   # 管理者のルーティング
   namespace :admin do

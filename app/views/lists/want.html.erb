@@ -1,0 +1,47 @@
+<div class="container-fluid">
+	<div class="row">
+		<!-- ユーザー情報の表示 -->
+		<div class="col-md-3">
+			<%= render 'shared/user_info', user: @user %>
+		</div>
+
+		<!-- マイリスト一覧の表示 -->
+		<div class="col-md-9">
+			<div class="list-index-headline row">
+				<h3 class="col-md-3"><%= link_to "マイリスト＞", user_genres_path %>
+					<% if @genre.present? %>
+						<%= @genre.name %>
+					<% else %>
+						ALL
+					<% end %>
+				</h3>
+				<!-- 観たいと観たを切り替え -->
+				<div class="want-done-link col-md-4 col-md-offset-1">
+					<div class="want-list-link col-md-5 col-md-offset-1">
+						<% if @genre.present? %>
+							<%= link_to '観たいへ', want_path(@user, { genre_id: @genre.id }), class: "btn btn-success btn-lg", remote: true %>
+						<% else %>
+							<%= link_to '観たいへ', want_path(@user), class: "btn btn-success btn-lg", remote: true %>
+						<% end %>
+					</div>
+
+					<div class="done-list-link col-md-5">
+						<% if @genre.present? %>
+							<%= link_to '観たへ', done_path(@user, { genre_id: @genre.id }), class: "btn btn-info btn-lg", remote: true %>
+						<% else %>
+							<%= link_to '観たへ', done_path(@user), class: "btn btn-info btn-lg", remote: true %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+
+			<div class="list-index-body row">
+
+				<!-- 観たいリストを表示 -->
+				<div class="col-xs-10" id="change-list">
+				   <%= render 'want_list' %>
+			   </div>
+			</div>
+		</div>
+	</div>
+</div>
