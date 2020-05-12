@@ -1,6 +1,22 @@
 class ListsController < ApplicationController
 
-	def index
+	# def index
+	# 	@user = User.find_by(id: params[:user_id])
+	# 	@list = List.new
+	# 	@genres = current_user.genres
+	# 	if params[:genre_id].present?
+	# 		@genre = Genre.find(params[:genre_id])
+	# 	end
+	# 	if @genre.present?
+	# 		@want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id).page(params[:page]).per(15)
+	# 		@done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id).page(params[:page]).per(15)
+	# 	else
+	# 		@want_list = @user.lists.where(is_watched: false).page(params[:page]).per(15)
+	# 		@done_list = @user.lists.where(is_watched: true).page(params[:page]).per(15)
+	# 	end
+	# end
+
+	def want
 		@user = User.find_by(id: params[:user_id])
 		@list = List.new
 		@genres = current_user.genres
@@ -9,10 +25,34 @@ class ListsController < ApplicationController
 		end
 		if @genre.present?
 			@want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id).page(params[:page]).per(15)
-			@done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id).page(params[:page]).per(15)
 		else
 			@want_list = @user.lists.where(is_watched: false).page(params[:page]).per(15)
+		end
+
+		# 観たいと観たのボタンは非同期で切り替える
+		respond_to do |format|
+			format.html { render 'want' }
+			format.js { render 'want' }
+		end
+	end
+
+	def done
+		@user = User.find_by(id: params[:user_id])
+		@list = List.new
+		@genres = current_user.genres
+		if params[:genre_id].present?
+			@genre = Genre.find(params[:genre_id])
+		end
+		if @genre.present?
+			@done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id).page(params[:page]).per(15)
+		else
 			@done_list = @user.lists.where(is_watched: true).page(params[:page]).per(15)
+		end
+
+		# 観たいと観たのボタンは非同期で切り替える
+		respond_to do |format|
+			format.html { render 'done' }
+			format.js { render 'done' }
 		end
 	end
 
@@ -86,8 +126,35 @@ class ListsController < ApplicationController
 
 	def destroy
 		@list = List.find(params[:id])
-		if @list.delete
-			redirect_to user_genres_path(@list.user.id)
+		if @list.is_watched == true
+			respond_to do |format|
+		      if @list.delete
+			      if params[:genre_id].present?
+						@genre = Genre.find(params[:genre_id])
+					end
+					if @genre.present?
+						@done_list = current_user.lists.where(is_watched: true).where(genre_id: @genre.id).page(params[:page]).per(15)
+					else
+						@done_list = current_user.lists.where(is_watched: true).page(params[:page]).per(15)
+					end
+					format.html { redirect_to done_path(current_user, { genre_id: @list.genre.id }) }
+			      format.js { render 'done' }
+			   end
+			end
+		elsif @list.is_watched == false
+			respond_to do |format|
+		      if @list.delete
+		      	if params[:genre_id].present?
+						@genre = Genre.find(params[:genre_id])
+					end
+					if @genre.present?
+						@want_list = current_user.lists.where(is_watched: false).where(genre_id: @genre.id).page(params[:page]).per(15)
+					else
+						@want_list = current_user.lists.where(is_watched: false).page(params[:page]).per(15)
+					end
+			      format.js { render 'want' }
+			   end
+			end
 		end
 	end
 
