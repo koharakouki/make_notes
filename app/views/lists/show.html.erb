@@ -8,7 +8,7 @@
 		<div class="col-md-6">
 			<div class="list-show-headline">
 				<h3><%= link_to "マイリスト", user_genres_path %>＞
-					<%= link_to :back do %>
+					<%= link_to done_path(@user, { genre_id: @list.genre.id}) do %>
 						<%= @list.genre.name %>
 					<% end %>
 					＞ <%= @list.title %>

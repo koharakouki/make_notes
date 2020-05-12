@@ -4,7 +4,7 @@
 	</div>
 	<div class="col-xs-6 col-xs-offset-3">
 		<% if @user == current_user %>
-			<%= form_with(model: @genre, url: user_genres_path) do |f| %>
+			<%= form_with(model: @genre, url: user_genres_path, local: true) do |f| %>
 				<div class="row row-0 genre-header-addform">
 					<div class="form-group col-xs-7">
 						<%= f.text_field :name, placeholder: "ジャンル　(8文字以内)", class: "form-control" %>
@@ -24,8 +24,11 @@
 	<%= link_to want_path(@user), class: "genre-box" do %>
 		<span>ALL</span>
    <% end %>
+   <!-- もっとみるの部分 -->
    <div id="genres">
 		<%= render 'genres', user: @user, genres: @genres %>
 	</div>
-	<div class="more"><%= link_to_next_page @genres, 'もっと見る', remote: true, id: 'view_more', class: "btn btn-success" %></div>
+	<!-- <div class="more"><%#= link_to_next_page @genres, 'もっと見る', remote: true, id: 'view_more', class: "btn btn-success" %></div> -->
+	<%= paginate @genres %>
+
 </div>

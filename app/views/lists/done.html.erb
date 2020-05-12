@@ -39,8 +39,11 @@
 
 				<!-- 観たいリストを表示 -->
 				<div class="col-xs-10" id="change-list">
-				   <%= render 'done_list' %>
-			   </div>
+				  <%= render 'done_list' %>
+			  </div>
+			  <div class="col-md-offset-4">
+					<%= paginate @done_list %>
+				</div>
 			</div>
 		</div>
 	</div>
