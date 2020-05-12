@@ -8,28 +8,28 @@
 		<!-- マイリスト一覧の表示 -->
 		<div class="col-md-9">
 			<div class="list-index-headline row">
-				<h3 class="col-md-3"><%= link_to "マイリスト＞", user_genres_path %>
+				<h3 class="col-md-5"><%= link_to "マイリスト＞", user_genres_path %>
 					<% if @genre.present? %>
-						<%= @genre.name %>
+						<%= @genre.name %>（観たい）
 					<% else %>
-						ALL
+						ALL（観たい）
 					<% end %>
 				</h3>
 				<!-- 観たいと観たを切り替え -->
-				<div class="want-done-link col-md-4 col-md-offset-1">
+				<div class="want-done-link col-md-4 col-md-offset-2">
 					<div class="want-list-link col-md-5 col-md-offset-1">
 						<% if @genre.present? %>
-							<%= link_to '観たいへ', want_path(@user, { genre_id: @genre.id }), class: "btn btn-success btn-lg", remote: true %>
+							<%= link_to '観たいへ', want_path(@user, { genre_id: @genre.id }), class: "btn btn-success btn-lg" %>
 						<% else %>
-							<%= link_to '観たいへ', want_path(@user), class: "btn btn-success btn-lg", remote: true %>
+							<%= link_to '観たいへ', want_path(@user), class: "btn btn-success btn-lg" %>
 						<% end %>
 					</div>
 
 					<div class="done-list-link col-md-5">
 						<% if @genre.present? %>
-							<%= link_to '観たへ', done_path(@user, { genre_id: @genre.id }), class: "btn btn-info btn-lg", remote: true %>
+							<%= link_to '観たへ', done_path(@user, { genre_id: @genre.id }), class: "btn btn-info btn-lg" %>
 						<% else %>
-							<%= link_to '観たへ', done_path(@user), class: "btn btn-info btn-lg", remote: true %>
+							<%= link_to '観たへ', done_path(@user), class: "btn btn-info btn-lg" %>
 						<% end %>
 					</div>
 				</div>
