@@ -17,12 +17,14 @@
 	<% article_comments.each do |article_comment| %>
 		<div class="article-comment">
 			<div class="article-comment-header row">
-				<div class="article-comment-user col-xs-2">
+				<div class="article-comment-user col-xs-1">
 					<%= attachment_image_tag article_comment.user, :image, :fill, 50, 50, fallback: "no_image.png", size: "50x50", class: "comment-logo" %>
+				</div>
+				<div class="col-xs-2">
 					<p><%= article_comment.user.name %></p>
 				</div>
 
-				<div class="article-comment-delete col-xs-3 col-xs-offset-5">
+				<div class="article-comment-delete col-xs-3 col-xs-offset-4">
 					<% if article_comment.user == current_user || current_admin %>
 						<%= link_to '削除する',
 							article_article_comments_path(id: article_comment.id, article_id: article_comment.article_id),
@@ -39,15 +41,3 @@
 	<% end %>
 </div>
 
-<!-- <script type="text/javascript">
-	$(window).on('scroll', function() {
-    scrollHeight = $(document).height();
-    scrollPosition = $(window).height() + $(window).scrollTop();
-    if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
-          $('.jscroll').jscroll({
-            contentSelector: '.article_comment_index',
-            nextSelector: 'span.next:last .article-comment'
-          });
-    }
-});
-</script> -->
