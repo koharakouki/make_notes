@@ -7,8 +7,9 @@
 
 		<!-- ジャンル一覧の表示 -->
 		<div class="col-xs-6 genre-index">
-			<!-- ajaxでジャンルを追加しているのでこのidでエラーメッセージを出す -->
-			<div id="result"></div>
+			<!-- 非同期をやめたのでコメントアウト -->
+			<!-- <div id="result"></div> -->
+			<%= render 'shared/error_messages', object: @genre %>
 			<%= render 'genre_index' %>
 		</div>
 
