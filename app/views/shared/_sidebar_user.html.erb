@@ -11,7 +11,7 @@
 				<% end %>
 			</div>
 			<div class="recomend-user-follower">
-				<%= link_to show_follow_user_path(user) do %>
+				<%= link_to followers_user_path(user) do %>
 					<strong><%= user.followers.count %></strong> follower
 				<% end %>
 			</div>
