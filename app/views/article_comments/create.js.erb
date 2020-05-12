@@ -1,1 +1,2 @@
 $('#article-comment-box').html("<%= j(render partial: 'articles/article_comment_form_and_index', locals: { article: @article, article_comment: @article_comment, article_comments: @article_comments }) %>");
+// $("#kaminari").replaceWith("<%= escape_javascript(paginate @article_comments, id: "kaminari") %>");

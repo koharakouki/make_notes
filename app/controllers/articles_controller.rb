@@ -36,7 +36,7 @@ class ArticlesController < ApplicationController
 	def show
 		@article = Article.find(params[:id])
 		@article_comment = ArticleComment.new
-		@article_comments = ArticleComment.where(article_id: @article.id).page(params[:page]).per(10)
+		@article_comments = ArticleComment.where(article_id: @article.id).order(created_at: :desc).page(params[:page]).per(10)
 	end
 
 	def destroy
