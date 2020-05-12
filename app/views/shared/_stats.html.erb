@@ -1,15 +1,15 @@
 <%# user ||= current_user %>
 <div class="stats">
-  <a href="<%= show_follow_user_path(user) %>">
+  <%= link_to following_user_path(user) do %>
     <strong id="following" class="stat">
       <%= user.following.count %>
     </strong>
     <span>フォロー</span>
-  </a>
-  <a href="<%= show_follow_user_path(user) %>">
+  <% end %>
+  <%= link_to followers_user_path(user) do %>
     <strong id="followers" class="stat">
       <%= user.followers.count %>
     </strong>
     <span>フォロワー</span>
-  </a>
+  <% end %>
 </div>

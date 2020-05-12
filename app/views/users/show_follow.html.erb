@@ -7,24 +7,56 @@
 
 		<!-- follower or followingのリスト表示 -->
 		<div class="col-md-6 show-follow-list">
-			<!-- follower or followingでタブ切り替え -->
-			<div class="list-index-body p-3">
-				<ul class="nav nav-tabs" role="tablist">
-				    <li class="nav-item active">
-				        <a href="#follow" class="nav-link top-tabs" data-toggle="tab">following</a>
-				    </li>
-				    <li class="nav-item">
-				        <a href="#follower" class="nav-link top-tabs" data-toggle="tab">followers</a>
-				    </li>
-				</ul>
-				<div class="tab-content">
-					<div id="follow" class="tab-pane fade active in ">
-						<%= render 'follow_list', users: @following %>
+
+			<div class="show-follow-list-header row text-center">
+				<% if request.url.include? "followers" %>
+					<h3 class="show-follow-list-headline"><%= @user.name %>さんをフォローしているユーザー</h3>
+				<% else %>
+					<h3 class="show-follow-list-headline"><%= @user.name %>さんがフォロー中のユーザー</h3>
+				<% end %>
+			</div>
+
+			<div class="show-follow-list-body">
+				<%  if @users.any? %>
+					<% @users.each do |user| %>
+						<div class="user-index-box">
+							<div class="user-index-info row">
+								<div class="user-index-img col-md-2 text-center">
+									<%= attachment_image_tag(user, :image, :fill, 60, 60, fallback: "no_image_mini.png", size: "60x60") %>
+								</div>
+								<div class="user-index-name col-md-3">
+									<%= link_to user_genres_path(user) do %>
+										<%= user.name %>
+									<% end %>
+								</div>
+								<div class="user-index-following-count col-md-2">
+									<%= link_to following_user_path(user) do %>
+										<strong><%= user.following.count %></strong> following
+									<% end %>
+								</div>
+								<div class="user-index-follower-count col-md-2">
+									<%= link_to followers_user_path(user) do %>
+										<strong><%= user.followers.count %></strong> follower
+									<% end %>
+								</div>
+							</div>
+							<div class="user-index-intro">
+								<p><%= user.introduction.to_s.slice(0..100) %></p>
+							</div>
+						</div>
+					<% end %>
+					<div class="col-md-offset-4">
+						<%= paginate @users %>
 					</div>
-					<div id="follower" class="tab-pane fade">
-						<%= render 'follow_list', users: @followers %>
-					</div>
-				</div>
+				<% else %>
+				 <div class="row text-center not-follow-user">
+				 	<% if request.url.include? "followers" %>
+					 	<h4><%= @user.name %>さんをフォローしているユーザーはいません</h4>
+					<% else %>
+					  <h4>フォロー中のユーザーはいません</h4>
+					<% end %>
+				 </div>
+				<% end %>
 			</div>
 		</div>
 

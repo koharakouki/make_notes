@@ -27,12 +27,19 @@ class UsersController < ApplicationController
 		redirect_back(fallback_location: root_path)
 	end
 
-	def show_follow
-		@user = User.find(params[:id])
-		@following = @user.following.page(params[:page]).per(20)
-		@followers = @user.followers.page(params[:page]).per(20)
-		@rank_users = User.find(Relationship.group(:followed_id).order('count(followed_id) DESC').pluck(:followed_id))
-	end
+	def following
+    @user  = User.find(params[:id])
+    @users = @user.following.page(params[:page]).per(20)
+    @rank_users = User.find(Relationship.group(:followed_id).order('count(followed_id) DESC').pluck(:followed_id))
+    render 'show_follow'
+  end
+
+  def followers
+    @user  = User.find(params[:id])
+    @users = @user.followers.page(params[:page]).per(20)
+    @rank_users = User.find(Relationship.group(:followed_id).order('count(followed_id) DESC').pluck(:followed_id))
+    render 'show_follow'
+  end
 
 	def calendar
 		@user = User.find(params[:id])
