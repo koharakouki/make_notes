@@ -21,7 +21,11 @@
 					<%= attachment_image_tag article_comment.user, :image, :fill, 50, 50, fallback: "no_image.png", size: "50x50", class: "comment-logo" %>
 				</div>
 				<div class="col-xs-2">
-					<p><%= article_comment.user.name %></p>
+					<% if article_comment.user.present? %>
+						<p><%= article_comment.user.name %></p>
+				  <% else %>
+				  	<p>退会済みユーザー</p>
+				  <% end %>
 				</div>
 
 				<div class="article-comment-delete col-xs-3 col-xs-offset-4">

@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
 
 	belongs_to :user
+	has_many :article_comment, dependent: :destroy
 	has_many :favorites, dependent: :destroy
 	validates :article_title, presence: true, length: { maximum: 35 }
 	validates :content, presence: true

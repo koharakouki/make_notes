@@ -13,7 +13,11 @@
 			         <%# end %>
 			      </div>
 			      <div class="article-user-name col-md-8">
-			         <h4><%= @article.user.name %></h4>
+			      	<% if @article.user.present? %>
+				        <h4><%= @article.user.name %></h4>
+				      <% else %>
+				        <h4>退会済みユーザー</h4>
+				      <% end %>
 			      </div>
 		      </div>
 		      <div class="article-index-fav col-md-1">
