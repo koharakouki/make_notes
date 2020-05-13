@@ -44,6 +44,15 @@ class UsersController < ApplicationController
 	def calendar
 		@user = User.find(params[:id])
 		@watched_lists = @user.lists.where(is_watched: true)
+
+		# チャートを表示するための処理
+		genres = @user.genres
+		hash = {}
+		genres.each do |genre|
+			value = genre.lists.where(user_id: @user.id).where(genre_id: genre.id).where(is_watched: true).count
+			hash.merge!(genre.name => value)
+		end
+		@chart = hash
 	end
 
 
