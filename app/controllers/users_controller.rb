@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 	def destroy
 		@user = User.find(params[:id])
 		@user.delete
-		redirect_back(fallback_location: root_path)
+		redirect_back(fallback_location: admin_users_path)
 	end
 
 	def following

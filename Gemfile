@@ -49,3 +49,4 @@ gem 'kaminari','~> 1.1.1'
 gem 'ransack'
 gem 'chartkick'
 gem 'groupdate'
+gem "paranoia", "~> 2.2"
