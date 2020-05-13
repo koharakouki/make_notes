@@ -31,6 +31,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :destroy]
     root 'users#chart'
-    resources :articles, only: [:index, :show]
+    resources :articles, only: [:index, :show, :destroy]
   end
 end

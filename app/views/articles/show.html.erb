@@ -16,7 +16,11 @@
 			         <% end %>
 			      </div>
 			      <div class="article-user-name col-md-8">
-			         <h4><%= @article.user.name %></h4>
+			      	<% if @articles.user.present? %>
+			          <h4><%= @article.user.name %></h4>
+			        <% else %>
+						  	<p>退会済みユーザー</p>
+						  <% end %>
 			      </div>
 		      </div>
 				<div id="favorites_buttons_<%= @article.id %>" class="col-md-1">
