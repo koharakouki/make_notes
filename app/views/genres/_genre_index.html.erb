@@ -29,6 +29,8 @@
 		<%= render 'genres', user: @user, genres: @genres %>
 	</div>
 	<!-- <div class="more"><%#= link_to_next_page @genres, 'もっと見る', remote: true, id: 'view_more', class: "btn btn-success" %></div> -->
-	<%= paginate @genres %>
+	<div class="col-xs-offset-4">
+		<%= paginate @genres %>
+	</div>
 
 </div>

@@ -149,10 +149,10 @@ td {
 	}
 	.recomend-user {
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 		align-items: center;
 		border-bottom: 1px solid #DDD;
-		padding-bottom: 10px;
+		padding: 10px 0;
 	}
 	.recomend-user-img img {
 		border-radius: 50%;
@@ -591,7 +591,7 @@ footer {
 	padding: 20px;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: flex-start;
 	align-content: flex-start;
 	// #genres {
 	// 	display: flex;
@@ -600,24 +600,30 @@ footer {
 	// 	align-content: flex-start;
 	// }
 	.genre-box {
-		width: 600px;
+		width: 550px;
 		height: 50px;
 		border-radius: 10px;
-		margin-bottom: 20px;
+		margin-right: 10px;
 		border: 5px solid #CCC;
 		display: flex;
 		justify-content: center;
-	   align-items: center;
-	   background-color: #FFF;
-	   &:hover {
-	   	background-color: #CCC;
-	   	text-decoration: none;
-	   }
-	   span {
-	   	color: #000;
-	   	font-size: 25px;
-	   }
+	  align-items: center;
+	  background-color: #FFF;
+		&:hover {
+			background-color: #CCC;
+			text-decoration: none;
+		}
+		span {
+			color: #000;
+			font-size: 25px;
+		}
 	}
+}
+.genre-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0;
 }
 // ------------------------------------------------------------
 
@@ -710,9 +716,9 @@ footer {
 	}
 	.user-index-info {
 		display: flex;
-		justify-content: flex-start;
+		justify-content: space-between;
 		align-items: center;
-		margin-bottom: 10px;
+		margin-bottom: 15px;
 		.user-index-img img {
 			border-radius: 50%;
 		}

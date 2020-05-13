@@ -1,5 +1,10 @@
 <% genres.each do |genre| %>
-	<%= link_to want_path(user, { genre_id: genre.id }), class: "genre-box" do %>
-			<span><%= genre.name %></span>
-	<% end %>
+	<div class="genre-button">
+		<%= link_to want_path(user, { genre_id: genre.id }), class: "genre-box" do %>
+				<span><%= genre.name %></span>
+		<% end %>
+		<% if @user == current_user %>
+		 	<%= link_to '削除', user_genre_path(current_user,genre), method: :delete, class: "btn btn-danger", data: { confirm: '削除しますか？' } %>
+		<% end %>
+	</div>
 <% end %>
