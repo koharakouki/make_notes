@@ -28,8 +28,8 @@ end
 
 20.times do |n|
   User.create!(
-    email: "test#{n + 1}@test.com",
-    name: "テスト太郎#{n + 1}",
+    email: "#{n + 1}test@test.com",
+    name: "テスト二郎#{n + 1}",
     password: "password",
     introduction: "自己紹介" * 10,
     created_at: DateTime.strptime("05/#{rand(01..31)}/2020 #{rand(00..23)}:30", '%m/%d/%Y %H:%M')
@@ -63,38 +63,63 @@ User.all.each do |user|
 	end
 end
 
-User.first(10).each do |user|
-	[Genre.create!(
-		user_id: user.id,
-		name: "映画"
-	),
-	Genre.create!(
-		user_id: user.id,
-		name: "テレビ"
-	),
-	Genre.create!(
-		user_id: user.id,
-		name: "音楽"
-	),
-	Genre.create!(
-		user_id: user.id,
-		name: "本"
-	),
-	Genre.create!(
-		user_id: user.id,
-		name: "漫画"
-	),
-	Genre.create!(
-		user_id: user.id,
-		name: "ラジオ"
-	)]
-end
+
+[Genre.create!(
+	user_id: 1,
+	name: "映画"
+),
+Genre.create!(
+	user_id: 1,
+	name: "テレビ"
+),
+Genre.create!(
+	user_id: 1,
+	name: "音楽"
+),
+Genre.create!(
+	user_id: 1,
+	name: "本"
+),
+Genre.create!(
+	user_id: 1,
+	name: "漫画"
+),
+Genre.create!(
+	user_id: 1,
+	name: "ラジオ"
+)]
+
+
+[Genre.create!(
+	user_id: 2,
+	name: "映画"
+),
+Genre.create!(
+	user_id: 2,
+	name: "テレビ"
+),
+Genre.create!(
+	user_id: 2,
+	name: "音楽"
+),
+Genre.create!(
+	user_id: 2,
+	name: "本"
+),
+Genre.create!(
+	user_id: 2,
+	name: "漫画"
+),
+Genre.create!(
+	user_id: 2,
+	name: "ラジオ"
+)]
 
 n = 0
 
-10.times do
-	User.first(5).each do |user|
-		Genre.all.each do |genre|
+50.times do
+	User.first(2).each do |user|
+		user.genres.each do |genre|
 				List.create!(
 					user_id: user.id,
 					title: "タイトル#{n += 1}",
@@ -105,9 +130,9 @@ n = 0
 	end
 end
 
-10.times do
-	User.first(5).each do |user|
-		Genre.all.each do |genre|
+50.times do
+	User.first(2).each do |user|
+		user.genres.each do |genre|
 				List.create!(
 					user_id: user.id,
 					title: "タイトル#{n += 1}",
@@ -121,15 +146,15 @@ end
 end
 
 users = User.all
-user  = users.first
-user_second = users.second
+@user  = users.first
+@user_second = users.second
 following = users[2..20]
 followers = users[3..15]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
+following.each { |followed| @user.follow(followed) }
+followers.each { |follower| follower.follow(@user) }
 
-following.each { |followed| user_second.follow(followed) }
-followers.each { |follower| follower.follow(user_second) }
+following.each { |followed| @user_second.follow(followed) }
+followers.each { |follower| follower.follow(@user_second) }
 
 
 
