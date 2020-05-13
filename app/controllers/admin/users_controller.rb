@@ -2,9 +2,8 @@ class Admin::UsersController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index
-		# @users = User.page(params[:page]).per(20)
-		@q = User.ransack(params[:q])
-      @users = @q.result
+		@q = User.with_deleted.ransack(params[:q])
+    @users = @q.result.order(created_at: :desc).page(params[:page]).per(20)
 	end
 
 	def chart
@@ -29,6 +28,12 @@ class Admin::UsersController < ApplicationController
     end
 
     @article_create = create_article_array.each_with_object(Hash.new(0)){|v,o| o[v]+=1}
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to admin_users_path
   end
 
 end

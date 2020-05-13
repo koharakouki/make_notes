@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   # 管理者のルーティング
   namespace :admin do
-    resources :users, only: [:index]
+    resources :users, only: [:index, :destroy]
     root 'users#chart'
     resources :articles, only: [:index, :show]
   end
