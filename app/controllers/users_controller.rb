@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update]
 
  	def index
@@ -45,6 +45,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@watched_lists = @user.lists.where(is_watched: true)
 	end
+
 
 	private #----------------------------------------------------------------------
 
