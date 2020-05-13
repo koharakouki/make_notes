@@ -741,6 +741,10 @@ footer {
 // ------------------------------------------------------------
 
 // simple_calendar ------------------------------------------------------------
+.calendar-view {
+	background-color: #FFF;
+	border-radius: 10px;
+}
 .calendar-heading {
 	display: flex;
 	justify-content: center;
@@ -768,6 +772,11 @@ footer {
 			border-bottom: 1px solid #DDD;
 		}
 	}
+}
+// (chartのレイアウト)
+.genre-chart {
+	border: 1px solid #CCC;
+	margin-top: 20px;
 }
 // ------------------------------------------------------------
 
@@ -900,3 +909,4 @@ footer {
 	border: 1px solid #000;
 	background-color: #FFF;
 }
+// ------------------------------------------------------------

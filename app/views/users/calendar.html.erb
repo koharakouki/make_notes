@@ -4,47 +4,61 @@
 		<div class="col-md-3">
 			<%= render 'shared/user_info', user: @user %>
 		</div>
-		<!-- カレンダーの表示 -->
+
 		<div class="col-md-9">
-			<h3><%= @user.name %>さんのカレンダー</h3>
-			<%= month_calendar events: @watched_lists do |date, watched_lists| %>
-				<div class="text-left"><%= date.day %></div>
 
-			<!-- 0件の時はボタンを表示しない -->
-				<% if watched_lists.count > 0 %>
-					<div class="text-center">
-						<button type="button" class="calendar-modal btn btn-success" data-toggle="modal" data-target="#watched-<%= date.day %>">
+			<!-- カレンダーの表示 -->
+			<div class="row calendar-view">
+				<h3 class="col-md-offset-1"><%= @user.name %>さんのカレンダー</h3>
+				<%= month_calendar events: @watched_lists do |date, watched_lists| %>
+					<div class="text-left"><%= date.day %></div>
+
+				<!-- 0件の時はボタンを表示しない -->
+					<% if watched_lists.count > 0 %>
+						<div class="text-center">
+							<button type="button" class="calendar-modal btn btn-success" data-toggle="modal" data-target="#watched-<%= date.day %>">
+								<%= watched_lists.count %>件
+							</button>
+						</div>
+					<% else %>
+						<div class="text-center calendar-modal">
 							<%= watched_lists.count %>件
-						</button>
-					</div>
-				<% else %>
-					<div class="text-center calendar-modal">
-						<%= watched_lists.count %>件
-					</div>
-				<% end %>
+						</div>
+					<% end %>
 
-				<!-- モーダル表示の処理 -->
-				<div class="modal fade" id="watched-<%= date.day %>" tabindex="-1" role="dialog" aria-labelledby="watchedTitle" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="watchedTitle"><%= date.day %>日に観た作品</h5>
-							</div>
-							<div class="modal-body">
-								<ul>
-									<% watched_lists.each do |watched_list| %>
-									   <li><%= watched_list.title %></li>
-									<% end %>
-								</ul>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-info" data-dismiss="modal">閉じる</button>
+					<!-- モーダル表示の処理 -->
+					<div class="modal fade" id="watched-<%= date.day %>" tabindex="-1" role="dialog" aria-labelledby="watchedTitle" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="watchedTitle"><%= date.day %>日に観た作品</h5>
+								</div>
+								<div class="modal-body">
+									<ul>
+										<% watched_lists.each do |watched_list| %>
+										   <li><%= watched_list.title %></li>
+										<% end %>
+									</ul>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-info" data-dismiss="modal">閉じる</button>
+								</div>
 							</div>
 						</div>
 					</div>
+					<!-- モーダル表示ここまで -->
+				<% end %>
+			</div>
+
+			<!-- チャート表示 -->
+			<div class="row">
+				<div class="genre-chart text-center">
+					<h4>これまでに見たジャンル割合</h4>
+					<%= pie_chart @chart %>
 				</div>
-				<!-- モーダル表示ここまで -->
-			<% end %>
+			</div>
+
+
 		</div>
 	</div>
 </div>
