@@ -32,7 +32,9 @@
 			<!-- ここからコメントブロック -->
 			<div id="article-comment-box">
 				<%= render 'articles/article_comment_form_and_index', article: @article, article_comment: @article_comment, article_comments: @article_comments %>
-					<%= paginate @article_comments %>
+			</div>
+			<div class="col-md-offset-3">
+				<%= paginate @article_comments %>
 			</div>
 		</div>
 	</div>
