@@ -14,4 +14,6 @@
 //= require rails-ujs
 //= require bootstrap-sprockets
 //= require activestorage
+//= require chartkick
+//= require Chart.bundle
 //= require_tree .

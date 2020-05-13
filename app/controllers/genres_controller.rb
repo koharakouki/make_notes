@@ -1,5 +1,5 @@
 class GenresController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!
   before_action :correct_user, only: [:create]
 
   def index

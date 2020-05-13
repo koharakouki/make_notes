@@ -26,6 +26,16 @@ User.create!(
   )
 end
 
+20.times do |n|
+  User.create!(
+    email: "test#{n + 1}@test.com",
+    name: "テスト太郎#{n + 1}",
+    password: "password",
+    introduction: "自己紹介" * 10,
+    created_at: DateTime.strptime("05/#{rand(01..31)}/2020 #{rand(00..23)}:30", '%m/%d/%Y %H:%M')
+  )
+end
+
 User.all.each do |user|
   user.articles.create!(
     article_title: 'タイトル',
@@ -82,7 +92,7 @@ end
 
 n = 0
 
-30.times do
+10.times do
 	User.first(5).each do |user|
 		Genre.all.each do |genre|
 				List.create!(
@@ -95,7 +105,7 @@ n = 0
 	end
 end
 
-30.times do
+10.times do
 	User.first(5).each do |user|
 		Genre.all.each do |genre|
 				List.create!(
