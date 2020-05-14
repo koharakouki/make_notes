@@ -4,6 +4,14 @@ class Admin::UsersController < ApplicationController
 	def index
 		@q = User.with_deleted.ransack(params[:q])
     @users = @q.result.order(created_at: :desc).page(params[:page]).per(20)
+    respond_to do |format|
+      format.html
+      format.csv do
+        # ユーザー情報全件出力するために@usersを再定義
+        @users = User.with_deleted
+        send_data render_to_string, filename: "登録会員一覧-#{Time.zone.now.strftime('%Y%m%d')}.csv", type: :csv
+      end
+    end
 	end
 
 	def chart
