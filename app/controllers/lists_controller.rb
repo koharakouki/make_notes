@@ -1,22 +1,6 @@
 class ListsController < ApplicationController
 	before_action :correct_user, only: [:create, :update, :destroy]
 
-	# def index
-	# 	@user = User.find_by(id: params[:user_id])
-	# 	@list = List.new
-	# 	@genres = current_user.genres
-	# 	if params[:genre_id].present?
-	# 		@genre = Genre.find(params[:genre_id])
-	# 	end
-	# 	if @genre.present?
-	# 		@want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id).page(params[:page]).per(15)
-	# 		@done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id).page(params[:page]).per(15)
-	# 	else
-	# 		@want_list = @user.lists.where(is_watched: false).page(params[:page]).per(15)
-	# 		@done_list = @user.lists.where(is_watched: true).page(params[:page]).per(15)
-	# 	end
-	# end
-
 	def want
 		@user = User.find_by(id: params[:user_id])
 		@list = List.new
@@ -24,11 +8,6 @@ class ListsController < ApplicationController
 		if params[:genre_id].present?
 			@genre = Genre.find(params[:genre_id])
 		end
-		# if @genre.present?
-		# 	@want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id).order(created_at: :desc).page(params[:page]).per(15)
-		# else
-		# 	@want_list = @user.lists.where(is_watched: false).order(created_at: :desc).page(params[:page]).per(15)
-		# end
 
 		# 並び替え機能の処理
 		if params[:sort].present?
