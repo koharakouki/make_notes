@@ -375,22 +375,22 @@ footer {
 			padding: 10px;
 			border-radius: 10px;
 			.facebook-box-text {
-				font-size: 20px;
+				font-size: 18px;
 				margin-bottom: 0;
 			}
 		}
-		.twitter-box {
+		.google-box {
 			width: 250px;
 			height: 50px;
-			background-color: #00acee;
+			background-color: #DD5144;
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
 			color: #FFF;
 			padding: 10px;
 			border-radius: 10px;
-			.twitter-box-text {
-				font-size: 20px;
+			.google-box-text {
+				font-size: 18px;
 				margin-bottom: 0;
 			}
 		}
@@ -465,14 +465,14 @@ footer {
 		border-radius: 10px;
 		margin: 40px auto;
 		.facebook-box-text {
-			font-size: 20px;
+			font-size: 18px;
 			margin-bottom: 0;
 		}
 	}
-	.twitter-box {
+	.google-box {
 		width: 250px;
 		height: 50px;
-		background-color: #00acee;
+		background-color: #DD5144;
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
@@ -480,8 +480,8 @@ footer {
 		padding: 10px;
 		border-radius: 10px;
 		margin: 20px auto;
-		.twitter-box-text {
-			font-size: 20px;
+		.google-box-text {
+			font-size: 18px;
 			margin-bottom: 0;
 		}
 	}

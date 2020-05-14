@@ -43,14 +43,18 @@
     </div>
     <!-- SNSアカウントでログイン -->
     <div class="row sns-box">
-      <div class="facebook-box">
-        <div class="facebook-box-icon"><%= icon('fab', 'facebook-f fa-3x') %></div>
-        <p class="facebook-box-text">facebookでログイン</p>
-      </div>
-      <div class="twitter-box">
-         <div class="twitter-box-icon"><%= icon('fab', 'twitter fa-3x') %></div>
-        <p class="twitter-box-text">twitterでログイン</p>
-      </div>
+      <%= link_to user_facebook_omniauth_authorize_path do %>
+        <div class="facebook-box">
+          <div class="facebook-box-icon"><%= icon('fab', 'facebook-f fa-3x') %></div>
+          <p class="facebook-box-text">Facebookでログイン</p>
+        </div>
+      <% end %>
+      <%= link_to user_google_oauth2_omniauth_authorize_path do%>
+        <div class="google-box">
+           <div class="google-box-icon"><%= icon('fab', 'google fa-3x') %></div>
+          <p class="google-box-text">Googleでログイン</p>
+        </div>
+      <% end %>
     </div>
     <!-- SNSアカウントでログイン -->
   </div>
