@@ -34,6 +34,8 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :followers, through: :passive_relationships
 
+  after_create :send_welcome_mail
+
 
   def follow(other_user)
     following << other_user
@@ -73,5 +75,9 @@ class User < ApplicationRecord
     end
 
     user
+  end
+
+  def send_welcome_mail
+    ThanksMailer.welcome_mail(self).deliver
   end
 end
