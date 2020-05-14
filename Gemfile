@@ -50,3 +50,6 @@ gem 'ransack'
 gem 'chartkick'
 gem 'groupdate'
 gem "paranoia", "~> 2.2"
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'

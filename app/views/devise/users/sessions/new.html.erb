@@ -46,15 +46,20 @@
 
   <!-- SNSアカウントでログインブロック -->
     <div class="signin-sns-box col-xs-4 col-xs-offset-1 ">
-      <h4 class="text-center">SNSアカウントでログインする</h4>
-       <div class="facebook-box">
-        <div class="facebook-box-icon"><%= icon('fab', 'facebook-f fa-3x') %></div>
-        <p class="facebook-box-text">facebookでログイン</p>
-       </div>
-       <div class="twitter-box">
-        <div class="twitter-box-icon"><%= icon('fab', 'twitter fa-3x') %></div>
-        <p class="twitter-box-text">twitterでログイン</p>
-       </div>
+      <h4 class="text-center">SNSアカウントでログイン</h4>
+      <%= link_to user_facebook_omniauth_authorize_path do %>
+        <div class="facebook-box">
+          <div class="facebook-box-icon"><%= icon('fab', 'facebook-f fa-3x') %></div>
+          <p class="facebook-box-text">Facebookでログイン</p>
+        </div>
+      <% end %>
+      <%= link_to user_google_oauth2_omniauth_authorize_path do%>
+        <div class="google-box">
+          <div class="google-box-icon"><%= icon('fab', 'google fa-3x') %></div>
+          <p class="google-box-text">Googleでログイン</p>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
+
