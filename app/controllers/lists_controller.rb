@@ -24,17 +24,40 @@ class ListsController < ApplicationController
 		if params[:genre_id].present?
 			@genre = Genre.find(params[:genre_id])
 		end
-		if @genre.present?
-			@want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id).order(created_at: :desc).page(params[:page]).per(15)
-		else
-			@want_list = @user.lists.where(is_watched: false).order(created_at: :desc).page(params[:page]).per(15)
-		end
-
-		# 観たいと観たのボタンは非同期で切り替える
-		# respond_to do |format|
-		# 	format.html { render 'want' }
-		# 	format.js { render 'want' }
+		# if @genre.present?
+		# 	@want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id).order(created_at: :desc).page(params[:page]).per(15)
+		# else
+		# 	@want_list = @user.lists.where(is_watched: false).order(created_at: :desc).page(params[:page]).per(15)
 		# end
+
+		# 並び替え機能の処理
+		if params[:sort].present?
+			if @genre.present?
+				case params[:sort]
+				when nil || "1"
+					@want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
+				when "2"
+					@want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id).order(start_time: :desc).page(params[:page]).per(15)
+				when "3"
+					@want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id).order(start_time: :asc).page(params[:page]).per(15)
+				end
+			else
+				case params[:sort]
+				when nil || "1"
+					@want_list = @user.lists.where(is_watched: false).order(updated_at: :desc).page(params[:page]).per(15)
+				when "2"
+					@want_list = @user.lists.where(is_watched: false).order(start_time: :desc).page(params[:page]).per(15)
+				when "3"
+					@want_list = @user.lists.where(is_watched: false).order(start_time: :asc).page(params[:page]).per(15)
+				end
+			end
+		else
+			if @genre.present?
+			  @want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
+		  else
+			  @want_list = @user.lists.where(is_watched: false).order(updated_at: :desc).page(params[:page]).per(15)
+		  end
+		end
 	end
 
 	def done
@@ -44,17 +67,35 @@ class ListsController < ApplicationController
 		if params[:genre_id].present?
 			@genre = Genre.find(params[:genre_id])
 		end
-		if @genre.present?
-			@done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
-		else
-			@done_list = @user.lists.where(is_watched: true).order(updated_at: :desc).page(params[:page]).per(15)
-		end
 
-		# 観たいと観たのボタンは非同期で切り替える
-		# respond_to do |format|
-		# 	format.html { render 'done' }
-		# 	format.js { render 'done' }
-		# end
+		# 並び替え機能の処理
+		if params[:sort].present?
+			if @genre.present?
+				case params[:sort]
+				when nil || "1"
+					@done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
+				when "2"
+					@done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id).order(start_time: :desc).page(params[:page]).per(15)
+				when "3"
+					@done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id).order(start_time: :asc).page(params[:page]).per(15)
+				end
+			else
+				case params[:sort]
+				when nil || "1"
+					@done_list = @user.lists.where(is_watched: true).order(updated_at: :desc).page(params[:page]).per(15)
+				when "2"
+					@done_list = @user.lists.where(is_watched: true).order(start_time: :desc).page(params[:page]).per(15)
+				when "3"
+					@done_list = @user.lists.where(is_watched: true).order(start_time: :asc).page(params[:page]).per(15)
+				end
+			end
+		else
+			if @genre.present?
+			  @done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
+		  else
+			  @done_list = @user.lists.where(is_watched: true).order(updated_at: :desc).page(params[:page]).per(15)
+		  end
+		end
 	end
 
 	def create
@@ -134,10 +175,10 @@ class ListsController < ApplicationController
 					  @genre = Genre.find(params[:genre_id])
 				  end
 					if @genre.present?
-						@done_list = current_user.lists.where(is_watched: true).where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
-					else
-						@done_list = current_user.lists.where(is_watched: true).order(updated_at: :desc).page(params[:page]).per(15)
-					end
+					  @done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
+				  else
+					  @done_list = @user.lists.where(is_watched: true).order(updated_at: :desc).page(params[:page]).per(15)
+				  end
 					format.html { redirect_to done_path(current_user, { genre_id: @list.genre.id }) }
 			    format.js { render 'done' }
 		    end

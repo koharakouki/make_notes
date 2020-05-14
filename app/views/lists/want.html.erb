@@ -8,15 +8,32 @@
 		<!-- マイリスト一覧の表示 -->
 		<div class="col-md-9">
 			<div class="list-index-headline row">
-				<h3 class="col-md-5"><%= link_to "マイリスト＞", user_genres_path %>
+				<h3 class="col-md-4"><%= link_to "マイリスト＞", user_genres_path %>
 					<% if @genre.present? %>
 						<%= @genre.name %>（観たい）
 					<% else %>
 						ALL（観たい）
 					<% end %>
 				</h3>
+
+				<!-- 日付で並び替えをする処理 -->
+				<div class="col-md-3">
+					<% if @genre.present? %>
+						<%= form_tag(want_path(@user), method: :get) do |f| %>
+							<%= select_tag :sort, options_for_select([["選択してください", ''], ["追加順", 1], ["日時降順", 2], ["日時昇順", 3]]) %>
+							<%= hidden_field_tag :genre_id, "#{@genre.id}" %>
+						  <input type="submit" value="並び替え" class="btn btn-warning">
+						<% end %>
+					<% else %>
+						<%= form_tag(want_path(@user), method: :get) do |f| %>
+							<%= select_tag :sort, options_for_select([["選択してください", ''], ["追加順", 1], ["日時降順", 2], ["日時昇順", 3]]) %>
+						  <input type="submit" value="並び替え" class="btn btn-warning">
+						<% end %>
+					<% end %>
+				</div>
+
 				<!-- 観たいと観たを切り替え -->
-				<div class="want-done-link col-md-4 col-md-offset-2">
+				<div class="want-done-link col-md-4 col-md-offset-1">
 					<div class="want-list-link col-md-5 col-md-offset-1">
 						<% if @genre.present? %>
 							<%= link_to '観たいへ', want_path(@user, { genre_id: @genre.id }), class: "btn btn-success btn-lg" %>
