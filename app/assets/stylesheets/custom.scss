@@ -15,8 +15,8 @@ body {
 .h-100 {
 	min-height: 100vh;
 	position: relative;/*←相対位置*/
-   padding-bottom: 80px;/*←footerの高さ*/
-   box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+  padding-bottom: 80px;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
 
 th {
@@ -75,21 +75,21 @@ td {
 .new-articles {
 	width: 300px;
 	position: relative;
-   margin: 2em 0;
-   padding: 2em 1em;
-   border: solid 3px #99CC66;
-   border-radius: 8px;
+	margin: 2em 0;
+	padding: 2em 1em;
+	border: solid 3px #99CC66;
+	border-radius: 8px;
 	.new-articles-headline {
-	   position: absolute;
-	   display: inline-block;
-	   top: -13px;
-	   left: 10px;
-	   padding: 0 9px;
-	   line-height: 1;
-	   font-size: 19px;
-	   background: #FFF;
-	   color: #777;
-	   background-color: #EEE;
+	position: absolute;
+	display: inline-block;
+	top: -13px;
+	left: 10px;
+	padding: 0 9px;
+	line-height: 1;
+	font-size: 19px;
+	background: #FFF;
+	color: #777;
+	background-color: #EEE;
 	}
 	.article {
 		margin: 15px auto;
@@ -178,7 +178,7 @@ nav {
 	   #logo {
 		width: 200px;
 		height: 50px;
-		background-image: url(logo.png);
+		background-image: image-url("logo.png");
 		background-size: contain;
 		display: inline-block;
 		}
@@ -213,7 +213,7 @@ footer {
 		.footer__img {
 			width: 30px;
 			height: 30px;
-			background-image: url(favicon30.png);
+			background-image: image-url("favicon30.png");
 			background-size: contain;
 			background-color: #EEE;
 			flex-shrink: 10;
@@ -240,7 +240,7 @@ footer {
 	.main-visual__content--logo {
 		width: 400px;
 		height: 100px;
-		background-image: url(logo.png);
+		background-image: image-url("logo.png");
 		background-size: contain;
 		margin-bottom: 30px;
 	}
@@ -297,28 +297,28 @@ footer {
 			.img-want {
 				width: 160px;
 				height: 103px;
-				background-image: url(want_to.png);
+				background-image: image-url("want_to.png");
 				background-size: contain;
 				margin: 20px auto;
 			}
 			.img-done {
 				width: 130px;
 				height: 120px;
-				background-image: url(done.png);
+				background-image: image-url("done.png");
 				background-size: contain;
 				margin: 5px auto 12px;
 			}
 			.img-article {
 				width: 102px;
 				height: 105px;
-				background-image: url(article.png);
+				background-image: image-url("article.png");
 				background-size: contain;
 				margin: 10px auto;
 			}
 			.img-follow {
 				width: 190px;
 				height: 87px;
-				background-image: url(follow.png);
+				background-image: image-url("follow.png");
 				background-size: contain;
 				margin: 20px auto;
 			}
