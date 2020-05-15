@@ -1,9 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-// 新しいCSS
-
-
 // 共通 ----------------------------------------------------------
 body {
 	padding-top: 90px;
@@ -14,9 +11,9 @@ body {
 // (フッターを最下部に固定)
 .h-100 {
 	min-height: 100vh;
-	position: relative;/*←相対位置*/
-  padding-bottom: 80px;/*←footerの高さ*/
-  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+	position: relative;
+  padding-bottom: 80px;//←footerの高さ//
+  box-sizing: border-box;//←全て含めてmin-height:100vhに//
 }
 
 th {
@@ -28,7 +25,20 @@ td {
 	text-align: center;
 	font-size: 15px;
 }
-//-----------------------------------------------------------
+
+// mixin----------------------------------------------------------
+	// *SNSアカウントボタン
+	@mixin sns-button {
+		width: 250px;
+		height: 50px;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		color: #FFF;
+		padding: 10px;
+		border-radius: 10px;
+	}
+
 
 // よく使うパーシャル ----------------------------------------------------------
 // (_user_info)
@@ -131,21 +141,21 @@ td {
 .recomend-users {
 	width: 270px;
 	position: relative;
-   margin: 2em 0;
-   padding: 2em 1em;
-   border: solid 3px #99CC66;
-   border-radius: 8px;
+	margin: 2em 0;
+	padding: 2em 1em;
+	border: solid 3px #99CC66;
+	border-radius: 8px;
 	.recomend-users-headline {
-	   position: absolute;
-	   display: inline-block;
-	   top: -13px;
-	   left: 10px;
-	   padding: 0 9px;
-	   line-height: 1;
-	   font-size: 19px;
-	   background: #FFF;
-	   color: #777;
-	   background-color: #EEE;
+		position: absolute;
+		display: inline-block;
+		top: -13px;
+		left: 10px;
+		padding: 0 9px;
+		line-height: 1;
+		font-size: 19px;
+		background: #FFF;
+		color: #777;
+		background-color: #EEE;
 	}
 	.recomend-user {
 		display: flex;
@@ -158,7 +168,18 @@ td {
 		border-radius: 50%;
 	}
 }
-// ----------------------------------------------------------
+
+
+// devise/shared/_error_messages ------------------------------------------------------------
+.devise-error {
+	background-color: #FFCCCC;
+	border-radius: 10px;
+	list-style: none;
+	border: 1px solid #FF6666;
+	li {
+		text-align: center;
+	}
+}
 
 
 // layouts/_admin_header, _user_header ----------------------------------------------------------
@@ -175,7 +196,7 @@ nav {
    width: 260px;
    min-height: 70px;
    padding: 10px 30px;
-	   #logo {
+	  #logo {
 		width: 200px;
 		height: 50px;
 		background-image: image-url("logo.png");
@@ -195,7 +216,7 @@ nav {
 		}
 	}
 }
-// ------------------------------------------------------------
+
 
 // layouts/_footer ------------------------------------------------------------
 footer {
@@ -206,7 +227,7 @@ footer {
 		height: 80px;
 		border-top: 1px solid #C0C0C0;
 		position: absolute;/*←絶対位置*/
-	   bottom: 0; /*下に固定*/
+	  bottom: 0; /*下に固定*/
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -224,9 +245,8 @@ footer {
 	}
 }
 
-// ------------------------------------------------------------
 
-// home/top ------------------------------------------------------------
+// *home/top ------------------------------------------------------------
 // (main-visual)
 .main-visual__content {
 	height: 300px;
@@ -235,8 +255,8 @@ footer {
 	box-sizing : border-box;
 	display: flex;
 	justify-content: center;
-   flex-direction: column;
-   align-items: center;
+  flex-direction: column;
+  align-items: center;
 	.main-visual__content--logo {
 		width: 400px;
 		height: 100px;
@@ -259,13 +279,13 @@ footer {
 		border-radius: 25px;
 		text-decoration: none;
 		color: #777;
-	   background-color: #99CC66;
-	   font-size: 20px;
-    	margin-bottom: 20px;
+		background-color: #99CC66;
+		font-size: 20px;
+		margin-bottom: 20px;
 		&:hover {
-		background-color: #777;
-		text-decoration: none;
-		color: #FFF;
+			background-color: #777;
+			text-decoration: none;
+			color: #FFF;
 		}
 	}
 }
@@ -326,69 +346,53 @@ footer {
 	}
 }
 
-// ------------------------------------------------------------
 
 // registrations/new ------------------------------------------------------------
 .signup-form-all {
-	width: 650px;
-	height: 450px;
+	width: 70%;
 	background-color: #E6FFE9;
 	margin: 0 auto;
 	padding-top: 40px;
+	padding-bottom: 20px;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	border-radius: 10px;
-	// // (各フィールドの下に薄く線を引く)
+	//(各フィールドの下に薄く線を引く)
 	.form-group {
 		border-bottom: 1px solid #CCFFCC;
 		padding-bottom: 20px;
 	}
-	// // (会員登録ボタン)
+	//(会員登録ボタン)
 	.signup-button {
 		display: inline-block;
-		padding: 7px 50px;
+		padding: 7px 0;
 		border-radius: 25px;
 		text-decoration: none;
 		color: #777;
-	   background-color: #99CC66;
-	   font-size: 20px;
+	  background-color: #99CC66;
+	  font-size: 20px;
 		&:hover {
 		background-color: #777;
 		text-decoration: none;
 		color: #FFF;
 		}
 	}
+	//(SNSアカウントログインのレイアウト)
 	.sns-box {
-		width: 600px;
-		height: 60px;
 		margin: 15px auto;
 		display: flex;
 		justify-content: space-around;
 		.facebook-box {
-			width: 250px;
-			height: 50px;
+			@include sns-button;
 			background-color: #3b5998;
-			display: flex;
-			justify-content: space-around;
-			align-items: center;
-			color: #FFF;
-			padding: 10px;
-			border-radius: 10px;
 			.facebook-box-text {
 				font-size: 18px;
 				margin-bottom: 0;
 			}
 		}
 		.google-box {
-			width: 250px;
-			height: 50px;
+			@include sns-button;
 			background-color: #DD5144;
-			display: flex;
-			justify-content: space-around;
-			align-items: center;
-			color: #FFF;
-			padding: 10px;
-			border-radius: 10px;
 			.google-box-text {
 				font-size: 18px;
 				margin-bottom: 0;
@@ -396,27 +400,15 @@ footer {
 		}
 	}
 }
-// ------------------------------------------------------------
 
-// devise/shared/_error_messages ------------------------------------------------------------
-.devise-error {
-	background-color: #FFCCCC;
-	border-radius: 10px;
-	list-style: none;
-	border: 1px solid #FF6666;
-	li {
-		text-align: center;
-	}
-}
-// ------------------------------------------------------------
 
 // sessions/new ------------------------------------------------------------
 .signin-form-all {
-	width: 500px;
-	height: 350px;
 	background-color: #E6FFE9;
-	padding-top: 60px;
+	padding-top: 40px;
+	padding-bottom: 20px;
 	margin-top: 20px;
+	border-radius: 10px;
 	.form-group {
 		border-bottom: 1px solid #CCFFCC;
 		padding-bottom: 20px;
@@ -427,15 +419,15 @@ footer {
 		border-radius: 25px;
 		text-decoration: none;
 		color: #777;
-	   background-color: #99CC66;
-	   font-size: 20px;
+	  background-color: #99CC66;
+	  font-size: 20px;
 		margin-bottom: 20px;
 		margin-top: 10px;
 		border: 1px solid #808080;
 		&:hover {
-		background-color: #777;
-		text-decoration: none;
-		color: #FFF;
+			background-color: #777;
+			text-decoration: none;
+			color: #FFF;
 		}
 	}
 	.go-signup, .forget-password {
@@ -448,21 +440,13 @@ footer {
 	}
 }
 .signin-sns-box {
-	width: 400px;
-	height: 350px;
 	background-color: #E6FFE9;
 	padding-top: 30px;
 	margin-top: 20px;
+	border-radius: 10px;
 	.facebook-box {
-		width: 250px;
-		height: 50px;
+    @include sns-button;
 		background-color: #3b5998;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		color: #FFF;
-		padding: 10px;
-		border-radius: 10px;
 		margin: 40px auto;
 		.facebook-box-text {
 			font-size: 18px;
@@ -470,30 +454,20 @@ footer {
 		}
 	}
 	.google-box {
-		width: 250px;
-		height: 50px;
+		@include sns-button;
 		background-color: #DD5144;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		color: #FFF;
-		padding: 10px;
-		border-radius: 10px;
-		margin: 20px auto;
+		margin: 40px auto;
 		.google-box-text {
 			font-size: 18px;
 			margin-bottom: 0;
 		}
 	}
 }
-// ------------------------------------------------------------
+
 
 // admin/sessions/new ------------------------------------------------------------
 .admin-signin-form-all {
-	width: 650px;
-	height: 300px;
 	background-color: #E6FFE9;
-	margin: 0 auto;
 	padding-top: 40px;
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -508,19 +482,19 @@ footer {
 		border-radius: 25px;
 		text-decoration: none;
 		color: #777;
-	   background-color: #99CC66;
-	   font-size: 20px;
+	  background-color: #99CC66;
+	  font-size: 20px;
 		margin-bottom: 20px;
 		margin-top: 10px;
 		border: 1px solid #808080;
 		&:hover {
-		background-color: #777;
-		text-decoration: none;
-		color: #FFF;
+			background-color: #777;
+			text-decoration: none;
+			color: #FFF;
 		}
 	}
 }
-// ------------------------------------------------------------
+
 
 // users/edit ------------------------------------------------------------
 .user-edit-form-all {
@@ -564,7 +538,7 @@ footer {
 		margin-bottom: 20px;
 	}
 }
-// ------------------------------------------------------------
+
 
 // shared/_error_messages ------------------------------------------------------------
 .error {
@@ -576,7 +550,7 @@ footer {
 		text-align: center;
 	}
 }
-// ------------------------------------------------------------
+
 
 // genres/_genre_index ------------------------------------------------------------
 .genre-header-addform {
@@ -625,7 +599,7 @@ footer {
 	align-items: center;
 	margin: 20px 0;
 }
-// ------------------------------------------------------------
+
 
 // articles/index ------------------------------------------------------------
 .search-form, .fav-articles {
@@ -657,7 +631,7 @@ footer {
 .article-index-delete-button {
 	margin-top: 20px;
 }
-// ------------------------------------------------------------
+
 
 // articles/show ------------------------------------------------------------
 
@@ -708,7 +682,7 @@ footer {
 		border-bottom: 1px solid #DDDDDD;
 	}
 }
-// ------------------------------------------------------------
+
 
 // users/index ------------------------------------------------------------
 .user-index-box {
@@ -737,7 +711,7 @@ footer {
 		}
 	}
 }
-// ------------------------------------------------------------
+
 
 // show_follow ------------------------------------------------------------
 .show-follow-list {
@@ -747,7 +721,7 @@ footer {
 	padding-top: 30px;
 	border-top: 1px solid #DDD;
 }
-// ------------------------------------------------------------
+
 
 // simple_calendar ------------------------------------------------------------
 .calendar-view {
@@ -787,7 +761,7 @@ footer {
 	border: 1px solid #CCC;
 	margin-top: 20px;
 }
-// ------------------------------------------------------------
+
 
 
 // lists/show ------------------------------------------------------------
@@ -817,13 +791,13 @@ footer {
 .modal-title {
 	margin: 10px 0;
 }
-// ------------------------------------------------------------
+
 
 // lists/_want_list_item ------------------------------------------------------------
 .clickable {
 	cursor: pointer;
 }
-// ------------------------------------------------------------
+
 
 // lists/show ------------------------------------------------------------
 .edit-delete-button {
@@ -834,7 +808,7 @@ footer {
 		margin-right: 20px;
 	}
 }
-// ------------------------------------------------------------
+
 
 
 // ジャンル選択のレイアウト(select_tag) ------------------------------------------------------------
@@ -884,7 +858,7 @@ footer {
 	padding: 8px 20px 8px 8px;
 	color: #666666;
 }
-// ------------------------------------------------------------
+
 
 // モーダルのエラーメッセージ　------------------------------------------------------------
 .update-want-error-message, .edit-list-error-message, .want-error-message, .done-error-message {
@@ -892,7 +866,7 @@ footer {
 	border-radius: 10px;
 	list-style: none;
 }
-// ------------------------------------------------------------
+
 
 // lists/want,done ------------------------------------------------------------
 .list-index-headline {
@@ -903,13 +877,12 @@ footer {
 		display: flex
 	}
 }
-// ------------------------------------------------------------
 
 // lists/want,done ------------------------------------------------------------
 #change-list {
 	margin-left: 30px;
 }
-// ------------------------------------------------------------
+
 
 // admin/users/chart ------------------------------------------------------------
 .chart {
@@ -918,7 +891,7 @@ footer {
 	border: 1px solid #000;
 	background-color: #FFF;
 }
-// ------------------------------------------------------------
+
 
 // devise/users/password/new ------------------------------------------------------------
 .return-login {
@@ -928,3 +901,24 @@ footer {
 		color: #000;
 	}
 }
+
+
+
+// レスボンシブ対応------------------------------------------------------------
+@media screen and (max-width:768px) {
+	// registrations/new
+	.sns-box {
+		flex-direction: column;
+		margin-top: 20px;
+		.facebook-box, .google-box {
+			margin: 0 auto 10px;
+		}
+	}
+
+}
+
+@media screen and (max-width:425px){
+
+}
+
+
