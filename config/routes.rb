@@ -34,4 +34,9 @@ Rails.application.routes.draw do
     root 'users#chart'
     resources :articles, only: [:index, :show, :destroy]
   end
+
+  # 開発環境でletter_opener_webを使うための処理
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
 end
