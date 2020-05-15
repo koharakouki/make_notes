@@ -84,7 +84,7 @@ class ListsController < ApplicationController
 			respond_to do |format|
 				if @list.save
 	        format.html { redirect_to request.referer }
-	        format.js { render 'want_success'}
+	        format.js { render 'want_success' }
         else
          	format.html { redirect_to request.referer }
 			    format.js { render 'want_error'}
