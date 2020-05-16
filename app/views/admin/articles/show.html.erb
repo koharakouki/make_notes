@@ -5,35 +5,35 @@
 		<!-- 記事詳細の表示 -->
 		<div class="col-md-8 col-md-offset-2">
 			<div class="article-show-header row">
-				<h3 class="col-md-6 col-md-offset-1"><%= @article.article_title %></h3>
-				<div class="col-md-4 article-user-info">
+				<h3 class="article-title col-md-6 col-md-offset-1"><%= @article.article_title %></h3>
+				<div class="article-user-info col-md-4 hidden-sm hidden-xs">
 					<div class="article-user-logo col-md-4">
-						<%#= link_to user_genres_path(@article.user) do %>
-				            <%= attachment_image_tag @article.user, :image, :fill, 70, 70, class: "prof-img", fallback: "no_image.png", size: "70x70" %>
-			         <%# end %>
-			      </div>
-			      <div class="article-user-name col-md-8">
-			      	<% if @article.user.present? %>
-				        <h4><%= @article.user.name %></h4>
-				      <% else %>
-				        <h4>退会済みユーザー</h4>
-				      <% end %>
-			      </div>
-		      </div>
-		      <div class="article-index-fav col-md-1">
+	          <%= attachment_image_tag @article.user, :image, :fill, 70, 70, class: "prof-img", fallback: "no_image.png", size: "70x70" %>
+			    </div>
+			    <div class="article-user-name col-md-8 hidden-md">
+			      <% if @article.user.present? %>
+				      <h4><%= @article.user.name %></h4>
+				    <% else %>
+				      <h4>退会済みユーザー</h4>
+				    <% end %>
+			    </div>
+		    </div>
+		    <div class="article-index-fav col-md-2 hidden-sm hidden-xs">
 					<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i><%= @article.favorites.count %>
 				</div>
 			</div>
-			<div class="article-show-body row col-md-offset-1">
+
+			<div class="article-show-body row">
 				<div class="article-show-text col-md-11">
 					<p><%= @article.content %></p>
 				</div>
 			</div>
+
 			<!-- ここからコメントブロック -->
 			<div id="article-comment-box">
 				<%= render 'articles/article_comment_form_and_index', article: @article, article_comment: @article_comment, article_comments: @article_comments %>
 			</div>
-			<div class="col-md-offset-3">
+			<div class="col-md-offset-3 col-xs-offset-2">
 				<%= paginate @article_comments %>
 			</div>
 		</div>

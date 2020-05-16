@@ -1,52 +1,57 @@
+<!-- ユーザー側の記事一覧ページ -->
 <div class="container-fluid">
 	<div class="row">
+
 		<!-- user-infoの表示 -->
 		<div class="col-md-3">
 			<%= render 'shared/user_info', user: current_user %>
 		</div>
 
-		<!-- 記事一覧ブロックの表示 -->
-		<div class="article-index col-md-8">
+		<!-- 検索フォームの表示 -->
+		<div class="article-index col-md-9">
 			<div class="article-index-headline row">
-				<h3 class="col-md-offset-1">記事を探す</h3>
+				<h3 class="col-md-offset-1 col-sm-offset-2">記事を探す</h3>
 			</div>
+
 			<div class="row">
-				<div class="search-form col-md-6">
+				<div class="article-index-search-form col-md-6">
 					<%= form_tag(search_path, :method => "get") do %>
+
 						<!-- ユーザー検索か記事検索かを区別するためにmodel要素を渡す -->
 						<%= hidden_field_tag :model, "article" %>
 
-						<div class="form-group col-md-8 col-md-offset-1">
+						<div class="form-group col-xs-8 col-xs-offset-1">
 							<%= text_field_tag :search, "", class: "form-control" %>
 						</div>
 						<div class="actions col-xs-3">
-							<%= submit_tag "検索" ,:name => nil , class: "button is-info btn btn-primary"%>
+							<%= submit_tag "検索" ,:name => nil , class: "btn btn-primary"%>
 						</div>
 					<% end %>
 				</div>
-				<div class="fav-articles col-md-3">
+				<div class="article-index-favs col-md-3">
 					<%= link_to 'いいねした記事を表示', articles_path(favorite: "good"), class: "btn btn-success" %>
 				</div>
 			</div>
 
+		<!-- 記事一覧ブロックの表示 -->
 			<div class="article-index-body row">
 				<% @articles.each do |article| %>
-					<div class="article-index-item col-md-11 col-md-offset-1">
-						<div class="article-index-header row">
-							<div class="article-title col-md-9">
-								<%= link_to article_path(article) do %>
-									<%= article.article_title %>
+					<div class="article-index-mass">
+						<div class="article-index-item col-xs-10">
+							<div class="article-index-header row">
+								<div class="article-title col-xs-8">
+									<%= link_to article_path(article) do %>
+										<%= article.article_title %>
+									<% end %>
+								</div>
+								<div class="article-fav col-md-2">
+									<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i><%= article.favorites.count %>
+								</div>
+								<% if article.is_spoiler == true %>
+									<div class="article-spoiler col-xs-2"><span>ネタバレ</span></div>
 								<% end %>
 							</div>
-							<div class="article-index-fav col-md-1">
-								<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i><%= article.favorites.count %>
-							</div>
-							<% if article.is_spoiler == true %>
-								<div class="article-spoiler col-md-2 spoiler-true"><span>ネタバレ</span></div>
-							<% end %>
-						</div>
-						<div class="article-index-body row">
-							<div class="article-index-text">
+							<div class="article-text row">
 								<% if article.is_spoiler == true %>
 									<div class="col-md-12 spoiler-caution"><p>この記事はネタバレを含みます</p></div>
 								<% else %>
@@ -56,10 +61,14 @@
 						</div>
 					</div>
 				<% end %>
-				<div class="col-md-offset-5">
+			</div>
+
+			<div class="row">
+				<div class="col-md-offset-3 col-xs-offset-1">
 					<%= paginate @articles %>
 				</div>
 			</div>
+
 		</div>
 	</div>
 </div>

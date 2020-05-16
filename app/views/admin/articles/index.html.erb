@@ -1,4 +1,4 @@
-<!-- 管理者側の記事一覧 -->
+<!-- 管理者側の記事一覧ページ -->
 <div class="container-fluid">
 	<div class="row">
 
@@ -6,14 +6,15 @@
 			<div class="article-index-headline row">
 				<h3 class="text-center">記事一覧</h3>
 			</div>
+
  			<div class="row">
-				<div class="search-form">
+				<div class="article-index-search-form">
 					<%= search_form_for @q, url: admin_articles_path do |f| %>
 						<div class="form-group col-xs-8 col-xs-offset-1">
 						  <%= f.search_field :article_title_cont, class: "form-control" %>
 						</div>
 						<div class="actions col-xs-3">
-						  <%= f.submit "検索", class: "button is-info btn btn-primary" %>
+						  <%= f.submit "検索", class: "btn btn-primary" %>
 						</div>
 					<% end %>
 				</div>
@@ -22,38 +23,38 @@
 			<div class="article-index-body row">
 				<% if @articles.any? %>
 					<% @articles.each do |article| %>
-					<div class="article-index-body-item">
-						<div class="article-index-item">
-							<div class="article-index-header row">
-								<div class="article-title col-xs-8">
-									<%= link_to admin_article_path(article) do %>
-										<%= article.article_title %>
+						<div class="article-index-mass">
+							<div class="article-index-item">
+								<div class="article-index-item-header row">
+									<div class="article-title col-xs-8">
+										<%= link_to admin_article_path(article) do %>
+											<%= article.article_title %>
+										<% end %>
+									</div>
+									<div class="article-fav col-md-2 col-xs-3 text-center">
+										<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i><%= article.favorites.count %>
+									</div>
+									<% if article.is_spoiler == true %>
+										<div class="article-spoiler col-xs-2"><span>ネタバレ</span></div>
 									<% end %>
 								</div>
-								<div class="article-index-fav col-md-2 col-xs-3 text-center">
-									<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i><%= article.favorites.count %>
-								</div>
-								<% if article.is_spoiler == true %>
-									<div class="article-spoiler col-xs-2 spoiler-true"><span>ネタバレ</span></div>
-								<% end %>
-							</div>
-							<div class="article-index-body row">
-								<div class="article-index-text">
-									<div class="col-md-12"><p><%= article.content.slice(0..70) %></p></div>
+								<div class="article-text row">
+									<p><%= article.content.slice(0..70) %></p>
 								</div>
 							</div>
+							<div class="article-delete-button">
+								<%= link_to '削除する', admin_article_path(article), method: :delete, class: "btn btn-danger" %>
+							</div>
 						</div>
-						<div class="article-index-delete-button">
-							<%= link_to '削除する', admin_article_path(article), method: :delete, class: "btn btn-danger" %>
-						</div>
-					</div>
 					<% end %>
 				<% else %>
-					<div class="col-md-offset-1">
+					<div class="col-md-offset-4 col-xs-offset-2">
 						<h3>検索結果はありませんでした</h3>
 					</div>
 				<% end %>
-				<div class="col-md-offset-5 col-xs-offset-2">
+			</div>
+			<div class="row">
+				<div class="col-md-offset-3 col-xs-offset-1">
 					<%= paginate @articles %>
 				</div>
 			</div>

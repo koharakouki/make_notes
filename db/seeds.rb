@@ -26,21 +26,30 @@ User.create!(
   )
 end
 
-20.times do |n|
-  User.create!(
-    email: "#{n + 1}test@test.com",
-    name: "テスト二郎#{n + 1}",
-    password: "password",
-    introduction: "自己紹介" * 10,
-    created_at: DateTime.strptime("05/#{rand(01..31)}/2020 #{rand(00..23)}:30", '%m/%d/%Y %H:%M')
-  )
-end
+# 20.times do |n|
+#   User.create!(
+#     email: "#{n + 1}test@test.com",
+#     name: "テスト二郎#{n + 1}",
+#     password: "password",
+#     introduction: "自己紹介" * 10,
+#     created_at: DateTime.strptime("05/#{rand(01..31)}/2020 #{rand(00..23)}:30", '%m/%d/%Y %H:%M')
+#   )
+# end
 
 User.all.each do |user|
   user.articles.create!(
     article_title: 'タイトル',
     content: 'テキストテキストテキストテキスト' * 10,
     user_id: user.id
+  )
+end
+
+User.first(9).each do |user|
+  user.articles.create!(
+    article_title: 'タイトル',
+    content: 'テキストテキストテキストテキスト' * 30,
+    user_id: user.id,
+    is_spoiler: true
   )
 end
 

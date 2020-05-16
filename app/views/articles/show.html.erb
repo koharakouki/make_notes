@@ -1,37 +1,48 @@
+<!-- ユーザー側の記事詳細ページ -->
 <div class="container-fluid">
 	<div class="row">
+
+
 		<!-- user-infoの表示 -->
 		<div class="col-md-3">
 			<%= render 'shared/user_info', user: current_user %>
 		</div>
 
+
 		<!-- 記事詳細の表示 -->
 		<div class="col-md-8">
+
 			<div class="article-show-header row">
-				<h3 class="col-md-6 col-md-offset-1"><%= @article.article_title %></h3>
-				<div class="col-md-4 article-user-info">
+				<h3 class="article-title col-md-6 col-md-offset-1 col-xs-9">
+					<%= @article.article_title %>
+				</h3>
+				<div class="col-md-4 article-user-info hidden-sm hidden-xs">
 					<div class="article-user-logo col-md-4">
 						<%= link_to user_genres_path(@article.user) do %>
-				            <%= attachment_image_tag @article.user, :image, :fill, 70, 70, class: "prof-img", fallback: "no_image.png", size: "70x70" %>
-			         <% end %>
-			      </div>
-			      <div class="article-user-name col-md-8">
-			      	<% if @article.user.present? %>
-			          <h4><%= @article.user.name %></h4>
-			        <% else %>
-						  	<p>退会済みユーザー</p>
-						  <% end %>
-			      </div>
-		      </div>
-				<div id="favorites_buttons_<%= @article.id %>" class="col-md-1">
+				      <%= attachment_image_tag @article.user, :image, :fill, 70, 70,
+				                 class: "prof-img", fallback: "no_image.png", size: "70x70" %>
+			      <% end %>
+			    </div>
+			    <div class="article-user-name hidden-md">
+		      	<% if @article.user.present? %>
+		          <h4><%= @article.user.name %></h4>
+		        <% else %>
+					  	<p>退会済みユーザー</p>
+					  <% end %>
+			    </div>
+		    </div>
+				<div id="favorites_buttons_<%= @article.id %>" class="col-md-2 col-xs-3">
 					<%= render 'articles/favorite', article: @article %>
 				</div>
 			</div>
+
 			<div class="article-show-body row col-md-offset-1">
 				<div class="article-show-text col-md-11">
 					<p><%= @article.content %></p>
 				</div>
 			</div>
+
+
 			<!-- ここからコメントブロック -->
 			<div id="article-comment-box">
 				<%= render 'article_comment_form_and_index', article: @article, article_comment: @article_comment, article_comments: @article_comments %>
@@ -39,6 +50,7 @@
 			<div class="col-md-offset-3">
 				<%= paginate @article_comments%>
 			</div>
+
 		</div>
 	</div>
 </div>
