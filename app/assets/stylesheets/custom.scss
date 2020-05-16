@@ -83,7 +83,7 @@ td {
 
 // (_article_box)
 .new-articles {
-	width: 300px;
+	// width: 330px;
 	position: relative;
 	margin: 2em 0;
 	padding: 2em 1em;
@@ -103,7 +103,7 @@ td {
 	}
 	.article {
 		margin: 15px auto;
-		width: 260px;
+		// width: 260px;
 		height: 75px;
 		// background-color: #CCCC99;
 		border: 1px solid #CCC;
@@ -181,6 +181,16 @@ td {
 	}
 }
 
+// shared/_error_messages ------------------------------------------------------------
+.error {
+	background-color: #FFCCCC;
+	border-radius: 10px;
+	list-style: none;
+	border: 1px solid #FF6666;
+	li {
+		text-align: center;
+	}
+}
 
 // layouts/_admin_header, _user_header ----------------------------------------------------------
 nav {
@@ -540,18 +550,6 @@ footer {
 }
 
 
-// shared/_error_messages ------------------------------------------------------------
-.error {
-	background-color: #FFCCCC;
-	border-radius: 10px;
-	list-style: none;
-	border: 1px solid #FF6666;
-	li {
-		text-align: center;
-	}
-}
-
-
 // genres/_genre_index ------------------------------------------------------------
 .genre-header-addform {
 	margin-top: 15px;
@@ -603,13 +601,21 @@ footer {
 
 // articles/index ------------------------------------------------------------
 .search-form, .fav-articles {
-	margin-top: 15px;
+	max-width: 70%;
+	margin: 15px auto 0;
+}
+.article-index-body-item {
+	max-width: 85%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-bottom: 10px;
 }
 .article-index-item {
-	height: 80px;
 	background-color: #FFF;
-	margin-bottom: 20px;
 	border-radius: 10px;
+	margin: 10px;
 	padding: 10px;
 	.spoiler-true {
 		width: 80px;
@@ -628,9 +634,7 @@ footer {
 		margin-top: 10px;
 	}
 }
-.article-index-delete-button {
-	margin-top: 20px;
-}
+
 
 
 // articles/show ------------------------------------------------------------

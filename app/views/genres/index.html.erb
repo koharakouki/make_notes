@@ -1,20 +1,18 @@
 <div class="container-fluid">
 	<div class="row">
 		<!-- user-infoの表示 -->
-		<div class="col-xs-3">
+		<div class="col-lg-3 col-md-5 col-sm-5 col-xs-10" id="user-info">
 			<%= render 'shared/user_info', user: @user %>
 		</div>
 
 		<!-- ジャンル一覧の表示 -->
-		<div class="col-xs-6 genre-index">
-			<!-- 非同期をやめたのでコメントアウト -->
-			<!-- <div id="result"></div> -->
+		<div class="col-md-6 genre-index">
 			<%= render 'shared/error_messages', object: @genre %>
 			<%= render 'genre_index' %>
 		</div>
 
 		<!-- 記事一覧の表示 -->
-		<div class="col-xs-2">
+		<div class="col-lg-3">
 			<%= render 'shared/article_box', articles: @articles %>
 		</div>
 	</div>
