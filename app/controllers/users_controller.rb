@@ -29,14 +29,14 @@ class UsersController < ApplicationController
 
 	def following
     @user  = User.find(params[:id])
-    @users = @user.following.page(params[:page]).per(20)
+    @users = @user.following.page(params[:page]).per(10)
     @rank_users = User.find(Relationship.group(:followed_id).order('count(followed_id) DESC').pluck(:followed_id))
     render 'show_follow'
   end
 
   def followers
     @user  = User.find(params[:id])
-    @users = @user.followers.page(params[:page]).per(20)
+    @users = @user.followers.page(params[:page]).per(10)
     @rank_users = User.find(Relationship.group(:followed_id).order('count(followed_id) DESC').pluck(:followed_id))
     render 'show_follow'
   end
