@@ -1,4 +1,4 @@
-<div class="user-info-box hidden-xs">
+<div class="user-info-box">
 	<div class="text-center">
 		<%= link_to user_genres_path(user) do %>
 			<%= attachment_image_tag user, :image, :fill, 150, 150, class: "prof-img", fallback: "no_image.png", size: "150x150" %>
@@ -7,18 +7,18 @@
 	<table class="table">
 	    <tbody>
 	      <tr></tr>
-	      <tr>
-	         <td>
-	         	<div class="text-center user-info-name">
-		            <strong><%= user.name %></strong>
-		         </div>
-	         </td>
+	      <tr">
+	        <td>
+	          <div class="text-center user-info-name">
+		          <strong><%= user.name %></strong>
+		        </div>
+	        </td>
 	      </tr>
 	      <tr>
-	         <td>
-	            <p class="intro-title"><strong>自己紹介</strong></p>
-	            <p class="text-left"><%= user.introduction %></p>
-	         </td>
+	        <td>
+	          <p class="intro-title"><strong>自己紹介</strong></p>
+	          <p class="text-left"><%= user.introduction %></p>
+	        </td>
 	      </tr>
 	      <tr>
 	      	<td>
@@ -27,24 +27,25 @@
 		      	</div>
 	      	</td>
 	      </tr>
+
 	      <% if user_signed_in? %>
 	         <% if current_user != user %>
 	         	<!-- ユーザーフォローボタンを表示 -->
 	            <tr>
-	               <td>
-	                  <div class="text-center">
-	              	      <%= render 'users/follow_form', user: user %>
-	                  </div>
-	               </td>
+	              <td>
+	                <div class="text-center">
+	              	  <%= render 'users/follow_form', user: user %>
+	                </div>
+	              </td>
 	            </tr>
 	         <% else %>
 	         	<!-- 記事を書くボタンの表示 -->
 	            <tr>
-	               <td>
-	                  <div class="text-center">
-	                     <%= link_to "記事を書く", new_article_path ,class: "btn btn-info" %>
-	                  </div>
-	               </td>
+	              <td>
+	                <div class="text-center">
+	                  <%= link_to "記事を書く", new_article_path ,class: "btn btn-info" %>
+	                </div>
+	              </td>
 	            </tr>
 		         <!-- 観たいと観たのモーダルを表示 -->
 		         <tr class="want-done-button">
@@ -57,8 +58,9 @@
 				         			<%= render 'lists/want_list_form', list: List.new, genres: current_user.genres %>
 				         		</div>
 				         	</div>
-				         </div>
+				        </div>
 		         	</td>
+
 		         	<!-- 観た！ボタン -->
 		         	<td>
 		         		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#done-modal">観たに追加</button>
@@ -68,20 +70,19 @@
 				         			<%= render 'lists/done_list_form', list: List.new, genres: current_user.genres %>
 				         		</div>
 				         	</div>
-				         </div>
+				        </div>
 		         	</td>
-		         <tr>
-	         <% end %>
-               <td>
+		        <tr>
+	        <% end %>
+
             	<!-- カレンダー表示 -->
-            	   <div class="text-center">
-                     <%= link_to "カレンダーを見る", calendar_user_path(user) ,class: "btn btn-success" %>
-                  </div>
-               </td>
+              <td>
+            	  <div class="text-center">
+                  <%= link_to "カレンダーを見る", calendar_user_path(user) ,class: "btn btn-success" %>
+                </div>
+              </td>
             </tr>
 	      <% end %>
 	   </tbody>
 	</table>
 </div>
-
-
