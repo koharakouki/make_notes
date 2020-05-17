@@ -692,7 +692,7 @@ footer {
 	}
 	.user-index-info {
 		display: flex;
-		justify-content: space-between;
+		justify-content: flex-start;
 		align-items: center;
 		margin-bottom: 15px;
 		.user-index-img img {
@@ -872,15 +872,16 @@ footer {
 .list-index-headline {
 	display: flex;
 	align-items: center;
-	margin-bottom: 20px;
+	flex-wrap: wrap;
+	margin: 0 auto 20px;
 	.want-done-link {
-		display: flex
+		display: flex;
+		justify-content: center;
+		margin-top: 15px;
 	}
 }
-
-// lists/want,done ------------------------------------------------------------
 #change-list {
-	margin-left: 30px;
+	margin: 0 auto;
 }
 
 
@@ -928,8 +929,5 @@ footer {
 
 }
 
-@media screen and (max-width:425px){
-
-}
 
 

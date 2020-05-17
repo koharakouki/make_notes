@@ -2,13 +2,15 @@
 <div class="container-fluid">
 	<div class="row">
 
+
 		<!-- user-infoの表示 -->
-		<div class="col-md-3">
+		<div class="col-lg-3 col-md-4">
 			<%= render 'shared/user_info', user: current_user %>
 		</div>
 
+
 		<!-- 検索フォームの表示 -->
-		<div class="article-index col-md-9">
+		<div class="article-index col-lg-9 col-md-8">
 			<div class="article-index-headline row">
 				<h3 class="col-md-offset-1 col-sm-offset-2">記事を探す</h3>
 			</div>
@@ -32,6 +34,7 @@
 					<%= link_to 'いいねした記事を表示', articles_path(favorite: "good"), class: "btn btn-success" %>
 				</div>
 			</div>
+
 
 		<!-- 記事一覧ブロックの表示 -->
 			<div class="article-index-body row">

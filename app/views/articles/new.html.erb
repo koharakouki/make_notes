@@ -2,12 +2,13 @@
 	<div class="row">
 
 		<!-- user-infoの表示 -->
-		<div class="col-md-3">
+		<div class="col-lg-3 col-md-4">
 			<%= render 'shared/user_info', user: current_user %>
 		</div>
 
+
 		<!-- 記事作成ブロックの表示 -->
-		<div class="col-md-8">
+		<div class="col-lg-8 col-md-8">
       <%= render "shared/error_messages", object: @article %>
 
 			<div class="new-article-headline row">
