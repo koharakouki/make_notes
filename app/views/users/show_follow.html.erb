@@ -3,13 +3,13 @@
 
 
     <!-- user-infoの表示 -->
-    <div class="col-md-3">
+    <div class="col-lg-3 col-md-4">
       <%= render 'shared/user_info', user: @user %>
     </div>
 
 
     <!-- follower or followingのリスト表示 -->
-    <div class="col-md-6 show-follow-list">
+    <div class="col-lg-6 col-md-8 show-follow-list">
 
       <div class="show-follow-list-header row text-center">
         <% if request.url.include? "followers" %>

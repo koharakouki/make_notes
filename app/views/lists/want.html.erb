@@ -1,39 +1,39 @@
 <div class="container-fluid">
 	<div class="row">
 		<!-- ユーザー情報の表示 -->
-		<div class="col-md-3">
+		<div class="col-lg-3 col-md-4">
 			<%= render 'shared/user_info', user: @user %>
 		</div>
 
 		<!-- マイリスト一覧の表示 -->
-		<div class="col-md-9">
+		<div class="col-lg-9 col-md-8">
 			<div class="list-index-headline row">
-				<h3 class="col-md-4"><%= link_to "マイリスト＞", user_genres_path %>
+				<h3 class="col-lg-5 col-md-5 col-xs-12 text-center"><%= link_to "マイリスト", user_genres_path %>
 					<% if @genre.present? %>
-						<%= @genre.name %>（観たい）
+						＞<%= @genre.name %>
 					<% else %>
-						ALL（観たい）
+						＞ALL
 					<% end %>
 				</h3>
 
 				<!-- 日付で並び替えをする処理 -->
-				<div class="col-md-3">
+				<div class="col-lg-3 col-md-6 col-xs-12 text-center">
 					<% if @genre.present? %>
 						<%= form_tag(want_path(@user), method: :get) do |f| %>
 							<%= select_tag :sort, options_for_select([["選択してください", ''], ["追加順", 1], ["日時降順", 2], ["日時昇順", 3]]) %>
 							<%= hidden_field_tag :genre_id, "#{@genre.id}" %>
-						  <input type="submit" value="並び替え" class="btn btn-warning">
+						  <input type="submit" value="並び替え" class="btn btn-warning btn-sm">
 						<% end %>
 					<% else %>
 						<%= form_tag(want_path(@user), method: :get) do |f| %>
 							<%= select_tag :sort, options_for_select([["選択してください", ''], ["追加順", 1], ["日時降順", 2], ["日時昇順", 3]]) %>
-						  <input type="submit" value="並び替え" class="btn btn-warning">
+						  <input type="submit" value="並び替え" class="btn btn-warning btn-sm">
 						<% end %>
 					<% end %>
 				</div>
 
 				<!-- 観たいと観たを切り替え -->
-				<div class="want-done-link col-md-4 col-md-offset-1">
+				<div class="want-done-link col-lg-4 col-md-6 col-xs-12 text-center">
 					<div class="want-list-link col-md-5 col-md-offset-1">
 						<% if @genre.present? %>
 							<%= link_to '観たいへ', want_path(@user, { genre_id: @genre.id }), class: "btn btn-success btn-lg" %>
@@ -42,7 +42,7 @@
 						<% end %>
 					</div>
 
-					<div class="done-list-link col-md-5">
+					<div class="done-list-link col-lg-5 col-md-5">
 						<% if @genre.present? %>
 							<%= link_to '観たへ', done_path(@user, { genre_id: @genre.id }), class: "btn btn-info btn-lg" %>
 						<% else %>
@@ -52,13 +52,14 @@
 				</div>
 			</div>
 
+
 			<div class="list-index-body row">
 
 				<!-- 観たいリストを表示 -->
-				<div class="col-xs-10" id="change-list">
+				<div class="col-xs-12" id="change-list">
 				  <%= render 'want_list' %>
 			  </div>
-			  <div class="col-md-offset-4">
+			  <div class="col-md-offset-4 col-xs-offset-3">
 					<%= paginate @want_list %>
 				</div>
 			</div>

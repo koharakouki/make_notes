@@ -25,22 +25,18 @@
 <!-- マイリスト ジャンル一覧 -->
 <div id="mylist-genres-box">
 	<div class="genre-box row">
-		<div class="genre-box-text col-md-offset-1 col-md-9 col-xs-10 col-xs-offset-1 text-center">
-			<%= link_to want_path(@user) do %>
-			  <span>ALL</span>
-	    <% end %>
-	  </div>
+		<%= link_to want_path(@user), class: "genre-box-text col-md-offset-1 col-md-9 col-xs-10 col-xs-offset-1 text-center" do %>
+			<span>ALL</span>
+	  <% end %>
   </div>
 
   <div id="genres">
 		<% @genres.each do |genre| %>
 
 			<div class="genre-box row">
-				<div class="genre-box-text col-md-9 col-md-offset-1 col-xs-9 col-xs-offset-1 text-center">
-					<%= link_to want_path(@user, { genre_id: genre.id }) do %>
-						<span><%= genre.name %></span>
-				  <% end %>
-				</div>
+ 				<%= link_to want_path(@user, { genre_id: genre.id }), class: "genre-box-text col-md-9 col-md-offset-1 col-xs-9 col-xs-offset-1 text-center" do %>
+				  <span><%= genre.name %></span>
+				<% end %>
 				<% if @user == current_user %>
 					<div class="genre-box-delete-button col-md-2">
 					 	<%= link_to '削除', user_genre_path(current_user,genre), method: :delete, class: "btn btn-danger", data: { confirm: '削除しますか？' } %>
@@ -50,10 +46,10 @@
 
 		<% end %>
 	</div>
-
 </div>
+
 <div class="row">
-	<div class="col-md-offset-4 col-xs-offset-3">
+	<div class="col-md-offset-4 col-xs-offset-4">
 		<%= paginate @genres %>
 	</div>
 </div>
