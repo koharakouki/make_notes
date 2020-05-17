@@ -10,7 +10,7 @@ class User < ApplicationRecord
 # 　Refileの設定
   attachment :image
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 100 }
   validates :introduction, length: { maximum: 100 }, allow_nil: true
   # メールアドレスの正規表現
   VALID_EMAIL_REGIX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
