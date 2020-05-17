@@ -551,46 +551,39 @@ footer {
 
 
 // genres/_genre_index ------------------------------------------------------------
-.genre-header-addform {
-	margin-top: 15px;
-}
-#mylist-genres-box {
-	border-right: 3px solid #CCC;
-	border-left: 3px solid #CCC;
-	border-radius: 5px;
-	margin: 0 auto;
-	height: 500px;
-	padding: 20px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	align-content: flex-start;
-
-	.genre-box {
-		width: 550px;
-		height: 50px;
-		border-radius: 10px;
-		margin-right: 10px;
-		border: 5px solid #CCC;
-		display: flex;
-		justify-content: center;
-	  align-items: center;
-	  background-color: #FFF;
-		&:hover {
-			background-color: #CCC;
-			text-decoration: none;
-		}
-		span {
-			color: #000;
-			font-size: 25px;
-		}
+.genre-header {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	.genre-header-addform {
+		margin-top: 20px;
 	}
 }
-.genre-button {
+#mylist-genres-box {
+	max-width: 95%;
+	margin: 0 auto;
+	padding-top: 10px;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 20px 0;
+	flex-direction: column;
+	flex-wrap: wrap;
+	.genre-box {
+		margin-top: 10px;
+		display: flex;
+	  align-items: center;
+		.genre-box-text {
+			padding: 10px;
+			border: 5px solid #CCC;
+			border-radius: 10px;
+			background-color: #FFF;
+			&:hover {
+				background-color: #CCC;
+				text-decoration: none;
+			}
+			span {
+				color: #000;
+				font-size: 25px;
+			}
+		}
+	}
 }
 
 

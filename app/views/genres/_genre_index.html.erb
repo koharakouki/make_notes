@@ -1,13 +1,16 @@
 <div class="genre-header row">
-	<div class="genre-header-headline col-xs-3">
+	<div class="genre-header-headline col-md-4 col-md-offset-1 col-xs-5">
 		<h3>マイリスト</h3>
 	</div>
-	<div class="col-xs-6 col-xs-offset-3">
+
+	<!-- ジャンル追加フォーム -->
+	<div class="col-md-6 col-md-offset-1 col-xs-7">
 		<% if @user == current_user %>
 			<%= form_with(model: @genre, url: user_genres_path, local: true) do |f| %>
+
 				<div class="row row-0 genre-header-addform">
-					<div class="form-group col-xs-7">
-						<%= f.text_field :name, placeholder: "ジャンル　(8文字以内)", class: "form-control" %>
+					<div class="form-group col-xs-8">
+						<%= f.text_field :name, placeholder: "ジャンル(8文字以内)", class: "form-control" %>
 					</div>
 
 					<div class="actions col-xs-2">
@@ -19,18 +22,38 @@
 	</div>
 </div>
 
-
+<!-- マイリスト ジャンル一覧 -->
 <div id="mylist-genres-box">
-	<%= link_to want_path(@user), class: "genre-box" do %>
-		<span>ALL</span>
-   <% end %>
-   <!-- もっとみるの部分 -->
-   <div id="genres">
-		<%= render 'genres', user: @user, genres: @genres %>
+	<div class="genre-box row">
+		<div class="genre-box-text col-md-offset-1 col-md-9 col-xs-10 col-xs-offset-1 text-center">
+			<%= link_to want_path(@user) do %>
+			  <span>ALL</span>
+	    <% end %>
+	  </div>
+  </div>
+
+  <div id="genres">
+		<% @genres.each do |genre| %>
+
+			<div class="genre-box row">
+				<div class="genre-box-text col-md-9 col-md-offset-1 col-xs-9 col-xs-offset-1 text-center">
+					<%= link_to want_path(@user, { genre_id: genre.id }) do %>
+						<span><%= genre.name %></span>
+				  <% end %>
+				</div>
+				<% if @user == current_user %>
+					<div class="genre-box-delete-button col-md-2">
+					 	<%= link_to '削除', user_genre_path(current_user,genre), method: :delete, class: "btn btn-danger", data: { confirm: '削除しますか？' } %>
+					</div>
+			  <% end %>
+			</div>
+
+		<% end %>
 	</div>
-	<!-- <div class="more"><%#= link_to_next_page @genres, 'もっと見る', remote: true, id: 'view_more', class: "btn btn-success" %></div> -->
-	<div class="col-xs-offset-4">
+
+</div>
+<div class="row">
+	<div class="col-md-offset-4 col-xs-offset-3">
 		<%= paginate @genres %>
 	</div>
-
 </div>
