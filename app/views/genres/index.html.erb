@@ -1,19 +1,23 @@
 <div class="container-fluid">
-	<div class="row">
-		<!-- user-infoの表示 -->
-		<div class="col-lg-3 col-md-5 col-sm-5 col-xs-10" id="user-info">
-			<%= render 'shared/user_info', user: @user %>
-		</div>
+  <div class="row">
 
-		<!-- ジャンル一覧の表示 -->
-		<div class="col-md-6 genre-index">
-			<%= render 'shared/error_messages', object: @genre %>
-			<%= render 'genre_index' %>
-		</div>
 
-		<!-- 記事一覧の表示 -->
-		<div class="col-lg-3">
-			<%= render 'shared/article_box', articles: @articles %>
-		</div>
-	</div>
+    <!-- user-infoの表示 -->
+    <div class="col-lg-3 col-md-5" id="user-info">
+      <%= render 'shared/user_info', user: @user %>
+    </div>
+
+
+    <!-- ジャンル一覧の表示 -->
+    <div class="col-lg-6 col-md-7 genre-index">
+      <%= render 'shared/error_messages', object: @genre %>
+      <%= render 'genre_index' %>
+    </div>
+
+
+    <!-- 記事一覧の表示 -->
+    <div class="col-lg-3">
+      <%= render 'shared/article_box', articles: @articles %>
+    </div>
+  </div>
 </div>
