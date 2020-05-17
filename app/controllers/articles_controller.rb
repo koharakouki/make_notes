@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
 		# いいねした記事のみを表示するためにリンクのパラメータに[:favorite]を持たせる
 		if params[:favorite].present?
 			articles = []
-			Article.all.each do |article|
+			Article.includes(:favorites).all.each do |article|
 				article.favorites.each do |favorite|
 					if favorite.user_id == current_user.id
 						articles << favorite.article
@@ -36,7 +36,7 @@ class ArticlesController < ApplicationController
 	def show
 		@article = Article.find(params[:id])
 		@article_comment = ArticleComment.new
-		@article_comments = ArticleComment.where(article_id: @article.id).order(created_at: :desc).page(params[:page]).per(10)
+		@article_comments = ArticleComment.includes(:user).where(article_id: @article.id).order(created_at: :desc).page(params[:page]).per(10)
 	end
 
 	def destroy

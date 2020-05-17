@@ -14,27 +14,27 @@ class ListsController < ApplicationController
 			if @genre.present?
 				case params[:sort]
 				when nil || "1"
-					@want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
+					@want_list = @user.lists.includes(:genre).where(is_watched: false).where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
 				when "2"
-					@want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id).order(start_time: :desc).page(params[:page]).per(15)
+					@want_list = @user.lists.includes(:genre).where(is_watched: false).where(genre_id: @genre.id).order(start_time: :desc).page(params[:page]).per(15)
 				when "3"
-					@want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id).order(start_time: :asc).page(params[:page]).per(15)
+					@want_list = @user.lists.includes(:genre).where(is_watched: false).where(genre_id: @genre.id).order(start_time: :asc).page(params[:page]).per(15)
 				end
 			else
 				case params[:sort]
 				when nil || "1"
-					@want_list = @user.lists.where(is_watched: false).order(updated_at: :desc).page(params[:page]).per(15)
+					@want_list = @user.lists.includes(:genre).where(is_watched: false).order(updated_at: :desc).page(params[:page]).per(15)
 				when "2"
-					@want_list = @user.lists.where(is_watched: false).order(start_time: :desc).page(params[:page]).per(15)
+					@want_list = @user.lists.includes(:genre).where(is_watched: false).order(start_time: :desc).page(params[:page]).per(15)
 				when "3"
-					@want_list = @user.lists.where(is_watched: false).order(start_time: :asc).page(params[:page]).per(15)
+					@want_list = @user.lists.includes(:genre).where(is_watched: false).order(start_time: :asc).page(params[:page]).per(15)
 				end
 			end
 		else
 			if @genre.present?
-			  @want_list = @user.lists.where(is_watched: false).where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
+			  @want_list = @user.lists.includes(:genre).where(is_watched: false).where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
 		  else
-			  @want_list = @user.lists.where(is_watched: false).order(updated_at: :desc).page(params[:page]).per(15)
+			  @want_list = @user.lists.includes(:genre).where(is_watched: false).order(updated_at: :desc).page(params[:page]).per(15)
 		  end
 		end
 	end
@@ -52,27 +52,27 @@ class ListsController < ApplicationController
 			if @genre.present?
 				case params[:sort]
 				when nil || "1"
-					@done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
+					@done_list = @user.lists.includes(:genre).where(is_watched: true).where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
 				when "2"
-					@done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id).order(start_time: :desc).page(params[:page]).per(15)
+					@done_list = @user.lists.includes(:genre).where(is_watched: true).where(genre_id: @genre.id).order(start_time: :desc).page(params[:page]).per(15)
 				when "3"
-					@done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id).order(start_time: :asc).page(params[:page]).per(15)
+					@done_list = @user.lists.includes(:genre).where(is_watched: true).where(genre_id: @genre.id).order(start_time: :asc).page(params[:page]).per(15)
 				end
 			else
 				case params[:sort]
 				when nil || "1"
-					@done_list = @user.lists.where(is_watched: true).order(updated_at: :desc).page(params[:page]).per(15)
+					@done_list = @user.lists.includes(:genre).where(is_watched: true).order(updated_at: :desc).page(params[:page]).per(15)
 				when "2"
-					@done_list = @user.lists.where(is_watched: true).order(start_time: :desc).page(params[:page]).per(15)
+					@done_list = @user.lists.includes(:genre).where(is_watched: true).order(start_time: :desc).page(params[:page]).per(15)
 				when "3"
-					@done_list = @user.lists.where(is_watched: true).order(start_time: :asc).page(params[:page]).per(15)
+					@done_list = @user.lists.includes(:genre).where(is_watched: true).order(start_time: :asc).page(params[:page]).per(15)
 				end
 			end
 		else
 			if @genre.present?
-			  @done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
+			  @done_list = @user.lists.includes(:genre).where(is_watched: true).where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
 		  else
-			  @done_list = @user.lists.where(is_watched: true).order(updated_at: :desc).page(params[:page]).per(15)
+			  @done_list = @user.lists.includes(:genre).where(is_watched: true).order(updated_at: :desc).page(params[:page]).per(15)
 		  end
 		end
 	end

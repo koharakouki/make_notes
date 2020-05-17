@@ -12,7 +12,7 @@ class Article < ApplicationRecord
 
 	def self.search(content)
     if content
-      where(['article_title or content LIKE ?', "%#{content}%"])
+      where('article_title LIKE ? OR content LIKE ?', "%#{content}%", "%#{content}%")
     end
   end
 end
