@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :list do
-    association :user
-    association :genre
+    genre
+    user { genre.user }
     title { 'タイトル' }
-    is_watched { false }
+    is_watched { true }
   end
 end
 

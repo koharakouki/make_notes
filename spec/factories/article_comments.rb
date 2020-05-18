@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :article_comment do
-    association :user
-    association :article
-    comment { Faker::Lorem.characters(number:20) }
+    article
+    user { article.user }
+    content { Faker::Lorem.characters(number:20) }
   end
 end
 

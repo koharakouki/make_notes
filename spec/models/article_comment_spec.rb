@@ -1,5 +1,31 @@
 require 'rails_helper'
 
 RSpec.describe ArticleComment, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'バリデーションのテスト' do
+  	let!(:article_comment) { create(:article_comment) }
+
+    it '項目が存在すれば有効' do
+    	expect(article_comment).to be_valid
+    end
+
+    it 'user_idが存在していなければ無効' do
+    	article_comment.user_id = ''
+    	expect(article_comment).to_not be_valid
+    end
+
+    it 'article_idが存在していなければ無効' do
+    	article_comment.article_id = ''
+    	expect(article_comment).to_not be_valid
+    end
+
+    it 'contentが存在していなければ無効' do
+    	article_comment.content = ''
+    	expect(article_comment).to_not be_valid
+    end
+
+    it 'contentが100文字以下であること' do
+    	article_comment.content = "a" * 101
+    	expect(article_comment).to_not be_valid
+    end
+  end
 end
