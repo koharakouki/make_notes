@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe List, type: :model do
   describe 'バリデーションのテスト' do
-  	let!(:list) { create(:list) }
+    let!(:user) { create(:user) }
+    let!(:genre) { create(:genre, user_id: user.id, name: '映画') }
+  	let!(:list) { create(:list, user_id: user.id, genre_id: genre.id) }
 
   	it '項目が存在すれば有効' do
   		expect(list).to be_valid
@@ -30,11 +32,6 @@ RSpec.describe List, type: :model do
 
   	it 'titleは23文字以下であること' do
   		list.title = 'a' * 24
-  		expect(list).to_not be_valid
-  	end
-
-  	it 'is_watchedが存在していなければ無効' do
-  		list.is_watched = nil
   		expect(list).to_not be_valid
   	end
   end
