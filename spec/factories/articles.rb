@@ -3,7 +3,7 @@ FactoryBot.define do
     association :user
     article_title { 'タイトルタイトルタイトル' }
     content { '本文本文本文本文本文本文本文本文本文本文' }
-    is_spoiler { false }
+    is_spoiler { true }
   end
 end
 

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :favorite do
-    association :user
-    association :article
+    article
+    user { article.user }
   end
 end
 
