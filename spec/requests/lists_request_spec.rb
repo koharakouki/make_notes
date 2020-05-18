@@ -111,4 +111,35 @@ RSpec.describe "ListsController", type: :request do
 	    end
 	  end
   end
+
+  describe 'GET #show' do
+  	let!(:list) { create(:list, user_id: user.id, genre_id: genre.id) }
+  	context 'ログインしている場合' do
+  		before do
+  			sign_in user
+  		end
+
+  		it 'リクエストが成功すること' do
+  			get user_list_url(user_id: user.id, id: list.id)
+  			expect(response.status).to eq 200
+  		end
+
+  		it 'リストのタイトルが表示されていること' do
+  			get user_list_url(user_id: user.id, id: list.id)
+  			expect(response.body).to include "#{list.title}"
+  		end
+
+  		it '新着記事が表示されていること' do
+  			get user_list_url(user_id: user.id, id: list.id)
+  			expect(response.body).to include "新着記事"
+  		end
+  	end
+
+  	context 'ログインしていない場合' do
+  		it 'リクエストが失敗すること' do
+  			get user_list_url(user_id: user.id, id: list.id)
+  			expect(response.status).to eq 302
+  		end
+  	end
+  end
 end
