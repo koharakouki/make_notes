@@ -1,9 +1,15 @@
 FactoryBot.define do
   factory :list do
     genre
-    user { genre.user }
-    title { 'タイトル' }
+    user
+    title { '作品タイトルA' }
     is_watched { true }
+  end
+
+  factory :other_list, class: List do
+  	genre
+    user
+    title { '作品タイトルB' }
   end
 end
 
