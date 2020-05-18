@@ -5,7 +5,7 @@ class UsersController < ApplicationController
  	def index
  		@users = User.page(params[:page]).per(10)
  		#フォロワーランキング
-		@rank_users = User.find(Relationship.group(:followed_id).order('count(followed_id) DESC').pluck(:followed_id))
+		@rank_users = User.find(Relationship.group(:followed_id).order(Arel.sql('count(followed_id) DESC')).pluck(:followed_id))
  	end
 
 	def edit
@@ -21,23 +21,23 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def destroy
-		@user = User.find(params[:id])
-		@user.delete
-		redirect_back(fallback_location: admin_users_path)
-	end
+	# def destroy
+	# 	@user = User.find(params[:id])
+	# 	@user.delete
+	# 	redirect_back(fallback_location: admin_users_path)
+	# end
 
 	def following
     @user  = User.find(params[:id])
     @users = @user.following.page(params[:page]).per(10)
-    @rank_users = User.find(Relationship.group(:followed_id).order('count(followed_id) DESC').pluck(:followed_id))
+    @rank_users = User.find(Relationship.group(:followed_id).order(Arel.sql('count(followed_id) DESC')).pluck(:followed_id))
     render 'show_follow'
   end
 
   def followers
     @user  = User.find(params[:id])
     @users = @user.followers.page(params[:page]).per(10)
-    @rank_users = User.find(Relationship.group(:followed_id).order('count(followed_id) DESC').pluck(:followed_id))
+    @rank_users = User.find(Relationship.group(:followed_id).order(Arel.sql('count(followed_id) DESC')).pluck(:followed_id))
     render 'show_follow'
   end
 
