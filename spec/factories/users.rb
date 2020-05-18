@@ -5,6 +5,10 @@ FactoryBot.define do
     introduction { Faker::Lorem.characters(number:20) }
     password { 'password' }
     password_confirmation { 'password' }
+
+    trait :invalid do
+      name {nil}
+    end
   end
 
   factory :other_user, class: User do
@@ -13,6 +17,10 @@ FactoryBot.define do
     introduction { Faker::Lorem.characters(number:20) }
     password { '000000' }
     password_confirmation { '000000' }
+
+    trait :invalid do
+      name {nil}
+    end
   end
 end
 
