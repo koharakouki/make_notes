@@ -4,7 +4,7 @@ RSpec.describe "UsersController", type: :request do
   describe 'GET #index' do
   	let!(:user) { create(:user) }
 
-  	context 'ログインしているとき' do
+  	context 'ログインしている場合' do
 	  	before do
 	  		sign_in user
 	  	end
@@ -30,7 +30,7 @@ RSpec.describe "UsersController", type: :request do
 	  	end
 	  end
 
-	  context 'ログインしていないとき' do
+	  context 'ログインしていない場合' do
 	  	it 'リクエストが失敗すること' do
 	  		get users_url
 	  		expect(response.status).to eq 302
@@ -42,7 +42,7 @@ RSpec.describe "UsersController", type: :request do
   describe 'GET #edit' do
   	let!(:user) { create(:user) }
 
-  	context 'ログインしているとき' do
+  	context 'ログインしている場合' do
   		before do
   			sign_in user
   		end
@@ -58,7 +58,7 @@ RSpec.describe "UsersController", type: :request do
   		end
   	end
 
-  	context 'ログインしていないとき' do
+  	context 'ログインしていない場合' do
   		it 'リクエストが失敗すること' do
   			get edit_user_url(user)
   			expect(response.status).to eq 302
@@ -73,7 +73,7 @@ RSpec.describe "UsersController", type: :request do
   		sign_in user
   	end
 
-    context '正常なパラメータのとき' do
+    context '正常なパラメータの場合' do
     	it 'リクエストが成功すること' do
 	    	patch user_url(user), params: { user: attributes_for(:other_user) }
 	    	expect(response.status).to eq 302
@@ -91,7 +91,7 @@ RSpec.describe "UsersController", type: :request do
 		  end
     end
 
-    context '不正なパラメータのとき' do
+    context '不正なパラメータの場合' do
     	it 'リクエストが成功すること' do
     		patch user_url(user), params: { user: FactoryBot.attributes_for(:user, :invalid) }
     		expect(response.status).to eq 200
@@ -114,7 +114,7 @@ RSpec.describe "UsersController", type: :request do
   describe 'GET #following' do
   	let!(:user) { create(:user) }
 
-  	context 'ログインしているとき' do
+  	context 'ログインしている場合' do
   		before do
   			sign_in user
   		end
@@ -135,7 +135,7 @@ RSpec.describe "UsersController", type: :request do
   		end
   	end
 
-  	context 'ログインしていないとき' do
+  	context 'ログインしていない場合' do
   		it 'リクエストが失敗すること' do
   			get following_user_url(user)
   			expect(response.status).to eq 302
@@ -147,7 +147,7 @@ RSpec.describe "UsersController", type: :request do
   describe 'GET #followers' do
   	let!(:user) { create(:user) }
 
-  	context 'ログインしているとき' do
+  	context 'ログインしている場合' do
   		before do
   			sign_in user
   		end
@@ -168,7 +168,7 @@ RSpec.describe "UsersController", type: :request do
   		end
   	end
 
-  	context 'ログインしていないとき' do
+  	context 'ログインしていない場合' do
   		it 'リクエストが失敗すること' do
   			get followers_user_url(user)
   			expect(response.status).to eq 302
@@ -180,7 +180,7 @@ RSpec.describe "UsersController", type: :request do
   describe 'GET #calendar' do
   	let!(:user) { create(:user) }
 
-  	context 'ログインしているとき' do
+  	context 'ログインしている場合' do
   		before do
   			sign_in user
   		end
@@ -201,7 +201,7 @@ RSpec.describe "UsersController", type: :request do
   		end
   	end
 
-  	context 'ログインしていないとき' do
+  	context 'ログインしていない場合' do
   		it 'リクエストに失敗すること' do
   			get calendar_user_url(user)
   			expect(response.status).to eq 302
