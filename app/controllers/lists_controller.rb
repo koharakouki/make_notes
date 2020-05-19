@@ -112,6 +112,7 @@ class ListsController < ApplicationController
 
 	def update
 		@list = List.find(params[:list_id])
+		@articles = Article.all.order(created_at: :desc)
 		if params[:edit_list].present?
 			respond_to do |format|
 				if @list.update(list_params)
@@ -141,8 +142,11 @@ class ListsController < ApplicationController
 	      end
 			end
 		else
-			@list.update!(list_params)
-			redirect_to request.referer
+			if @list.update(list_params)
+			  redirect_to user_list_url(user_id: @list.user.id, id: @list.id)
+			else
+				render 'show'
+			end
 		end
 	end
 

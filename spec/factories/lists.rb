@@ -11,6 +11,19 @@ FactoryBot.define do
     user
     title { '作品タイトルB' }
   end
+
+  factory :other_list_a, class: List do
+    genre
+    user
+    title { '作品タイトルC' }
+    media { 'Netflix' }
+    rate { 3.0 }
+    impression { '面白い' }
+
+    trait :invalid do
+      title {nil}
+    end
+  end
 end
 
 
