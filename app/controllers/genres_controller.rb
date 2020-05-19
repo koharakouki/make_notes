@@ -19,7 +19,7 @@ class GenresController < ApplicationController
       @user = User.find_by(id: params[:user_id])
       @genres = @user.genres.page(params[:page]).per(6)
       respond_to do |format|
-        format.html { redirect_to request.referer }
+        format.html { redirect_to user_genres_path(user_id: @user.id)}
         format.js
       end
     else
