@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :admin do
-    sequence(:email) { |n| "user_#{n}@exmaple.com"}
-    introduction { Faker::Lorem.characters(number:20) }
+    sequence(:email) { "admin@example.com" }
     password { 'password' }
     password_confirmation { 'password' }
   end

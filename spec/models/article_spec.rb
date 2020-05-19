@@ -27,10 +27,5 @@ RSpec.describe Article, type: :model do
   		article.content = ''
   		expect(article).to_not be_valid
   	end
-
-  	it 'is_spoilerが存在していなければ無効' do
-  		article.is_spoiler = ''
-  		expect(article).to_not be_valid
-  	end
   end
 end

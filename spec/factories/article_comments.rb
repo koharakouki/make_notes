@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :article_comment do
     article
-    user { article.user }
-    content { Faker::Lorem.characters(number:20) }
+    user
+    content { "コメントです" }
   end
 end
 

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :favorite do
     article
-    user { article.user }
+    user
   end
 end
 

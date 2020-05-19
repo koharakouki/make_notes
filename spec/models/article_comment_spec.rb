@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe ArticleComment, type: :model do
   describe 'バリデーションのテスト' do
-  	let!(:article_comment) { create(:article_comment) }
+    let!(:user) { create(:user) }
+    let!(:article) { create(:article, user_id: user.id) }
+  	let!(:article_comment) { create(:article_comment, user_id: user.id, article_id: article.id) }
 
     it '項目が存在すれば有効' do
     	expect(article_comment).to be_valid

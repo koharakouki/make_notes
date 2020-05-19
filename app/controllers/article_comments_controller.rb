@@ -14,8 +14,7 @@ class ArticleCommentsController < ApplicationController
 	          format.js
 		  end
 		else
-			# flash[:notice] = 'コメントを追加できませんでした'
-			redirect_to request.referer
+			redirect_to article_url(article.id)
 		end
 	end
 

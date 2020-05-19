@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       genre: ジャンル
       article: 記事
+      article_comment: コメント
     attributes:
       user:
         name: ユーザーネーム
@@ -17,3 +18,5 @@ ja:
       article:
         article_title: 記事タイトル
         content: 本文
+      article_comment:
+        content: コメント内容
