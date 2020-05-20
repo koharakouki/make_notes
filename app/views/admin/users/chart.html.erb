@@ -3,7 +3,7 @@
 	<div class="chart">
 		<h4>総登録者数 <%= User.all.count %>人</h4>
 		<h3>登録者数遷移</h3>
-		<%= line_chart @user_create, width: "100%", height: "300px", min: 0, max: 50, xmin: @lastmonth_today, xmax: @today, label: "Value", xtitle: "日付", ytitle: "登録件数", download: true %>
+		<%= line_chart @user_create, width: "100%", height: "300px", min: 0, max: 50,label: "Value", xtitle: "日付", ytitle: "登録件数", download: true %>
 	</div>
 
 	<div class="chart">
@@ -13,4 +13,3 @@
 	</div>
 </div>
 
-<%#= line_chart User.group_by_day(:created_at).count %>
