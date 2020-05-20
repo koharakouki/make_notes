@@ -12,3 +12,5 @@
 		<%= column_chart @article_create, width: "100%", height: "300px", min: 0, max: 20, xmin: @lastmonth_today, xmax: @today, label: "Value", xtitle: "日付", ytitle: "投稿件数", download: true %>
 	</div>
 </div>
+
+<%= line_chart User.group_by_day(:created_at).count %>
