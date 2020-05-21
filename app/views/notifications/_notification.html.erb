@@ -1,13 +1,21 @@
-<div class="container">
+<div class="n-item">
 	<% visiter = notification.visiter %>
 	<% visited = notification.visited %>
-	<div class="col-md-6">
+	<div class="n-visiter-img">
+		<span>・</span>
 		<%= link_to user_genres_path(user_id: visiter.id) do %>
-			<%= attachment_image_tag visiter, :image, :fill, 100, 100, fallback: "no_image.png", size: "50x50", class:"profile-img-circle" %>
-			<%= visiter.name %>
+			<%= attachment_image_tag visiter, :image, :fill, 50, 50, fallback: "no_image.png", size: "50x50", class: "n-img" %>
 		<% end %>
-		さんが
+	</div>
+	<div class="n-visiter-name">
+		<%= link_to user_genres_path(user_id: visiter.id) do %>
+		  <%= visiter.name %>
+		<% end %>
+		<span>さんが</span>
+	</div>
 
+<!-- フォロー・いいね・コメントで場合分け -->
+	<div class="n-content">
 		<% case notification.action %>
 		<% when 'follow' %>
 		  <span>あなたをフォローしました</span>
@@ -17,12 +25,22 @@
 		  <% if notification.article.user_id == visited.id %>
 		  	<%= link_to 'あなたの投稿', article_path(notification.article.id) %>にコメントしました
 		  <% else %>
-		  	<%= link_to article_path(notification.article.id) do %>
-		  		<%= notification.article.user.name %>さんの投稿
-		  	<% end %>
-		  	にコメントしました
+		    <div class="n-article-img">
+			  	<%= link_to article_path(notification.article.id) do %>
+			  	  <%= attachment_image_tag notification.article.user, :image, :fill, 50, 50, fallback: "no_image.png", size: "50x50", class: "n-img" %>
+			  	<% end %>
+			  </div>
+			  <div class="n-artcle-name">
+			  	<%= link_to article_path(notification.article.id) do %>
+			  		<%= notification.article.user.name %>さんの投稿
+			  	<% end %>
+		  	</div>にコメントしました
 		  <% end %>
 		<% end %>
+	</div>
+
+<!-- 通知の時間を表示 -->
+	<div class="n-time">
 		<span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
 	</div>
 </div>

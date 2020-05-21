@@ -1,16 +1,13 @@
 <div class="container">
-	<h3 class="text-center">通知</h3>
-	    <%#= link_to destroy_all_users_notifications_path, method: :delete do %>
-<!-- 	        <i class="fas fa-trash" style="color: black;"></i>
-	        <h7 style="color: black;">全削除</h7>
-	    <%# end %>
-	    <hr> -->
-	<%# notifications = @notifications.where.not(visitor_id: current_user.id) %>
+	<h2>通知</h2>
+
 	<% if @notifications.exists? %>
-	    <div class="users-index">
+	    <div class="n-box">
 	        <%= render @notifications %>
 	    </div>
-	    <%= paginate @notifications %>
+	    <div class="n-paginate">
+		    <%= paginate @notifications %>
+		  </div>
 	<% else %>
 	    <p>通知はありません</p>
 	<% end %>
