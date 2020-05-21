@@ -202,10 +202,10 @@ nav {
 	.brand-logo {
 	display: flex;
 	justify-content: center;
-   align-items: center;
-   width: 260px;
-   min-height: 70px;
-   padding: 10px 30px;
+  align-items: center;
+  width: 260px;
+  min-height: 70px;
+  padding: 10px 30px;
 	  #logo {
 		width: 200px;
 		height: 50px;
@@ -903,6 +903,27 @@ footer {
 	}
 }
 
+// notifications/index, _notification-----------------------------------------------------
+.n-box {
+	margin-top: 40px;
+}
+
+.n-item {
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	font-size: 20px;
+	flex-wrap: wrap;
+	.n-content {
+		display: flex;
+		align-items: center;
+	}
+	.n-img {
+		border-radius: 50%;
+	}
+}
+
 
 
 // レスボンシブ対応------------------------------------------------------------
@@ -926,7 +947,6 @@ footer {
   	max-width: 90%;
   	margin: 0 auto;
   }
-
 }
 
 
