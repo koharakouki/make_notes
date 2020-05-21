@@ -3,9 +3,10 @@
 	<% visited = notification.visited %>
 	<div class="col-md-6">
 		<%= link_to user_genres_path(user_id: visiter.id) do %>
-			<%= attachment_image_tag visiter, :image, :fill,100,100, format: "jpeg", fallback: "no_image.png", size: "50x50", class:"profile-img-circle" %>
-			<%= visiter.name %>さんが
+			<%= attachment_image_tag visiter, :image, :fill, 100, 100, fallback: "no_image.png", size: "50x50", class:"profile-img-circle" %>
+			<%= visiter.name %>
 		<% end %>
+		さんが
 
 		<% case notification.action %>
 		<% when 'follow' %>

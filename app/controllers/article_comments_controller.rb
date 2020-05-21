@@ -6,7 +6,7 @@ class ArticleCommentsController < ApplicationController
 		article_comment.article_id = article.id
 		if article_comment.save
 			# 通知の作成
-			article_comment.create_notification_comment!(current_user, article_comment.id)
+			article_comment.article.create_notification_comment!(current_user, article_comment.id)
 
 			# create.js.erbに渡すためにインスタンス変数にそれぞれ代入する
 			@article = Article.find(params[:article_id])
