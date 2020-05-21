@@ -5,13 +5,16 @@ class ArticleCommentsController < ApplicationController
 		article_comment = current_user.article_comments.build(article_comment_params)
 		article_comment.article_id = article.id
 		if article_comment.save
+			# 通知の作成
+			article_comment.article.create_notification_comment!(current_user, article_comment.id)
+
 			# create.js.erbに渡すためにインスタンス変数にそれぞれ代入する
 			@article = Article.find(params[:article_id])
 			@article_comment = ArticleComment.new
 			@article_comments = ArticleComment.where(article_id: @article.id).order(created_at: :desc).page(params[:page]).per(10)
 			respond_to do |format|
-	          format.html { redirect_to request.referer }
-	          format.js
+	      format.html { redirect_to request.referer }
+	      format.js
 		  end
 		else
 			redirect_to article_url(article.id)
@@ -27,8 +30,8 @@ class ArticleCommentsController < ApplicationController
 			@article_comment = ArticleComment.new
 			@article_comments = ArticleComment.where(article_id: @article.id).order(created_at: :desc).page(params[:page]).per(10)
 			respond_to do |format|
-	        format.html { redirect_to request.referer }
-	        format.js
+	      format.html { redirect_to request.referer }
+	      format.js
 		  end
 		end
 	end

@@ -1,0 +1,28 @@
+<div class="container">
+	<% visiter = notification.visiter %>
+	<% visited = notification.visited %>
+	<div class="col-md-6">
+		<%= link_to user_genres_path(user_id: visiter.id) do %>
+			<%= attachment_image_tag visiter, :image, :fill, 100, 100, fallback: "no_image.png", size: "50x50", class:"profile-img-circle" %>
+			<%= visiter.name %>
+		<% end %>
+		さんが
+
+		<% case notification.action %>
+		<% when 'follow' %>
+		  <span>あなたをフォローしました</span>
+		<% when 'favorite' %>
+		  <%= link_to 'あなたの投稿', article_path(notification.article.id) %>にいいねしました
+		<% when 'comment' %>
+		  <% if notification.article.user_id == visited.id %>
+		  	<%= link_to 'あなたの投稿', article_path(notification.article.id) %>にコメントしました
+		  <% else %>
+		  	<%= link_to article_path(notification.article.id) do %>
+		  		<%= notification.article.user.name %>さんの投稿
+		  	<% end %>
+		  	にコメントしました
+		  <% end %>
+		<% end %>
+		<span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
+	</div>
+</div>
