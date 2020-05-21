@@ -11,7 +11,7 @@ Rails.application.configure do
 
   # Show full error reports.
   # 開発環境でもエラーページが404ページが表示されるよう設定
-  config.consider_all_requests_local = false
+  config.consider_all_requests_local = true
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get :following, :followers, :calendar
     end
   end
+  resources :notifications, only: :index
   resources :relationships, only: [:create, :destroy]
   get '/search', to: 'search#search'
   resources :articles, only: [:new, :create, :show, :index, :destroy] do
