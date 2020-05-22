@@ -20,26 +20,16 @@ User.create!(
 30.times do |n|
   User.create!(
     email: "test#{n + 1}@test.com",
-    name: "テスト太郎#{n + 1}",
+    name: "田中太郎#{n + 1}",
     password: "password",
     introduction: "自己紹介" * 10
   )
 end
 
-# 20.times do |n|
-#   User.create!(
-#     email: "#{n + 1}test@test.com",
-#     name: "テスト二郎#{n + 1}",
-#     password: "password",
-#     introduction: "自己紹介" * 10,
-#     created_at: DateTime.strptime("05/#{rand(01..31)}/2020 #{rand(00..23)}:30", '%m/%d/%Y %H:%M')
-#   )
-# end
-
 User.all.each do |user|
   user.articles.create!(
     article_title: 'タイトル',
-    content: 'テキストテキストテキストテキスト' * 10,
+    content: 'seedファイルで作られた記事です' * 10,
     user_id: user.id
   )
 end
@@ -47,23 +37,23 @@ end
 User.first(9).each do |user|
   user.articles.create!(
     article_title: 'タイトル',
-    content: 'テキストテキストテキストテキスト' * 30,
+    content: 'seedファイルで作られた記事です' * 30,
     user_id: user.id,
     is_spoiler: true
   )
 end
 
-User.all.each do |user|
+User.first(10).each do |user|
 	Article.all.each do |article|
 		ArticleComment.create!(
 			user_id: user.id,
 			article_id: article.id,
-			content: "コメント" * 10
+			content: "seedファイルで作られたコメントです" * 10
 		)
 	end
 end
 
-User.all.each do |user|
+User.first(10).each do |user|
 	Article.all.each do |article|
 		Favorite.create!(
 			user_id: user.id,
@@ -126,7 +116,7 @@ Genre.create!(
 
 n = 0
 
-50.times do
+20.times do
 	User.first(2).each do |user|
 		user.genres.each do |genre|
 				List.create!(
@@ -139,7 +129,7 @@ n = 0
 	end
 end
 
-50.times do
+20.times do
 	User.first(2).each do |user|
 		user.genres.each do |genre|
 				List.create!(
@@ -157,7 +147,7 @@ end
 users = User.all
 @user  = users.first
 @user_second = users.second
-following = users[2..20]
+following = users[2..10]
 followers = users[3..15]
 following.each { |followed| @user.follow(followed) }
 followers.each { |follower| follower.follow(@user) }
