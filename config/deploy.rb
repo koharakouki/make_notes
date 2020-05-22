@@ -5,7 +5,7 @@ set :application, "make_notes"
 set :repo_url, "https://github.com/koharakouki/make_notes.git"
 set :deploy_to, "/home/ec2-user/make_notes"
 set :rbenv_ruby, '2.5.7'
-set :linked_files, %w{config/master.key .env}
+set :linked_files, %w(config/master.key .env)
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # Default branch is :master
@@ -19,7 +19,8 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
-# set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
+# set :format_options, command_output: true, log_file: "log/capistrano.log",
+# color: :auto, truncate: :auto
 
 # Default value for :pty is false
 # set :pty, true

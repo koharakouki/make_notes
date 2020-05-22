@@ -37,6 +37,7 @@ group :development do
   gem 'bullet'
   gem 'letter_opener'
   gem 'letter_opener_web'
+  gem 'rubocop-airbnb'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -51,7 +52,7 @@ gem 'rails-i18n'
 gem "simple_calendar", "~> 2.0"
 gem 'dotenv-rails'
 gem 'font-awesome-sass'
-gem 'kaminari','~> 1.1.1'
+gem 'kaminari', '~> 1.1.1'
 gem 'ransack'
 gem 'chartkick'
 gem 'groupdate'
