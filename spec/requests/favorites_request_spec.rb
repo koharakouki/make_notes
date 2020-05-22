@@ -23,6 +23,14 @@ RSpec.describe "FavoritesController", type: :request do
 		      xhr: true
 		    end.to change { Favorite.all.count }.by(1)
 		  end
+
+		  it '通知されること' do
+		  	expect do
+		  		post article_favorites_url(article_id: article.id),
+					params: {favorite: FactoryBot.attributes_for(:favorite)},
+		      xhr: true
+		    end.to change { Notification.all.count }.by(1)
+		  end
     end
 
     context 'パラメータが不正の場合' do

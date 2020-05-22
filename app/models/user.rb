@@ -91,7 +91,6 @@ class User < ApplicationRecord
         image:  auth.info.image
       )
     end
-
     user
   end
 

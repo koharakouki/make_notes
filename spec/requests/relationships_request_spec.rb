@@ -22,6 +22,14 @@ RSpec.describe "RelationshipsController", type: :request do
 			  xhr: true
 			end.to change { Relationship.all.count }.by(1)
 		end
+
+		it '通知されること' do
+			expect do
+				post relationships_url,
+				params: { followed_id: other_user.id },
+				xhr: true
+			end.to change { Notification.all.count }.by(1)
+		end
   end
 
   describe 'DELETE #destroy' do

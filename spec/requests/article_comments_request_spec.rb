@@ -32,6 +32,14 @@ RSpec.describe "ArticleCommentsController", type: :request do
 				xhr: true
 				expect(response.body).to include "#{article_comment.content}"
 			end
+
+			it '通知されること' do
+				expect do
+					post article_article_comments_url(article.id),
+					params: { article_comment: FactoryBot.attributes_for(:article_comment) },
+					xhr: true
+				end.to change { Notification.all.count }.by(1)
+			end
 		end
 
     context '不正なパラメータの場合' do
