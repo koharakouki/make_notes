@@ -6,7 +6,6 @@ FactoryBot.define do
   end
 end
 
-
 # create_table "article_comments", force: :cascade do |t|
 #   t.integer "user_id"
 #   t.integer "article_id"

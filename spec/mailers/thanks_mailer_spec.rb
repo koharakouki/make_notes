@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe ThanksMailer, type: :mailer do
   describe "welcome_mail" do
-  	let!(:user) { create(:user) }
+    let!(:user) { create(:user) }
     let(:mail) { ThanksMailer.welcome_mail(user) }
 
     it "メールのヘッダー部分が正しいこと" do

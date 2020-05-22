@@ -6,13 +6,13 @@ FactoryBot.define do
     is_watched { true }
   end
 
-  factory :other_list, class: List do
-  	genre
+  factory :other_list, class: "List" do
+    genre
     user
     title { '作品タイトルB' }
   end
 
-  factory :other_list_a, class: List do
+  factory :other_list_a, class: "List" do
     genre
     user
     title { '作品タイトルC' }
@@ -21,11 +21,10 @@ FactoryBot.define do
     impression { '面白い' }
 
     trait :invalid do
-      title {nil}
+      title { nil }
     end
   end
 end
-
 
 # create_table "lists", force: :cascade do |t|
 #   t.integer "user_id", null: false

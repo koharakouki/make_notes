@@ -2,20 +2,21 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook google_oauth2]
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i(facebook google_oauth2)
 
   # 論理削除の設定
   acts_as_paranoid column: :deleted_at
 
-# 　Refileの設定
+  # 　Refileの設定
   attachment :image
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :introduction, length: { maximum: 100 }, allow_nil: true
   # メールアドレスの正規表現
-  VALID_EMAIL_REGIX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  VALID_EMAIL_REGIX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
   validates :email, presence: true, length: { maximum: 255 },
-      format: { with: VALID_EMAIL_REGIX }, uniqueness: { case_sensitive: false }
+                    format: { with: VALID_EMAIL_REGIX }, uniqueness: { case_sensitive: false }
 
   has_many :genres
   has_many :lists
@@ -23,7 +24,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :article_comments
 
-# フォロー・フォロワーのための関連付け
+  # フォロー・フォロワーのための関連付け
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",
                                   dependent: :destroy
@@ -36,7 +37,7 @@ class User < ApplicationRecord
 
   after_create :send_welcome_mail
 
-# 通知のための関連付け
+  # 通知のための関連付け
   has_many :active_notifications, class_name: "Notification",
                                   foreign_key: "visiter_id",
                                   dependent: :destroy
@@ -68,7 +69,10 @@ class User < ApplicationRecord
 
   # フォロー時の通知
   def create_notification_follow!(current_user)
-    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    temp = Notification.where([
+      "visiter_id = ? and visited_id = ? and action = ? ",
+      current_user.id, id, 'follow',
+    ])
     if temp.blank?
       notification = current_user.active_notifications.new(visited_id: id,
                                                            action: 'follow')
@@ -76,25 +80,20 @@ class User < ApplicationRecord
     end
   end
 
-
   # ominauthを使うための処理
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
-    unless user
-      user = User.create(
-        uid:      auth.uid,
-        provider: auth.provider,
-        email:    auth.info.email,
-        name:  auth.info.name,
-        password: Devise.friendly_token[0, 20],
-        image:  auth.info.image
-      )
-    end
-
+    user ||= User.create(
+      uid: auth.uid,
+      provider: auth.provider,
+      email: auth.info.email,
+      name: auth.info.name,
+      password: Devise.friendly_token[0, 20],
+      image: auth.info.image
+    )
     user
   end
-
 
   def send_welcome_mail
     ThanksMailer.welcome_mail(self).deliver

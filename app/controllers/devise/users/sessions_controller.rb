@@ -21,11 +21,11 @@ class Devise::Users::SessionsController < Devise::SessionsController
 
   # protected
 
-def flash_delete
-  if flash[:notice].present?
-    flash.delete(:notice)
+  def flash_delete
+    if flash[:notice].present?
+      flash.delete(:notice)
+    end
   end
-end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

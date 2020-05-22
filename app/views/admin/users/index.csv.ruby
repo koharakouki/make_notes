@@ -10,7 +10,7 @@ CSV.generate(encoding: Encoding::SJIS, row_sep: "\r\n", force_quotes: true) do |
       user.following.count,
       user.followers.count,
       user.created_at.strftime('%Y%m%d'),
-      user.updated_at.strftime('%Y%m%d')
+      user.updated_at.strftime('%Y%m%d'),
     ]
     csv << column_values
   end
