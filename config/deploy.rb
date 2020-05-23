@@ -3,7 +3,7 @@ lock "~> 3.14.0"
 
 set :application, "make_notes"
 set :repo_url, "https://github.com/koharakouki/make_notes.git"
-set :deploy_to, "/home/ec2-user/make_notes/current"#/currentを追加
+set :deploy_to, "/home/ec2-user/make_notes"
 set :rbenv_ruby, '2.5.7'
 set :linked_files, %w(config/master.key .env)
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "tmp/uploads/cache", "tmp/uploads/store"
