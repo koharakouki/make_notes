@@ -10,9 +10,9 @@
 			<div class="list-index-headline row">
 				<h3 class="col-lg-5 col-md-5 col-xs-12 text-center"><%= link_to "マイリスト", user_genres_path %>
 					<% if @genre.present? %>
-						＞<%= @genre.name %>
+						＞ <%= @genre.name %> <small>(観た)</small>
 					<% else %>
-						＞ALL
+						＞ ALL <small>(観た)</small>
 					<% end %>
 				</h3>
 

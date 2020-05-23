@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<!-- <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#user-header">
@@ -45,6 +45,93 @@
 		        <li class="nav_item text-center"><%= link_to "新規登録", new_user_registration_path %></li>
 			  <% end %>
 		  </ul>
+		</div>
+	</div>
+</nav> -->
+
+<script>
+$(function() {
+  const hum = $('#hamburger, .close')
+  const nav = $('.sp-nav')
+  hum.on('click', function(){
+    nav.toggleClass('toggle');
+  });
+});
+</script>
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="header">
+			<div class="navbar-header">
+				<div class="brand-logo">
+					<%= link_to root_path do %>
+						<div class="navbar-brand" id="logo"></div>
+					<% end %>
+				</div>
+			</div>
+			<div class="navbar-right" id="user-header">
+				<ul class="nav navbar-nav">
+					<% if user_signed_in? %>
+
+					<!-- 通知のベルアイコン -->
+					  <li  style="margin-top: 4px; margin-right: 10px;">
+					  	<%= link_to notifications_path do %>
+					  	  <% if unchecked_notifications.any? %>
+						  		<span class="fa-stack">
+						  		  <i class="far fa-bell fa-stack-2x" style="font-size: 35px;"></i>
+						  		  <i class="fa fa-circle fa-stack-1x"
+						  		     style="color: gold; padding: 15px 0 0 20px; font-size: 15px;"></i>
+						  		</span>
+						  	<% else %>
+						  	  <span class="fa-stack">
+						  		  <i class="far fa-bell fa-stack-2x" style="font-size: 35px;"></i>
+						  	  </span>
+						  	<% end %>
+					  	<% end %>
+					  </li>
+
+						<li class="nav_item text-center"><%= link_to "ユーザーを探す", users_path %></li>
+						<li class="nav_item text-center"><%= link_to "記事を探す", articles_path %></li>
+						<li class="dropdown nav_item">
+							<a href="#" class="dropdown-toggle text-center"
+							   data-toggle="dropdown" role="button" aria-haspopup="true"
+							   aria-expanded="false">マイページ  <span class="caret"></span></a>
+							<ul class="dropdown-menu text-center">
+								<li><%= link_to "マイページ", user_genres_path(current_user) %></li>
+								<li><%= link_to "アカウント編集ページ", edit_user_path(current_user) %></li>
+								<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+							</ul>
+						</li>
+				  <% else %>
+			        <li class="nav_item text-center"><%= link_to "ログイン", new_user_session_path %></li>
+			        <li class="nav_item text-center"><%= link_to "新規登録", new_user_registration_path %></li>
+				  <% end %>
+			  </ul>
+			</div>
+
+			<!-- レスポンシブ対応時のheader -->
+			<div class="sp-nav">
+	      <ul>
+	      	<% if user_signed_in? %>
+	          <li><%= link_to '通知', notifications_path %></li>
+	          <li><%= link_to 'ユーザーを探す', users_path %></li>
+	          <li><%= link_to '記事を探す', articles_path %></li>
+	          <li><%= link_to "マイページ", user_genres_path(current_user) %></li>
+	          <li><%= link_to "アカウント編集ページ", edit_user_path(current_user) %></li>
+	          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+	          <li class="close"><span>閉じる</span></li>
+	        <% else %>
+	          <li><%= link_to "ログイン", new_user_session_path %></li>
+	          <li><%= link_to "新規登録", new_user_registration_path %></li>
+	          <li class="close"><span>閉じる</span></li>
+	        <% end %>
+	      </ul>
+	    </div>
+	    <div class="nav navbar-nav" id="hamburger">
+	      <span></span>
+	    </div>
+
 		</div>
 	</div>
 </nav>

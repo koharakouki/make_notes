@@ -1,6 +1,6 @@
 <div class="recomend-users hidden-md hidden-sm hidden-xs">
 	<span class="recomend-users-headline">おすすめユーザー</span>
-	<% rank_users.first(6).each do |user| %>
+	<% rank_users.first(8).each do |user| %>
 		<div class="recomend-user">
 			<div class="recomend-user-img">
 				<%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no_image_mini.png", size: "50x50") %>
