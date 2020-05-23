@@ -10,9 +10,10 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    flash[:notice] = "登録が完了しました。まずはジャンルを追加しましょう!!"
+  end
 
   # GET /resource/edit
   # def edit
