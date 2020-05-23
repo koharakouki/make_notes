@@ -26,6 +26,13 @@ td {
 	font-size: 15px;
 }
 
+.flash-notice {
+	text-align: center;
+	background-color: #4682B4;
+	color: #FFF;
+	padding: 10px;
+}
+
 // mixin----------------------------------------------------------
 	// *SNSアカウントボタン
 	@mixin sns-button {
