@@ -33,7 +33,7 @@
     	<div class="form-group row">
     		<%= f.label :media, 'What to see', class: "col-md-3 col-md-offset-1" %>
     		<div class="col-md-6">
-	    		<%= f.text_field :media, class: "form-control" %>
+	    		<%= f.text_field :media, placeholder: "NetflixやCXなど(空欄可)", class: "form-control" %>
 	    	</div>
     	</div>
 
@@ -48,7 +48,7 @@
 			</div>
 		   <div class="row">
 		   	<div class="col-md-10 col-md-offset-1">
-				   <%= f.text_area :impression, class: "form-control", size: "50x7" %>
+				   <%= f.text_area :impression, placeholder: "感想を書いてください(空欄可)", class: "form-control", size: "50x7" %>
 				</div>
 			</div>
 		</div>

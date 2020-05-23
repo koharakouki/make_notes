@@ -11,13 +11,13 @@
       <%= form_with(model: @user, local: true) do |f| %>
 
         <div class="img-box row">
-          <div class="col-xs-5"><%= attachment_image_tag @user,
-                :image, :fill, 160, 160,size: "160x160",fallback: "no_image.png",
+          <div class="col-xs-5 col-xs-offset-1"><%= attachment_image_tag @user,
+                :image, :fill, 150, 150, size: "150x150",fallback: "no_image.png",
                  id: "img_prev" %>
           </div>
-          <p class="col-xs-3">
-            <label class="btn btn-info btn-md" style="width: 150px;">
-              画像選択<%= f.attachment_field :image, style: "display:none;",
+          <p class="col-xs-4">
+            <label class="btn btn-info">
+              画像選択<%= f.attachment_field :image, style: "display: none;",
                id: "product_img" %>
             </label>
           </p>

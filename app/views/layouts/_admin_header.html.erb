@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<!-- <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#admin-header">
@@ -28,5 +28,61 @@
 			   <% end %>
 		   </ul>
 		</div>
+	</div>
+</nav>
+ -->
+
+<script>
+$(function() {
+  const hum = $('#hamburger, .close')
+  const nav = $('.sp-nav')
+  hum.on('click', function(){
+    nav.toggleClass('toggle');
+  });
+});
+</script>
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="header">
+			<div class="navbar-header">
+				<div class="brand-logo">
+					<%= link_to admin_root_path do %>
+						<div class="navbar-brand" id="logo"></div>
+					<% end %>
+				</div>
+			</div>
+			<div class="navbar-right" id="admin-header">
+				<ul class="nav navbar-nav">
+					<% if admin_signed_in? %>
+					  <li class="dropdown nav_item">
+							<a href="#" class="dropdown-toggle text-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">探す  <span class="caret"></span></a>
+							<ul class="dropdown-menu text-center">
+								<li><%= link_to "ユーザー一覧", admin_users_path %></li>
+								<li><%= link_to "記事一覧", admin_articles_path %></li>
+							</ul>
+						</li>
+						<li class="nav_item"><%= link_to "チャート", admin_root_path %></li>
+						<li class="nav_item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+				   <% end %>
+			   </ul>
+			</div>
+
+			<!-- レスポンシブ対応時のheader -->
+			<div class="sp-nav">
+	      <ul>
+	        <li><%= link_to "チャート", admin_root_path %></li>
+	        <li><%= link_to "ユーザー一覧", admin_users_path %></li>
+	        <li><%= link_to "記事一覧", admin_articles_path %></li>
+	        <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+	        <li class="close"><span>閉じる</span></li>
+	      </ul>
+	    </div>
+	    <div class="nav navbar-nav" id="hamburger">
+	      <span></span>
+	    </div>
+
+	  </div>
 	</div>
 </nav>
