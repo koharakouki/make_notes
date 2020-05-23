@@ -1,6 +1,8 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="flash-notice"><%= flash[:notice] %></div>
+    <% if flash[:notice] %>
+      <div class="flash-notice"><%= flash[:notice] %></div>
+    <% end %>
 
 
     <!-- user-infoの表示 -->
