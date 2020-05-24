@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-    @users = User.page(params[:page]).per(10)
+    @users = User.order(created_at: :desc).page(params[:page]).per(10)
     # フォロワーランキング
     @rank_users = User.find(Relationship.group(:followed_id).
                   order(Arel.sql('count(followed_id) DESC')).pluck(:followed_id))
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   def following
     @user  = User.find(params[:id])
-    @users = @user.following.page(params[:page]).per(10)
+    @users = @user.following.order(created_at: :desc).page(params[:page]).per(10)
     @rank_users = User.find(Relationship.group(:followed_id).
                   order(Arel.sql('count(followed_id) DESC')).pluck(:followed_id))
     render 'show_follow'
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   def followers
     @user  = User.find(params[:id])
-    @users = @user.followers.page(params[:page]).per(10)
+    @users = @user.followers.order(created_at: :desc).page(params[:page]).per(10)
     @rank_users = User.find(Relationship.group(:followed_id).
                   order(Arel.sql('count(followed_id) DESC')).pluck(:followed_id))
     render 'show_follow'

@@ -170,6 +170,9 @@ td {
 		align-items: center;
 		border-bottom: 1px solid #DDD;
 		padding: 10px 0;
+		& a {
+			color: #000;
+		}
 	}
 	.recomend-user-img img {
 		border-radius: 50%;
@@ -818,6 +821,7 @@ footer {
 // users/index ------------------------------------------------------------
 .user-index-box {
 	padding: 10px;
+	background-color: #FFF;
 	border-bottom: 1px solid #DDD;
 	&:nth-child(1) {
 		border-top: 1px solid #DDD;
@@ -851,6 +855,9 @@ footer {
 .not-follow-user {
 	padding-top: 30px;
 	border-top: 1px solid #DDD;
+}
+.show-follow-list-headline {
+	margin-top: 0;
 }
 
 
