@@ -54,6 +54,7 @@ td {
 	border-radius: 10px;
 	margin-top: 20px;
 	padding: 30px 0;
+	box-shadow: 2px 2px 4px;
 }
 .prof-img {
 	border-radius: 50%;
@@ -723,9 +724,13 @@ footer {
 
 // articles/index ------------------------------------------------------------
 .article-index-search-form, .article-index-favs {
-	max-width: 70%;
-	margin: 15px auto 0;
+	// max-width: 70%;
+	// margin: 15px auto 0;
 }
+.search-and-favorite {
+	margin-top: 20px;
+}
+
 .article-index-mass {
 	max-width: 90%;
 	margin: 0 auto;

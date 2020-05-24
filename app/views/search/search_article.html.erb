@@ -12,11 +12,11 @@
 		<!-- 検索フォームの表示 -->
 		<div class="article-index col-lg-9 col-md-8">
 			<div class="article-index-headline row">
-				<h3 class="col-md-offset-1 col-sm-offset-2">記事を探す</h3>
+				<h3 class="col-md-offset-1 col-md-offset-2">記事を探す</h3>
 			</div>
 
-			<div class="row">
-				<div class="article-index-search-form col-md-6">
+			<div class="row search-and-favorite">
+				<div class="article-index-search-form col-md-6 col-md-offset-1">
 					<%= form_tag(search_path, :method => "get") do %>
 
 						<!-- ユーザー検索か記事検索かを区別するためにmodel要素を渡す -->
