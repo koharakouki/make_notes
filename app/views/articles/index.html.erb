@@ -39,17 +39,17 @@
           <div class="article-index-mass">
             <div class="article-index-item col-xs-10">
               <div class="article-index-header row">
-                <div class="article-title col-xs-8">
+                <div class="article-title col-xs-8 col-md-7">
                   <%= link_to article_path(article) do %>
                     <%= article.article_title %>
                   <% end %>
                 </div>
-                <div class="article-fav col-xs-4">
+                <div class="article-fav col-xs-4 col-md-2">
                   <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
                   <%= article.favorites.count %>
                 </div>
                 <% if article.is_spoiler == true %>
-                  <div class="article-spoiler col-xs-2"><span>ネタバレ</span></div>
+                  <div class="article-spoiler col-xs-2 col-md-3"><span>ネタバレ</span></div>
                 <% end %>
               </div>
               <div class="article-text row">
