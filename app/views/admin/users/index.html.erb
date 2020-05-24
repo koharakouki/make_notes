@@ -83,7 +83,7 @@
 
 									<td>
 										<% if user != current_admin %>
-											<%= link_to '退会', admin_user_path(user), class: "btn btn-danger", method: :delete, data: { confirm: '本当に削除しますか？' } %>
+											<%= link_to '退会', admin_user_path(user), class: "btn btn-danger user-delete", method: :delete, data: { confirm: '本当に削除しますか？' } %>
 										<% end %>
 									</td>
 								</tr>
