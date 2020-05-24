@@ -33,7 +33,7 @@
 					<% if article_comment.user == current_user || current_admin %>
 						<%= link_to '削除する',
 							article_article_comments_path(id: article_comment.id, article_id: article_comment.article_id),
-							method: :delete, remote: true, class: "btn btn-danger" %>
+							method: :delete, remote: true, class: "btn btn-danger article-comment-delete-link" %>
 					<% end %>
 				</div>
 			</div>
