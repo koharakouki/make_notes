@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'ユーザー認証のテスト', type: :feature do
+RSpec.describe 'ユーザーのテスト', type: :feature do
   describe 'ユーザー新規登録' do
     let(:user) { build(:user) }
 
@@ -56,23 +56,22 @@ RSpec.describe 'ユーザー認証のテスト', type: :feature do
       end
     end
   end
-end
 
-describe 'ユーザーのテスト' do
-  let(:user) { create(:user) }
-  let!(:other_user) { create(:other_user) }
+  describe 'ユーザー情報編集のテスト' do
+    let(:user) { create(:user) }
+    let!(:other_user) { create(:other_user) }
 
-  before do
-    visit new_user_session_path
-    fill_in 'user[email]', with: user.email
-    fill_in 'user[password]', with: user.password
-    click_button 'ログイン'
-  end
+    before do
+      visit new_user_session_path
+      fill_in 'user[email]', with: user.email
+      fill_in 'user[password]', with: user.password
+      click_button 'ログイン'
+    end
 
-  describe '編集のテスト' do
     context '自分の編集画面へ遷移' do
       it '遷移できる' do
         visit edit_user_path(user)
+
         expect(current_path).to eq('/users/' + user.id.to_s + '/edit')
       end
     end
@@ -80,7 +79,45 @@ describe 'ユーザーのテスト' do
     context '他人の編集画面へ遷移' do
       it '遷移できない' do
         visit edit_user_path(other_user)
+
         expect(current_path).to eq('/')
+      end
+    end
+  end
+
+  describe 'ユーザー一覧画面' do
+    let(:user) { create(:user) }
+    let!(:other_user) { create(:other_user) }
+
+    before do
+      visit new_user_session_path
+      fill_in 'user[email]', with: user.email
+      fill_in 'user[password]', with: user.password
+      click_button 'ログイン'
+    end
+
+    context 'ユーザー一覧画面へ遷移' do
+      it '遷移できる' do
+        find('#pc-users-link').click
+
+        expect(current_path).to eq(users_path)
+      end
+    end
+
+    context '他人のマイページへ遷移' do
+      before do
+        find('#pc-users-link').click
+        click_link 'アリス', href: user_genres_path(other_user)
+      end
+
+      it '遷移できる' do
+        expect(current_path).to eq(user_genres_path(other_user))
+      end
+
+      it 'カレンダー画面に遷移できる' do
+        click_on 'カレンダーを見る'
+
+        expect(current_path).to eq(calendar_user_path(other_user))
       end
     end
   end
