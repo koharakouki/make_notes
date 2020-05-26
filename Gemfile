@@ -67,4 +67,5 @@ gem 'omniauth-google-oauth2'
 # require: falseをつけるのは、このGem自体がRailsアプリの反映するものではなく、
 # OS（ターミナル)に反映させるものということ
 gem 'whenever', require: false
+gem "refile-s3"
 
