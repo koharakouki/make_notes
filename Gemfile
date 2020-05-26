@@ -40,6 +40,10 @@ group :development do
   gem 'rubocop-airbnb'
 end
 
+group :production do
+  gem 'mysql2'
+end
+
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
@@ -60,7 +64,7 @@ gem "paranoia", "~> 2.2"
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+# require: falseをつけるのは、このGem自体がRailsアプリの反映するものではなく、
+# OS（ターミナル)に反映させるものということ
+gem 'whenever', require: false
 
-group :production do
-  gem 'mysql2'
-end
