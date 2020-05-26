@@ -24,7 +24,7 @@
 
 
 				<!-- 編集＆削除のボタン表示 -->
-				<% if @list.user == currnet_user %>
+				<% if @list.user == current_user %>
 				  <div class="edit-delete-button col-md-offset-3">
 					  <button type="button" class="btn btn-primary list-edit-button" data-toggle="modal" data-target="#edit_modal">編集する</button>
 					  <%= link_to '削除する', user_list_path(@list), class: "btn btn-danger", method: :delete %>
