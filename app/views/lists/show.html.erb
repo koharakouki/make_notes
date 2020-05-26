@@ -12,7 +12,7 @@
 		<!-- リスト詳細の表示 -->
 		<div class="col-lg-6 col-md-8">
 			<div class="list-show-headline">
-				<h3><%= link_to "マイリスト", user_genres_path %>＞
+				<h3><%= link_to "マイリスト", user_genres_path %> <span style="color: #AAA;">/</span>
 					<%= link_to done_path(@user, { genre_id: @list.genre.id}) do %>
 						<%= @list.genre.name %>
 					<% end %>
