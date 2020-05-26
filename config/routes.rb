@@ -42,6 +42,6 @@ Rails.application.routes.draw do
   end
 
   # 例外のためのルーティング
-  get '*not_found', to: 'application#routing_error'
-  post '*not_found', to: 'application#routing_error'
+  # get '*not_found', to: 'application#routing_error'
+  # post '*not_found', to: 'application#routing_error'
 end
