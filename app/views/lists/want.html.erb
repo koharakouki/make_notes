@@ -10,9 +10,9 @@
 			<div class="list-index-headline row">
 				<h3 class="col-lg-5 col-md-5 col-xs-12 text-center"><%= link_to "マイリスト", user_genres_path %>
 					<% if @genre.present? %>
-						＞ <%= @genre.name %> <small>(観たい)</small>
+						<span style="color: #AAA;">/</span> <%= @genre.name %> <small>(観たい)</small>
 					<% else %>
-						＞ ALL <small>(観たい)</small>
+						<span style="color: #AAA;">/</span> ALL <small>(観たい)</small>
 					<% end %>
 				</h3>
 
