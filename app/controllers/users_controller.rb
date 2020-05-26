@@ -22,11 +22,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @user = User.find(params[:id])
-  #   @user.delete
-  #   redirect_back(fallback_location: admin_users_path)
-  # end
 
   def following
     @user  = User.find(params[:id])
