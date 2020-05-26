@@ -99,9 +99,9 @@ class User < ApplicationRecord
     ThanksMailer.welcome_mail(self).deliver
   end
 
-  def send_everymonth_mail
-    User.all.each do |user|
-      UserMailer.everymonth_mail(user).deliver
-    end
-  end
+  # def send_everymonth_mail
+  #   User.all.each do |user|
+  #     UserMailer.everymonth_mail(user).deliver
+  #   end
+  # end
 end
