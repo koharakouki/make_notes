@@ -24,77 +24,80 @@
 
 
 				<!-- 編集＆削除のボタン表示 -->
-				<div class="edit-delete-button col-md-offset-3">
-					<button type="button" class="btn btn-primary list-edit-button" data-toggle="modal" data-target="#edit_modal">編集する</button>
-					<%= link_to '削除する', user_list_path(@list), class: "btn btn-danger", method: :delete %>
+				<% if @list.user == currnet_user %>
+				  <div class="edit-delete-button col-md-offset-3">
+					  <button type="button" class="btn btn-primary list-edit-button" data-toggle="modal" data-target="#edit_modal">編集する</button>
+					  <%= link_to '削除する', user_list_path(@list), class: "btn btn-danger", method: :delete %>
 
 
-					<!-- 編集ボタンのモーダル表示 -->
-					<div class="modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-hidden="true">
-					   <div class="modal-dialog" role="document">
-				         <div class="modal-content">
 
-				        		<div class="modal-header text-center">
-				        			<h3>編集</h3>
-				        		</div>
+						<!-- 編集ボタンのモーダル表示 -->
+						<div class="modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-hidden="true">
+						   <div class="modal-dialog" role="document">
+					         <div class="modal-content">
 
-					      	<div class="modal-body">
-				      	    	<%= form_for(@list, url: user_list_path(list_id: @list.id), remote: true) do |f| %>
+					        		<div class="modal-header text-center">
+					        			<h3>編集</h3>
+					        		</div>
 
-    						        	<div class="edit-list-error-message"></div>
-    						        	<%= hidden_field_tag :edit_list, 'edit' %>
+						      	<div class="modal-body">
+					      	    	<%= form_for(@list, url: user_list_path(list_id: @list.id), remote: true) do |f| %>
 
-				      	    		<%= f.hidden_field :is_watched, value: true %>
+	    						        	<div class="edit-list-error-message"></div>
+	    						        	<%= hidden_field_tag :edit_list, 'edit' %>
 
-				      	    		<div class="form-group row">
-					      	    		<%= f.label :title, 'Title', class: "col-md-3 col-md-offset-1" %>
-					      	    		<div class="col-md-6">
-						      	    		<%= f.text_field :title, class: "form-control" %>
+					      	    		<%= f.hidden_field :is_watched, value: true %>
+
+					      	    		<div class="form-group row">
+						      	    		<%= f.label :title, 'Title', class: "col-md-3 col-md-offset-1" %>
+						      	    		<div class="col-md-6">
+							      	    		<%= f.text_field :title, class: "form-control" %>
+							      	    	</div>
 						      	    	</div>
-					      	    	</div>
 
-				      	    		<div class="form-group row">
-					      	    		<%= f.label :start_time, 'Date', class: "col-md-3 col-md-offset-1" %>
-					      	    		<div class="col-md-6">
-						      	    		<%= f.date_field :start_time, class: "form-control" %>
+					      	    		<div class="form-group row">
+						      	    		<%= f.label :start_time, 'Date', class: "col-md-3 col-md-offset-1" %>
+						      	    		<div class="col-md-6">
+							      	    		<%= f.date_field :start_time, class: "form-control" %>
+							      	    	</div>
 						      	    	</div>
-					      	    	</div>
 
-					      	    	<div class="form-group row">
-					      	    		<%= f.label :media, 'What to see', class: "col-md-3 col-md-offset-1" %>
-					      	    		<div class="col-md-6">
-						      	    		<%= f.text_field :media, placeholder: "NetflixやCXなど(空欄可)", class: "form-control" %>
+						      	    	<div class="form-group row">
+						      	    		<%= f.label :media, 'What to see', class: "col-md-3 col-md-offset-1" %>
+						      	    		<div class="col-md-6">
+							      	    		<%= f.text_field :media, placeholder: "NetflixやCXなど(空欄可)", class: "form-control" %>
+							      	    	</div>
 						      	    	</div>
-					      	    	</div>
 
-					      	    		<div class="field row rate-field" id="edit-star">
-										      <%= f.label :rate, class: "col-md-3 col-md-offset-1" %>
-										      <%= f.hidden_field :rate, id: :review_star %>
-										   </div>
+						      	    		<div class="field row rate-field" id="edit-star">
+											      <%= f.label :rate, class: "col-md-3 col-md-offset-1" %>
+											      <%= f.hidden_field :rate, id: :review_star %>
+											   </div>
 
-									   <div class="form-group">
-									   	<div class="row">
-											   <%= f.label :impression, class: "col-md-3 col-md-offset-1" %>
-											</div>
-										   <div class="row">
-										   	<div class="col-md-10 col-md-offset-1">
-												   <%= f.text_area :impression, placeholder: "感想を書いてください(空欄可)", class: "form-control", size: "50x7" %>
+										   <div class="form-group">
+										   	<div class="row">
+												   <%= f.label :impression, class: "col-md-3 col-md-offset-1" %>
+												</div>
+											   <div class="row">
+											   	<div class="col-md-10 col-md-offset-1">
+													   <%= f.text_area :impression, placeholder: "感想を書いてください(空欄可)", class: "form-control", size: "50x7" %>
+													</div>
 												</div>
 											</div>
-										</div>
-								</div>
+									</div>
 
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-									　　<%= f.submit "保存する", class: "btn btn-primary form_submit" %>
-								　　<% end %>
-							　　</div>
-						   </div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+										　　<%= f.submit "保存する", class: "btn btn-primary form_submit" %>
+									　　<% end %>
+								　　</div>
+							   </div>
+							</div>
 						</div>
-					</div>
-					<!-- モーダル表示ここまで -->
+						<!-- モーダル表示ここまで -->
 
-				</div>
+				  </div>
+				<% end %>
 			</div>
 		</div>
 
