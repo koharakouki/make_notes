@@ -6,8 +6,8 @@ set :repo_url, "https://github.com/koharakouki/make_notes.git"
 set :deploy_to, "/home/ec2-user/make_notes"
 set :rbenv_ruby, '2.5.7'
 set :linked_files, %w(config/master.key .env)
-# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', "tmp/uploads/cache", "tmp/uploads/store")
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', "tmp/uploads/cache", "tmp/uploads/store")
 
 # set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 # Default branch is :master
