@@ -99,9 +99,9 @@ RSpec.describe "ListsController", type: :request do
         post user_lists_url(user_id: user.id),
              params: {
                list: FactoryBot.attributes_for(:other_list,
-                                                title: nil,
-                                                user_id: user.id,
-                                                genre_id: genre.id),
+                                               title: nil,
+                                               user_id: user.id,
+                                               genre_id: genre.id),
                user_id: user.id, add_want: "want",
              }, xhr: true
         expect(response.status).to eq 200
@@ -112,9 +112,9 @@ RSpec.describe "ListsController", type: :request do
           post user_lists_url(user_id: user.id),
                params: {
                  list: FactoryBot.attributes_for(:other_list,
-                                                  title: nil,
-                                                  user_id: user.id,
-                                                  genre_id: genre.id),
+                                                 title: nil,
+                                                 user_id: user.id,
+                                                 genre_id: genre.id),
                  user_id: user.id, add_want: "want",
                }, xhr: true
         end.to change { List.all.count }.by(0)
@@ -124,9 +124,9 @@ RSpec.describe "ListsController", type: :request do
         post user_lists_url(user_id: user.id),
              params: {
                list: FactoryBot.attributes_for(:other_list,
-                                                title: nil,
-                                                user_id: user.id,
-                                                genre_id: genre.id),
+                                               title: nil,
+                                               user_id: user.id,
+                                               genre_id: genre.id),
                user_id: user.id, add_want: "want",
              }, xhr: true
         expect(response.body).to include "Titleを入力してください"
@@ -176,29 +176,35 @@ RSpec.describe "ListsController", type: :request do
     context '正常なパラメータの場合' do
       it 'リクエストが成功すること(showページからの更新)' do
         patch user_list_url(user_id: user.id, id: list.id),
-              params: { list: FactoryBot.attributes_for(:other_list_a,
-                                                         user_id: user.id,
-                                                         genre_id: genre.id),
-                                                         list_id: list.id }
+              params: {
+                list: FactoryBot.attributes_for(:other_list_a,
+                                                user_id: user.id,
+                                                genre_id: genre.id),
+                list_id: list.id,
+              }
         expect(response.status).to eq 302
       end
 
       it '作品タイトルが更新されること' do
         expect do
           patch user_list_url(user_id: user.id, id: list.id),
-                params: { list: FactoryBot.attributes_for(:other_list_a,
-                                                          user_id: user.id,
-                                                          genre_id: genre.id),
-                                                          list_id: list.id }
+                params: {
+                  list: FactoryBot.attributes_for(:other_list_a,
+                                                  user_id: user.id,
+                                                  genre_id: genre.id),
+                  list_id: list.id,
+                }
         end.to change { List.find(list.id).title }.from('作品タイトルA').to('作品タイトルC')
       end
 
       it 'リダイレクトされること' do
         patch user_list_url(user_id: user.id, id: list.id),
-              params: { list: FactoryBot.attributes_for(:other_list_a,
-                                                        user_id: user.id,
-                                                        genre_id: genre.id),
-                                                        list_id: list.id }
+              params: {
+                list: FactoryBot.attributes_for(:other_list_a,
+                                                user_id: user.id,
+                                                genre_id: genre.id),
+                list_id: list.id,
+              }
         expect(response).to redirect_to user_list_url(user_id: list.user.id, id: list.id)
       end
     end
@@ -206,22 +212,26 @@ RSpec.describe "ListsController", type: :request do
     context '不正なパラメータの場合' do
       it 'リクエストが成功すること' do
         patch user_list_url(user_id: user.id, id: list.id),
-              params: { list: FactoryBot.attributes_for(:other_list_a,
-                                                        :invalid,
-                                                        user_id: user.id,
-                                                        genre_id: genre.id),
-                                                        list_id: list.id }
+              params: {
+                list: FactoryBot.attributes_for(:other_list_a,
+                                                :invalid,
+                                                user_id: user.id,
+                                                genre_id: genre.id),
+                list_id: list.id,
+              }
         expect(response.status).to eq 200
       end
 
       it 'Titleが更新されないこと' do
         expect do
           patch user_list_url(user_id: user.id, id: list.id),
-                params: { list: FactoryBot.attributes_for(:other_list_a,
-                                                          :invalid,
-                                                          user_id: user.id,
-                                                          genre_id: genre.id),
-                                                          list_id: list.id }
+                params: {
+                  list: FactoryBot.attributes_for(:other_list_a,
+                                                  :invalid,
+                                                  user_id: user.id,
+                                                  genre_id: genre.id),
+                  list_id: list.id,
+                }
         end.not_to change { List.find(list.id).title }
       end
     end
