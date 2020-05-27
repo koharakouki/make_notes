@@ -51,11 +51,11 @@
 	</div>
 <% end %>
 
-<div class="list-show-impression col-md-offset-2">
-	<div class="list-show-impression-title col-xs-offset-2">
+<div class="list-show-impression col-md-offset-1">
+	<div class="list-show-impression-title col-xs-offset-1">
 		<h4>Impression</h4>
 	</div>
 	<div class="list-show-impression-body">
-		<p><%= @list.impression %></p>
+		<p><%= simple_format(@list.impression) %></p>
 	</div>
 </div>
