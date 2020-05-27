@@ -68,4 +68,3 @@ gem 'omniauth-google-oauth2'
 # OS（ターミナル)に反映させるものということ
 gem 'whenever', require: false
 gem "refile-s3"
-
