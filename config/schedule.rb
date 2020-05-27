@@ -1,5 +1,5 @@
 # 絶対パスから相対パス指定
-# env :PATH, ENV['PATH']
+env :PATH, ENV['PATH']
 # ログファイルの出力先
 set :output, 'log/cron.log'
 # ジョブの実行環境を本番環境に指定
