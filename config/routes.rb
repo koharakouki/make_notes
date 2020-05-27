@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   }
 
   root 'home#top'
+  get '/home/help', to: 'home#help'
   resources :users, only: [:edit, :update, :destroy, :index] do
     resources :genres, only: [:index, :create, :destroy]
     resources :lists, only: [:show, :create, :edit, :update, :destroy]
