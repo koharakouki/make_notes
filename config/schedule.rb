@@ -9,7 +9,7 @@ set :environment, :production
 #   runner 'UserMailer.everymonth_mail.deliver_now'
 # end
 
-every 5.minutes do
+every 1.minutes do
   runner 'UserMailer.everymonth_mail.deliver_now'
 end
 
