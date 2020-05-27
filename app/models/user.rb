@@ -35,6 +35,7 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :followers, through: :passive_relationships
 
+  # ユーザー新規登録したらウェルカムメールを送る
   after_create :send_welcome_mail
 
   # 通知のための関連付け
@@ -104,4 +105,5 @@ class User < ApplicationRecord
   #     UserMailer.everymonth_mail(user).deliver
   #   end
   # end
+
 end
