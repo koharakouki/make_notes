@@ -6,25 +6,29 @@ class Article < ApplicationRecord
   validates :article_title, presence: true, length: { maximum: 35 }
   validates :content, presence: true
 
+
+  # いいねしているか判定する
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
 
+
+  # 記事を部分検索するためのメソッド
   def self.search(content)
     if content
       where('article_title LIKE ? OR content LIKE ?', "%#{content}%", "%#{content}%")
     end
   end
 
+
   # いいねに対する通知
   def create_notification_favorite!(current_user)
     # すでに「いいね」されているか検索
-    temp = Notification.where(
-      [
+    temp = Notification.where([
         "visiter_id = ? and visited_id = ? and article_id = ? and action = ? ",
         current_user.id, user_id, id, 'favorite',
-      ]
-    )
+    ])
+
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
@@ -39,6 +43,7 @@ class Article < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
 
   # コメントに対する通知
   def create_notification_comment!(current_user, article_comment_id)

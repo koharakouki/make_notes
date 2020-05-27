@@ -1,3 +1,4 @@
+<!-- 左サイドバーのユーザー情報 -->
 <div class="user-info-box">
 	<div class="text-center">
 		<%= link_to user_genres_path(user) do %>
@@ -49,8 +50,8 @@
 	            </tr>
 		         <!-- 観たいと観たのモーダルを表示 -->
 		         <tr class="want-done-button">
-		         	<!-- 観たい！ボタン -->
 		         	<td>
+		         	<!-- 観たいボタン -->
 		         		<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#want-modal">観たいに追加</button>
 		         		<div class="modal fade" id="want-modal" tabindex="-1" role="dialog" aria-hidden="true">
 				    			<div class="modal-dialog" role="document">
@@ -61,8 +62,8 @@
 				        </div>
 		         	</td>
 
-		         	<!-- 観た！ボタン -->
 		         	<td>
+		         	<!-- 観たボタン -->
 		         		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#done-modal">観たに追加</button>
 		         		<div class="modal fade" id="done-modal" tabindex="-1" role="dialog" aria-hidden="true">
 				    			<div class="modal-dialog" role="document">

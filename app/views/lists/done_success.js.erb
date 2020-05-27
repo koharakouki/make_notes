@@ -3,7 +3,7 @@ $('.done-error-message').text('');
 $(':text').val('');
 $('#star').raty('score', 0);
 $('.modal').modal('hide');
+// モーダルが消えたらリロードして追加したリストをページに反映させる
 $('#done-modal').on('hidden.bs.modal', function () {
  location.reload();
 })
-// $('#flash_message').html('<p>追加しました</p>');

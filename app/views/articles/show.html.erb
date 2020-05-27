@@ -38,7 +38,8 @@
 
 			<div class="article-show-body row col-md-offset-1">
 				<div class="article-show-text col-md-11">
-					<p><%= @article.content %></p>
+					<!-- 記事に改行を入れるため、simple_formatヘルパーを使用 -->
+					<p><%= simple_format(@article.content) %></p>
 				</div>
 			</div>
 

@@ -1,4 +1,5 @@
 class NotificationsController < ApplicationController
+
   def index
     # current_userの投稿に紐づいた通知一覧
     @notifications = current_user.passive_notifications.includes(:visited).
@@ -8,4 +9,5 @@ class NotificationsController < ApplicationController
       notification.update_attributes(checked: true)
     end
   end
+
 end
