@@ -48,7 +48,7 @@ td {
 
 
 // よく使うパーシャル ----------------------------------------------------------
-// (_user_info)
+// (shared/_user_info)
 .user-info-box {
 	background-color: #CCC;
 	border-radius: 10px;
@@ -72,7 +72,7 @@ td {
 	font-size: 20px;
 }
 
-// (_stats)
+// (shared/_stats)
 .stats {
 	display: flex;
 	justify-content: center;
@@ -89,7 +89,7 @@ td {
 	}
 }
 
-// (_article_box)
+// (shared/_article_box)
 .new-articles {
 	// width: 330px;
 	position: relative;
@@ -145,7 +145,7 @@ td {
 	}
 }
 
-// (_sidebar-user)
+// (shared/_sidebar-user)
 .recomend-users {
 	width: 270px;
 	position: relative;
