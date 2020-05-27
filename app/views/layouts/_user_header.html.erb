@@ -38,6 +38,7 @@
 							<ul class="dropdown-menu text-center">
 								<li><%= link_to "マイページ", user_genres_path(current_user), id: "pc-genres-link" %></li>
 								<li><%= link_to "アカウント編集ページ", edit_user_path(current_user), id: "pc-user-edit-link" %></li>
+								<li><%= link_to "make notesの使い方", home_help_path, id: "pc-help-link" %></li>
 								<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, id: "pc-logout-link" %></li>
 							</ul>
 						</li>
@@ -57,6 +58,7 @@
 	          <li><%= link_to '記事を探す', articles_path %></li>
 	          <li><%= link_to "マイページ", user_genres_path(current_user) %></li>
 	          <li><%= link_to "アカウント編集ページ", edit_user_path(current_user) %></li>
+	          <li><%= link_to "make notesの使い方", home_help_path %></li>
 	          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
 	          <li class="close"><span>閉じる</span></li>
 	        <% else %>
