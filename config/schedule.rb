@@ -10,7 +10,6 @@ set :environment, :production
 # end
 
 every 1.minutes do
-	logger.debug "bbb"
   runner 'UserMailer.everymonth_mail.deliver_now'
 end
 
