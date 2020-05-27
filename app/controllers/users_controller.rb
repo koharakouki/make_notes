@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
-
+  
   def following
     @user  = User.find(params[:id])
     @users = @user.following.order(created_at: :desc).page(params[:page]).per(10)
