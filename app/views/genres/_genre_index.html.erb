@@ -25,7 +25,8 @@
 <!-- マイリスト ジャンル一覧 -->
 <div id="mylist-genres-box">
 	<div class="genre-box row">
-		<%= link_to want_path(@user), class: "genre-box-text col-md-offset-1 col-md-9 col-xs-10 col-xs-offset-1 text-center" do %>
+		<%= link_to want_path(@user),
+		   class: "genre-box-text col-md-offset-1 col-md-9 col-xs-10 col-xs-offset-1 text-center" do %>
 			<span>ALL</span>
 	  <% end %>
   </div>
@@ -34,12 +35,14 @@
 		<% @genres.each do |genre| %>
 
 			<div class="genre-box row">
- 				<%= link_to want_path(@user, { genre_id: genre.id }), class: "genre-box-text col-md-9 col-md-offset-1 col-xs-9 col-xs-offset-1 text-center" do %>
+ 				<%= link_to want_path(@user, { genre_id: genre.id }),
+ 				 class: "genre-box-text col-md-9 col-md-offset-1 col-xs-9 col-xs-offset-1 text-center" do %>
 				  <span><%= genre.name %></span>
 				<% end %>
 				<% if @user == current_user %>
 					<div class="genre-box-delete-button col-md-2">
-					 	<%= link_to '削除', user_genre_path(current_user,genre), method: :delete, class: "btn btn-danger", data: { confirm: '削除しますか？' } %>
+					 	<%= link_to '削除', user_genre_path(current_user,genre),
+					 	 method: :delete, class: "btn btn-danger", data: { confirm: '削除しますか？' } %>
 					</div>
 			  <% end %>
 			</div>

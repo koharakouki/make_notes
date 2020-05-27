@@ -5,6 +5,7 @@ class FavoritesController < ApplicationController
     @article = Article.find(params[:article_id])
     favorite = current_user.favorites.build(article_id: @article.id)
     favorite.save
+
     # 通知の作成
     @article.create_notification_favorite!(current_user)
     respond_to :js

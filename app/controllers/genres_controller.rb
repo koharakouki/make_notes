@@ -6,11 +6,8 @@ class GenresController < ApplicationController
     @user = User.find_by(id: params[:user_id])
     @genres = @user.genres.page(params[:page]).per(6)
     @genre = current_user.genres.build
-    # おすすめ記事の場合
-    # @rank_article = Article.find(Favorite.group(:article_id).
-    # order('count(article_id) desc').pluck(:article_id))
 
-    # 新着記事の場合
+    # 新着記事を表示するためインスタンス変数に渡す
     @articles = Article.all.order(created_at: :desc)
   end
 
@@ -24,8 +21,6 @@ class GenresController < ApplicationController
         format.js
       end
     else
-      # 非同期をやめたのでコメントアウト
-      # render 'error'
       @genres = @user.genres.page(params[:page]).per(6)
       @articles = Article.all.order(created_at: :desc)
       render 'index'

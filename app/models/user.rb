@@ -70,10 +70,12 @@ class User < ApplicationRecord
 
   # フォロー時の通知
   def create_notification_follow!(current_user)
+    # すでにフォローしているか検索
     temp = Notification.where([
       "visiter_id = ? and visited_id = ? and action = ? ",
       current_user.id, id, 'follow',
     ])
+    フォローしていない場合のみ通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(visited_id: id,
                                                            action: 'follow')
@@ -99,11 +101,5 @@ class User < ApplicationRecord
   def send_welcome_mail
     ThanksMailer.welcome_mail(self).deliver
   end
-
-  # def send_everymonth_mail
-  #   User.all.each do |user|
-  #     UserMailer.everymonth_mail(user).deliver
-  #   end
-  # end
 
 end

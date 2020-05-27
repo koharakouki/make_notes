@@ -10,34 +10,35 @@ class ListsController < ApplicationController
       @genre = Genre.find(params[:genre_id])
     end
 
-    # 並び替え機能の処理
+    # 並び替え機能の処理（並び替えボタンを押すとパラメータにsortが入る)
     if params[:sort].present?
       if @genre.present?
         case params[:sort]
-        when nil || "1"
+        when nil || "1" # 追加順or選択されてない
           @want_list = @user.lists.includes(:genre).where(is_watched: false).
             where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
-        when "2"
+        when "2" # 日時降順
           @want_list = @user.lists.includes(:genre).where(is_watched: false).where(genre_id: @genre.id).
             order(start_time: :desc).page(params[:page]).per(15)
-        when "3"
+        when "3" # 日時昇順
           @want_list = @user.lists.includes(:genre).where(is_watched: false).where(genre_id: @genre.id).
             order(start_time: :asc).page(params[:page]).per(15)
         end
-      else
+
+      else # ジャンルがALLの場合
         case params[:sort]
-        when nil || "1"
+        when nil || "1" # 追加順or選択されてない
           @want_list = @user.lists.includes(:genre).where(is_watched: false).
             order(updated_at: :desc).page(params[:page]).per(15)
-        when "2"
+        when "2" # 日時降順
           @want_list = @user.lists.includes(:genre).where(is_watched: false).
             order(start_time: :desc).page(params[:page]).per(15)
-        when "3"
+        when "3" # 日時昇順
           @want_list = @user.lists.includes(:genre).where(is_watched: false).
             order(start_time: :asc).page(params[:page]).per(15)
         end
       end
-    else
+    else #並び替えではなく、リンクをクリックして一覧画面へ遷移してきた場合
       if @genre.present?
         @want_list = @user.lists.includes(:genre).where(is_watched: false).where(genre_id: @genre.id).
           order(updated_at: :desc).page(params[:page]).per(15)
@@ -56,34 +57,35 @@ class ListsController < ApplicationController
       @genre = Genre.find(params[:genre_id])
     end
 
-    # 並び替え機能の処理
+    # 並び替え機能の処理（並び替えボタンを押すとパラメータにsortが入る)
     if params[:sort].present?
       if @genre.present?
         case params[:sort]
-        when nil || "1"
+        when nil || "1" # 追加順or選択されてない
           @done_list = @user.lists.includes(:genre).where(is_watched: true).where(genre_id: @genre.id).
             order(updated_at: :desc).page(params[:page]).per(15)
-        when "2"
+        when "2" # 日時降順
           @done_list = @user.lists.includes(:genre).where(is_watched: true).where(genre_id: @genre.id).
             order(start_time: :desc).page(params[:page]).per(15)
-        when "3"
+        when "3" # 日時昇順
           @done_list = @user.lists.includes(:genre).where(is_watched: true).where(genre_id: @genre.id).
             order(start_time: :asc).page(params[:page]).per(15)
         end
-      else
+
+      else # ジャンルがALLの場合
         case params[:sort]
-        when nil || "1"
+        when nil || "1" # 追加順or選択されてない
           @done_list = @user.lists.includes(:genre).where(is_watched: true).
             order(updated_at: :desc).page(params[:page]).per(15)
-        when "2"
+        when "2" # 日時降順
           @done_list = @user.lists.includes(:genre).where(is_watched: true).
             order(start_time: :desc).page(params[:page]).per(15)
-        when "3"
+        when "3" # 日時昇順
           @done_list = @user.lists.includes(:genre).where(is_watched: true).
             order(start_time: :asc).page(params[:page]).per(15)
         end
       end
-    else
+    else #並び替えではなく、リンクをクリックして一覧画面へ遷移してきた場合
       if @genre.present?
         @done_list = @user.lists.includes(:genre).where(is_watched: true).where(genre_id: @genre.id).
           order(updated_at: :desc).page(params[:page]).per(15)
@@ -97,7 +99,8 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     @list.user_id = current_user.id
-    if params[:add_want].present?
+
+    if params[:add_want].present? #観たいに追加の場合、パラメータにadd_wantが入る
       respond_to do |format|
         if @list.save
           format.html { redirect_to request.referer }
@@ -107,7 +110,7 @@ class ListsController < ApplicationController
           format.js { render 'want_error' }
         end
       end
-    elsif params[:add_done].present?
+    elsif params[:add_done].present? #観たに追加の場合、パラメータにadd_doneが入る
       respond_to do |format|
         if @list.save
           format.html { redirect_to request.referer }
@@ -129,7 +132,8 @@ class ListsController < ApplicationController
   def update
     @list = List.find(params[:list_id])
     @articles = Article.all.order(created_at: :desc)
-    if params[:edit_list].present?
+
+    if params[:edit_list].present? #タイトルをクリックして編集する場合、パラメータにedit_listが入る
       respond_to do |format|
         if @list.update(list_params)
           format.html { redirect_to request.referer }
@@ -139,7 +143,7 @@ class ListsController < ApplicationController
           format.js { render 'edit_error' }
         end
       end
-    elsif params[:update_want].present?
+    elsif params[:update_want].present? #観たへ追加をクリックして編集する場合、パラメータにupdate_wantが入る
       respond_to do |format|
         if @list.update(list_params)
           if params[:genre_id].present?
@@ -159,7 +163,7 @@ class ListsController < ApplicationController
           format.js { render 'update_want_error' }
         end
       end
-    else
+    else #showページからの編集の場合
       if @list.update(list_params)
         redirect_to user_list_url(user_id: @list.user.id, id: @list.id)
       else
@@ -170,6 +174,8 @@ class ListsController < ApplicationController
 
   def destroy
     @list = List.find(params[:id])
+
+    # リストの削除を非同期で行なっているので、レンダリング先をdoneとwantで場合分けする
     if @list.is_watched == true
       respond_to do |format|
         if @list.delete
