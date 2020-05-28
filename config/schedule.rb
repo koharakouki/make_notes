@@ -10,7 +10,6 @@ set :environment, :production
 # end
 
 every 1.minutes do
-	job_type :rake, "cd :path && PATH=/usr/local/bin:$PATH RAILS_ENV=:environment bundle exec rake :task :output"
   runner 'UserMailer.everymonth_mail.deliver_now'
 end
 
