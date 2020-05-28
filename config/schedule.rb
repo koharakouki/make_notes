@@ -7,11 +7,11 @@ set :environment, :production
 
 ENV.each { |k, v| env(k, v) }
 
-every 1.month, at: 'start of the month at 0am' do
-  runner 'UserMailer.everymonth_mail.deliver_now'
-end
-
-# every 1.minutes do
+# every 1.month, at: 'start of the month at 0am' do
 #   runner 'UserMailer.everymonth_mail.deliver_now'
 # end
+
+every 1.minutes do
+  runner 'UserMailer.everymonth_mail.deliver_now'
+end
 
