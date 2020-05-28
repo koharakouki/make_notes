@@ -23,7 +23,7 @@
           <% if watched_lists.count > 0 %>
             <div class="text-center">
               <button type="button" class="calendar-modal btn btn-success btn-sm"
-                      data-toggle="modal" data-target="#watched-<%= date.day %>">
+                      data-toggle="modal" data-target="#watched-<%= date %>">
                 <%= watched_lists.count %>件
               </button>
             </div>
@@ -35,7 +35,7 @@
 
 
           <!-- モーダル表示の処理 -->
-          <div class="modal fade" id="watched-<%= date.day %>" tabindex="-1"
+          <div class="modal fade" id="watched-<%= date %>" tabindex="-1"
                 role="dialog" aria-labelledby="watchedTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -49,7 +49,12 @@
                 <div class="modal-body">
                   <ul>
                     <% watched_lists.each do |watched_list| %>
-                      <li><%= watched_list.title %></li>
+                      <li>
+                    <script>
+                      console.log('<%= date %>' + '<%= watched_list.title %>')
+                    </script>
+                        <%= watched_list.title %>
+                      </li>
                     <% end %>
                   </ul>
                 </div>
