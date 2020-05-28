@@ -1,15 +1,15 @@
 <div class="container">
 	<h2>通知</h2>
 
-<% notifications = @notifications.where.not(visiter_id: current_user.id) %>
+  <% notifications = @notifications.where.not(visiter_id: current_user.id) %>
 	<% if notifications.exists? %>
-	    <div class="n-box">
-	        <%= render notifications %>
-	    </div>
-	    <div class="n-paginate">
-		    <%= paginate notifications %>
-		  </div>
+	  <div class="n-box">
+	    <%= render notifications %>
+	  </div>
+	  <div class="n-paginate">
+		  <%= paginate notifications %>
+		</div>
 	<% else %>
-	    <h4>通知はありません</h4>
+	  <h4>通知はありません</h4>
 	<% end %>
 </div>
