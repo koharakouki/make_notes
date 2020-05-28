@@ -117,6 +117,7 @@ class ListsController < ApplicationController
           format.js { render 'done_success' }
         else
           format.html { redirect_to request.referer }
+          # binding.pry
           format.js { render 'done_error' }
         end
       end

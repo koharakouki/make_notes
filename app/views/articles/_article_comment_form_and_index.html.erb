@@ -19,7 +19,7 @@
 		<div class="article-comment">
 			<div class="article-comment-header row">
 				<div class="article-comment-user col-xs-1">
-					<%= attachment_image_tag article_comment.user, :image, :fill, 50, 50, fallback: "no_image.png", size: "50x50", class: "comment-logo" %>
+					<%= attachment_image_tag article_comment.user, :image, :fill, 50, 50, fallback: "human.png", size: "50x50", class: "comment-logo" %>
 				</div>
 				<div class="col-md-2 col-xs-4">
 					<% if article_comment.user.present? %>
