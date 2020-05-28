@@ -75,7 +75,7 @@ class User < ApplicationRecord
       "visiter_id = ? and visited_id = ? and action = ? ",
       current_user.id, id, 'follow',
     ])
-    フォローしていない場合のみ通知レコードを作成
+    # フォローしていない場合のみ通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(visited_id: id,
                                                            action: 'follow')
