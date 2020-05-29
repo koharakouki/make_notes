@@ -1,6 +1,6 @@
 class ErrorAvoid
   def initialize
-    @url = "attachments/"
+    @url = "/attachments"
   end
 
   def matches?(request)
@@ -55,7 +55,7 @@ Rails.application.routes.draw do
 
   # 例外のためのルーティング
   # get '*path', to: 'application#render_404', constraints: ErrorAvoid.new
-  get '*not_found', to: 'application#routing_error'#, constraints: ErrorAvoid.new
+  get '*not_found', to: 'application#routing_error', constraints: ErrorAvoid.new
   # post '*not_found', to: 'application#routing_error'
 end
 
