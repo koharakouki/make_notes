@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   end
 
   # 例外のためのルーティング
-  get '*path', to: 'application#render_404'
+  # get '*path', to: 'application#render_404'
   # get '*not_found', to: 'application#routing_error'
   # post '*not_found', to: 'application#routing_error'
 end
