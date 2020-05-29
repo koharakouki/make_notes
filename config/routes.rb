@@ -1,3 +1,14 @@
+class ErrorAvoid
+  def initialize
+    @url = "attachments/"
+  end
+
+  def matches?(request)
+    @url.include?(request.url)
+  end
+end
+
+
 Rails.application.routes.draw do
   devise_for :admins, controllers: {
     sessions: 'devise/admins/sessions',
@@ -48,12 +59,3 @@ Rails.application.routes.draw do
   # post '*not_found', to: 'application#routing_error'
 end
 
-class ErrorAvoid
-  def initialize
-    @url = "attachments/"
-  end
-
-  def matches?(request)
-    @url.include?(request.url)
-  end
-end
