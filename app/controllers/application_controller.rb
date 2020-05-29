@@ -33,35 +33,34 @@ class ApplicationController < ActionController::Base
     rescue_from ActionController::RoutingError, with: :render_404
   end
 
-  def render_404(exception = nil)
-    if exception
-      logger.info "Rendering 404 with exception: #{exception.message}"
-    end
-    render template: "error/404", status: 404, layout: 'application'
+  # def render_404(exception = nil)
+  #   if exception
+  #     logger.info "Rendering 404 with exception: #{exception.message}"
+  #   end
+  #   render template: "error/404", status: 404, layout: 'application'
+  # end
+
+  # def render_500(exception = nil)
+  #   if exception
+  #     logger.info "Rendering 500 with exception: #{exception.message}"
+  #   end
+  #   render template: "error/500", status: 500, layout: 'application'
+  # end
+
+  def routing_error
+    raise ActionController::RoutingError, params[:path]
   end
-
-  def render_500(exception = nil)
-    if exception
-      logger.info "Rendering 500 with exception: #{exception.message}"
-    end
-    render template: "error/500", status: 500, layout: 'application'
-  end
-
-  # def routing_error
-  #   raise ActionController::RoutingError, params[:path]
-  # end
-
-  # private
-
-  # def render_404
-  #   render 'error/404', status: :not_found
-  # end
-
-  # def render_500
-  #   render 'error/500', status: :internal_server_error
-  # end
 
   private
+
+  def render_404
+    render 'error/404', status: :not_found
+  end
+
+  def render_500
+    render 'error/500', status: :internal_server_error
+  end
+
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
