@@ -51,7 +51,6 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError, params[:path]
   end
 
-  private
 
   def render_404
     render 'error/404', status: :not_found
@@ -61,6 +60,7 @@ class ApplicationController < ActionController::Base
     render 'error/500', status: :internal_server_error
   end
 
+  private
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
