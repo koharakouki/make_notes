@@ -43,7 +43,17 @@ Rails.application.routes.draw do
   end
 
   # 例外のためのルーティング
-  # get '*path', to: 'application#render_404'
+  get '*path', to: 'application#render_404', constraints: ErrorAvoid.new
   # get '*not_found', to: 'application#routing_error'
   # post '*not_found', to: 'application#routing_error'
+end
+
+class ErrorAvoid
+  def initialize
+    @url = "attachments/"
+  end
+
+  def matches?(request)
+    @url.include?(request.url)
+  end
 end
