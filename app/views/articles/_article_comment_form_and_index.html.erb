@@ -21,7 +21,7 @@
 				<div class="article-comment-user col-xs-1">
 					<%= attachment_image_tag article_comment.user, :image, :fill, 50, 50, fallback: "human.png", size: "50x50", class: "comment-logo" %>
 				</div>
-				<div class="col-md-2 col-xs-4">
+				<div class="col-md-11 col-xs-4">
 					<% if article_comment.user.present? %>
 						<p><%= article_comment.user.name %></p>
 				  <% else %>
@@ -29,7 +29,7 @@
 				  <% end %>
 				</div>
 
-				<div class="article-comment-delete col-md-offset-4 col-xs-3 col-xs-offset-2">
+				<div class="article-comment-delete col-md-offset-2 col-xs-3 col-xs-offset-2">
 					<% if article_comment.user == current_user || current_admin %>
 						<%= link_to '削除する',
 							article_article_comments_path(id: article_comment.id, article_id: article_comment.article_id),
