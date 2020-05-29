@@ -97,9 +97,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    params[:list][:start_time] += ' 00:00:00 '
     @list = List.new(list_params)
-    p @list
     @list.user_id = current_user.id
 
     if params[:add_want].present? #観たいに追加の場合、パラメータにadd_wantが入る
@@ -119,7 +117,6 @@ class ListsController < ApplicationController
           format.js { render 'done_success' }
         else
           format.html { redirect_to request.referer }
-          # binding.pry
           format.js { render 'done_error' }
         end
       end
