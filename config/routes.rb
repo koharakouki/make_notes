@@ -53,6 +53,7 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
 
+  mount Refile.app, at: Refile.mount_point, as: :refile_app
   # 例外のためのルーティング
   get '*path', to: 'application#render_404'#, constraints: ErrorAvoid.new
   # get '*path', to: 'application#render_404', constraints: { subdomain: "attachments" }
