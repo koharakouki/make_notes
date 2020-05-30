@@ -1,12 +1,12 @@
-class ErrorAvoid
-  def initialize
-    @url = "/attachments"
-  end
+# class ErrorAvoid
+#   def initialize
+#     @url = "/attachments"
+#   end
 
-  def matches?(request)
-    @url.include?(request.url)
-  end
-end
+#   def matches?(request)
+#     @url.include?(request.url)
+#   end
+# end
 
 
 Rails.application.routes.draw do
@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   end
 
   # 例外のためのルーティング
-  get '*path', to: 'application#render_404', constraints: ErrorAvoid.new
+  get '*path', to: 'application#render_404'#, constraints: ErrorAvoid.new
   # get '*path', to: 'application#render_404', constraints: { subdomain: "attachments" }
   # get '*not_found', to: 'application#routing_error', constraints: ErrorAvoid.new
   # post '*not_found', to: 'application#routing_error'
