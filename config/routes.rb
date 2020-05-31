@@ -1,4 +1,3 @@
-
 Rails.application.routes.draw do
   devise_for :admins, controllers: {
     sessions: 'devise/admins/sessions',
@@ -44,9 +43,9 @@ Rails.application.routes.draw do
   end
 
   mount Refile.app, at: Refile.mount_point, as: :refile_app
+
   # 例外のためのルーティング
   get '*path', to: 'application#render_404'
-  # get '*not_found', to: 'application#routing_error', constraints: ErrorAvoid.new
-  # post '*not_found', to: 'application#routing_error'
+
 end
 
