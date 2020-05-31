@@ -1,13 +1,3 @@
-# class ErrorAvoid
-#   def initialize
-#     @url = "/attachments"
-#   end
-
-#   def matches?(request)
-#     @url.include?(request.url)
-#   end
-# end
-
 
 Rails.application.routes.draw do
   devise_for :admins, controllers: {
@@ -55,8 +45,7 @@ Rails.application.routes.draw do
 
   mount Refile.app, at: Refile.mount_point, as: :refile_app
   # 例外のためのルーティング
-  get '*path', to: 'application#render_404'#, constraints: ErrorAvoid.new
-  # get '*path', to: 'application#render_404', constraints: { subdomain: "attachments" }
+  get '*path', to: 'application#render_404'
   # get '*not_found', to: 'application#routing_error', constraints: ErrorAvoid.new
   # post '*not_found', to: 'application#routing_error'
 end
