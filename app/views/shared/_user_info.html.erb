@@ -30,29 +30,41 @@
 	      </tr>
 
 	      <% if user_signed_in? %>
-	         <% if current_user != user %>
+	        <% if current_user != user %>
 	         	<!-- ユーザーフォローボタンを表示 -->
-	            <tr>
-	              <td>
-	                <div class="text-center">
-	              	  <%= render 'users/follow_form', user: user %>
-	                </div>
-	              </td>
-	            </tr>
-	         <% else %>
+	          <tr>
+	            <td>
+	              <div class="text-center">
+	              	<%= render 'users/follow_form', user: user %>
+	              </div>
+	            </td>
+	          </tr>
+	        <% else %>
 	         	<!-- 記事を書くボタンの表示 -->
-	            <tr>
-	              <td>
-	                <div class="text-center">
-	                  <%= link_to "記事を書く", new_article_path ,class: "btn btn-info" %>
-	                </div>
-	              </td>
-	            </tr>
-		         <!-- 観たいと観たのモーダルを表示 -->
-		         <tr class="want-done-button">
+	          <tr>
+	            <td>
+	              <div class="text-center">
+	                <i class="fas fa-pencil-alt" style="font-size: 20px;"></i>
+	                <%= link_to "記事を書く", new_article_path %>
+	              </div>
+	            </td>
+	          </tr>
+            <!-- カレンダー表示 -->
+		        <tr>
+              <td>
+            	  <div class="text-center">
+            	  	<i class="fas fa-calendar-alt" style="font-size: 20px;"></i>
+                  <%= link_to "カレンダー", calendar_user_path(user) %>
+                </div>
+              </td>
+            </tr>
+
+
+		        <!-- 観たいと観たのモーダルを表示 -->
+		        <tr class="want-done-button">
 		         	<td>
 		         	<!-- 観たいボタン -->
-		         		<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#want-modal">観たいに追加</button>
+		         		<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#want-modal">観たいに追加</button>
 		         		<div class="modal fade" id="want-modal" tabindex="-1" role="dialog" aria-hidden="true">
 				    			<div class="modal-dialog" role="document">
 				         		<div class="modal-content">
@@ -73,16 +85,8 @@
 				         	</div>
 				        </div>
 		         	</td>
-		        <tr>
+		        </tr>
 	        <% end %>
-
-            	<!-- カレンダー表示 -->
-              <td>
-            	  <div class="text-center">
-                  <%= link_to "カレンダーを見る", calendar_user_path(user) ,class: "btn btn-success" %>
-                </div>
-              </td>
-            </tr>
 	      <% end %>
 	   </tbody>
 	</table>
