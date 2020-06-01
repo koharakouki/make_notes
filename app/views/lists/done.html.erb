@@ -22,12 +22,12 @@
 						<%= form_tag(done_path(@user), method: :get) do |f| %>
 							<%= select_tag :sort, options_for_select([["選択してください", ''], ["追加順", 1], ["日時降順", 2], ["日時昇順", 3]]) %>
 							<%= hidden_field_tag :genre_id, "#{@genre.id}" %>
-						  <input type="submit" value="並び替え" class="btn btn-warning btn-sm">
+						  <input type="submit" value="並び替え" class="btn btn-sm sort-button">
 						<% end %>
 					<% else %>
 						<%= form_tag(done_path(@user), method: :get) do |f| %>
 							<%= select_tag :sort, options_for_select([["選択してください", ''], ["追加順", 1], ["日時降順", 2], ["日時昇順", 3]]) %>
-						  <input type="submit" value="並び替え" class="btn btn-warning btn-sm">
+						  <input type="submit" value="並び替え" class="btn btn-sm sort-button">
 						<% end %>
 					<% end %>
 				</div>
@@ -44,9 +44,9 @@
 
 					<div class="done-list-link col-lg-5 col-md-5">
 						<% if @genre.present? %>
-							<%= link_to '観たへ', done_path(@user, { genre_id: @genre.id }), class: "btn btn-info btn-lg" %>
+							<%= link_to '観たへ', done_path(@user, { genre_id: @genre.id }), class: "btn btn-primary btn-lg" %>
 						<% else %>
-							<%= link_to '観たへ', done_path(@user), class: "btn btn-info btn-lg" %>
+							<%= link_to '観たへ', done_path(@user), class: "btn btn-primary btn-lg" %>
 						<% end %>
 					</div>
 				</div>
