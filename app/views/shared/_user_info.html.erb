@@ -30,6 +30,15 @@
 	      </tr>
 
 	      <% if user_signed_in? %>
+	      	<!-- カレンダー表示 -->
+		      <tr>
+            <td>
+            	<div class="text-center">
+            	  <i class="fas fa-calendar-alt" style="font-size: 20px;"></i>
+                <%= link_to "カレンダー", calendar_user_path(user) %>
+              </div>
+            </td>
+          </tr>
 	        <% if current_user != user %>
 	         	<!-- ユーザーフォローボタンを表示 -->
 	          <tr>
@@ -39,6 +48,7 @@
 	              </div>
 	            </td>
 	          </tr>
+
 	        <% else %>
 	         	<!-- 記事を書くボタンの表示 -->
 	          <tr>
@@ -49,16 +59,6 @@
 	              </div>
 	            </td>
 	          </tr>
-            <!-- カレンダー表示 -->
-		        <tr>
-              <td>
-            	  <div class="text-center">
-            	  	<i class="fas fa-calendar-alt" style="font-size: 20px;"></i>
-                  <%= link_to "カレンダー", calendar_user_path(user) %>
-                </div>
-              </td>
-            </tr>
-
 
 		        <!-- 観たいと観たのモーダルを表示 -->
 		        <tr class="want-done-button">
