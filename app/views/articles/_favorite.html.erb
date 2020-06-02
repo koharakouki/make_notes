@@ -1,10 +1,10 @@
 <% if article.favorited_by?(current_user) %>
-	<%= link_to article_favorites_path(article), method: :delete, remote: true do %>
+	<%= link_to article_favorites_path(article), class: "favorite-link", method: :delete, remote: true do %>
 		<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
 	<% end %>
 		<%= article.favorites.count %>
 <% else %>
-	<%= link_to article_favorites_path(article), method: :post , remote: true do %>
+	<%= link_to article_favorites_path(article), class: "favorite-link", method: :post , remote: true do %>
 		<i class="fa fa-heart" aria-hidden="true" style="color: gray;"></i>
 	<% end %>
 		<%= article.favorites.count %>

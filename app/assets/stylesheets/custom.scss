@@ -827,7 +827,11 @@ footer {
 		}
 	}
 }
-
+// ハートアイコンの下線を消す
+.favorite-link {
+	display: inline-block;
+	text-decoration: none;
+}
 
 // users/index ------------------------------------------------------------
 .user-index-box {
@@ -1036,7 +1040,7 @@ footer {
 
 .sort-button {
 	background-color: #BBB;
-	color: #FFF;
+	color: #000;
 }
 
 
