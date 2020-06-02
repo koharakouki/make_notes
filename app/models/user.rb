@@ -101,4 +101,11 @@ class User < ApplicationRecord
     ThanksMailer.welcome_mail(self).deliver
   end
 
+  # ユーザーのランキングを表示するためのスコープ
+  scope :ranking,  -> { find(Relationship.group(:followed_id).
+                        order(Arel.sql('count(followed_id) DESC')).pluck(:followed_id)) }
+
+  # ユーザーを降順で表示するためのスコープ
+  scope :user_desc, ->(params) { order(created_at: :desc).page(params[:page]).per(10) }
+
 end

@@ -3,10 +3,11 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-    @users = User.order(created_at: :desc).page(params[:page]).per(10)
+    @users = User.user_desc(params)
     # フォロワーランキング
-    @rank_users = User.find(Relationship.group(:followed_id).
-                  order(Arel.sql('count(followed_id) DESC')).pluck(:followed_id))
+    # @rank_users = User.find(Relationship.group(:followed_id).
+    #               order(Arel.sql('count(followed_id) DESC')).pluck(:followed_id))
+    @rank_users = User.ranking
   end
 
   def edit
@@ -24,17 +25,15 @@ class UsersController < ApplicationController
   
   def following
     @user  = User.find(params[:id])
-    @users = @user.following.order(created_at: :desc).page(params[:page]).per(10)
-    @rank_users = User.find(Relationship.group(:followed_id).
-                  order(Arel.sql('count(followed_id) DESC')).pluck(:followed_id))
+    @users = @user.following.user_desc(params)
+    @rank_users = User.ranking
     render 'show_follow'
   end
 
   def followers
     @user  = User.find(params[:id])
-    @users = @user.followers.order(created_at: :desc).page(params[:page]).per(10)
-    @rank_users = User.find(Relationship.group(:followed_id).
-                  order(Arel.sql('count(followed_id) DESC')).pluck(:followed_id))
+    @users = @user.followers.user_desc(params)
+    @rank_users = User.ranking
     render 'show_follow'
   end
 
