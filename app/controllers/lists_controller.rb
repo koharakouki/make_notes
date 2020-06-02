@@ -15,36 +15,28 @@ class ListsController < ApplicationController
       if @genre.present?
         case params[:sort]
         when nil || "1" # 追加順or選択されてない
-          @want_list = @user.lists.includes(:genre).where(is_watched: false).
-            where(genre_id: @genre.id).order(updated_at: :desc).page(params[:page]).per(15)
+          @want_list = @user.lists.order_addition(false, @genre, params)
         when "2" # 日時降順
-          @want_list = @user.lists.includes(:genre).where(is_watched: false).where(genre_id: @genre.id).
-            order(start_time: :desc).page(params[:page]).per(15)
+          @want_list = @user.lists.order_desc_or_asc(false, @genre, :desc, params)
         when "3" # 日時昇順
-          @want_list = @user.lists.includes(:genre).where(is_watched: false).where(genre_id: @genre.id).
-            order(start_time: :asc).page(params[:page]).per(15)
+          @want_list = @user.lists.order_desc_or_asc(false, @genre, :asc, params)
         end
 
       else # ジャンルがALLの場合
         case params[:sort]
         when nil || "1" # 追加順or選択されてない
-          @want_list = @user.lists.includes(:genre).where(is_watched: false).
-            order(updated_at: :desc).page(params[:page]).per(15)
+          @want_list = @user.lists.all_order_addition(false, params)
         when "2" # 日時降順
-          @want_list = @user.lists.includes(:genre).where(is_watched: false).
-            order(start_time: :desc).page(params[:page]).per(15)
+          @want_list = @user.lists.all_order_desc_or_asc(false, :desc, params)
         when "3" # 日時昇順
-          @want_list = @user.lists.includes(:genre).where(is_watched: false).
-            order(start_time: :asc).page(params[:page]).per(15)
+          @want_list = @user.lists.all_order_desc_or_asc(false, :asc, params)
         end
       end
     else #並び替えではなく、リンクをクリックして一覧画面へ遷移してきた場合
       if @genre.present?
-        @want_list = @user.lists.includes(:genre).where(is_watched: false).where(genre_id: @genre.id).
-          order(updated_at: :desc).page(params[:page]).per(15)
+        @want_list = @user.lists.list_index(false, @genre, params)
       else
-        @want_list = @user.lists.includes(:genre).where(is_watched: false).
-          order(updated_at: :desc).page(params[:page]).per(15)
+        @want_list = @user.lists.all_list_index(false, params)
       end
     end
   end
