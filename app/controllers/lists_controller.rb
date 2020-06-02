@@ -32,6 +32,7 @@ class ListsController < ApplicationController
           @want_list = @user.lists.all_order_desc_or_asc(false, :asc, params)
         end
       end
+
     else #並び替えではなく、リンクをクリックして一覧画面へ遷移してきた場合
       if @genre.present?
         @want_list = @user.lists.list_index(false, @genre, params)
@@ -40,6 +41,8 @@ class ListsController < ApplicationController
       end
     end
   end
+
+
 
   def done
     @user = User.find_by(id: params[:user_id])
@@ -71,6 +74,7 @@ class ListsController < ApplicationController
           @done_list = @user.lists.all_order_desc_or_asc(true, :asc, params)
         end
       end
+
     else #並び替えではなく、リンクをクリックして一覧画面へ遷移してきた場合
       if @genre.present?
         @done_list = @user.lists.list_index(true, @genre, params)
@@ -79,6 +83,8 @@ class ListsController < ApplicationController
       end
     end
   end
+
+
 
   def create
     @list = List.new(list_params)
@@ -107,11 +113,15 @@ class ListsController < ApplicationController
     end
   end
 
+
+
   def show
     @user = User.find_by(id: params[:user_id])
     @list = List.find(params[:id])
     @articles = Article.all.order(created_at: :desc)
   end
+
+
 
   def update
     @list = List.find(params[:list_id])
@@ -134,11 +144,9 @@ class ListsController < ApplicationController
             @genre = Genre.find(params[:genre_id])
           end
           if @genre.present?
-            @want_list = current_user.lists.where(is_watched: false).where(genre_id: @genre.id).
-              order(created_at: :desc).page(params[:page]).per(15)
+            @want_list = current_user.lists.watched_update_add_index(false, @genre, params)
           else
-            @want_list = current_user.lists.where(is_watched: false).
-              order(created_at: :desc).page(params[:page]).per(15)
+            @want_list = current_user.lists.all_watched_update_add_index(false, params)
           end
           format.html { redirect_to user_lists_path(current_user.id) }
           format.js { render 'update_want_success' }
@@ -156,6 +164,8 @@ class ListsController < ApplicationController
     end
   end
 
+
+
   def destroy
     @list = List.find(params[:id])
 
@@ -167,11 +177,9 @@ class ListsController < ApplicationController
             @genre = Genre.find(params[:genre_id])
           end
           if @genre.present?
-            @done_list = @user.lists.where(is_watched: true).where(genre_id: @genre.id).
-              order(updated_at: :desc).page(params[:page]).per(15)
+            @done_list = @user.lists.watched_update_add_index(true, @genre, params)
           else
-            @done_list = @user.lists.where(is_watched: true).
-              order(updated_at: :desc).page(params[:page]).per(15)
+            @done_list = @user.lists.all_watched_update_add_index(true, params)
            end
           format.html { redirect_to done_path(current_user, { genre_id: @list.genre.id }) }
           format.js { render 'done' }
@@ -184,17 +192,16 @@ class ListsController < ApplicationController
             @genre = Genre.find(params[:genre_id])
           end
           if @genre.present?
-            @want_list = current_user.lists.where(is_watched: false).where(genre_id: @genre.id).
-              order(created_at: :desc).page(params[:page]).per(15)
+            @want_list = current_user.lists.watched_update_add_index(false, @genre, params)
           else
-            @want_list = current_user.lists.where(is_watched: false).
-              order(created_at: :desc).page(params[:page]).per(15)
+            @want_list = current_user.lists.all_watched_update_add_index(false, params)
            end
           format.js { render 'want' }
         end
       end
     end
   end
+
 
   private #---------------------------------------------------------------------------------
 
