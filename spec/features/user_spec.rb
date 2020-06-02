@@ -115,7 +115,7 @@ RSpec.describe 'ユーザーのテスト', type: :feature do
       end
 
       it 'カレンダー画面に遷移できる' do
-        click_on 'カレンダーを見る'
+        click_link 'カレンダー', href: calendar_user_path(other_user)
 
         expect(current_path).to eq(calendar_user_path(other_user))
       end
