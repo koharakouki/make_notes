@@ -36,17 +36,17 @@
 				<div class="want-done-link col-lg-4 col-md-6 col-xs-12 text-center">
 					<div class="want-list-link col-md-5 col-md-offset-1">
 						<% if @genre.present? %>
-							<%= link_to '観たいへ', want_path(@user, { genre_id: @genre.id }), class: "btn btn-success btn-lg" %>
+							<%= link_to '観たい一覧', want_path(@user, { genre_id: @genre.id }), class: "btn btn-success btn-lg" %>
 						<% else %>
-							<%= link_to '観たいへ', want_path(@user), class: "btn btn-success btn-lg" %>
+							<%= link_to '観たい一覧', want_path(@user), class: "btn btn-success btn-lg" %>
 						<% end %>
 					</div>
 
 					<div class="done-list-link col-lg-5 col-md-5">
 						<% if @genre.present? %>
-							<%= link_to '観たへ', done_path(@user, { genre_id: @genre.id }), class: "btn btn-primary btn-lg" %>
+							<%= link_to '観た一覧', done_path(@user, { genre_id: @genre.id }), class: "btn btn-primary btn-lg" %>
 						<% else %>
-							<%= link_to '観たへ', done_path(@user), class: "btn btn-primary btn-lg" %>
+							<%= link_to '観た一覧', done_path(@user), class: "btn btn-primary btn-lg" %>
 						<% end %>
 					</div>
 				</div>
