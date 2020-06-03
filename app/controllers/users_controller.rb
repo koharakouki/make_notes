@@ -5,8 +5,6 @@ class UsersController < ApplicationController
   def index
     @users = User.user_desc(params)
     # フォロワーランキング
-    # @rank_users = User.find(Relationship.group(:followed_id).
-    #               order(Arel.sql('count(followed_id) DESC')).pluck(:followed_id))
     @rank_users = User.ranking
   end
 
