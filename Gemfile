@@ -56,7 +56,7 @@ gem 'rails-i18n'
 gem "simple_calendar", "~> 2.0"
 gem 'dotenv-rails'
 gem 'font-awesome-sass'
-gem 'kaminari', '~> 1.1.1'
+gem 'kaminari', '~> 1.2.1'
 gem 'ransack'
 gem 'chartkick'
 gem 'groupdate'
