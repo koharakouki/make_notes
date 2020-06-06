@@ -64,7 +64,7 @@ gem "paranoia", "~> 2.2"
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
-# require: falseをつけるのは、このGem自体がRailsアプリの反映するものではなく、
+# require: falseをつけるのは、このGem自体がRailsアプリに反映するものではなく、
 # OS（ターミナル)に反映させるものということ
 gem 'whenever', require: false
 gem "refile-s3"
