@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  include Common
   before_action :authenticate_user!
   before_action :correct_user, only: [:create, :update, :destroy]
 
@@ -13,24 +14,12 @@ class ListsController < ApplicationController
     # 並び替え機能の処理（並び替えボタンを押すとパラメータにsortが入る)
     if params[:sort].present?
       if @genre.present?
-        case params[:sort]
-        when nil || "1" # 追加順or選択されてない
-          @want_list = @user.lists.order_addition(false, @genre, params)
-        when "2" # 日時降順
-          @want_list = @user.lists.order_desc_or_asc(false, @genre, :desc, params)
-        when "3" # 日時昇順
-          @want_list = @user.lists.order_desc_or_asc(false, @genre, :asc, params)
-        end
+        genre_exist_sort(@user.lists, false, @genre)
+        @want_list = @want_list_or_done_list
 
       else # ジャンルがALLの場合
-        case params[:sort]
-        when nil || "1" # 追加順or選択されてない
-          @want_list = @user.lists.all_order_addition(false, params)
-        when "2" # 日時降順
-          @want_list = @user.lists.all_order_desc_or_asc(false, :desc, params)
-        when "3" # 日時昇順
-          @want_list = @user.lists.all_order_desc_or_asc(false, :asc, params)
-        end
+        all_genre_sort(@user.lists, false)
+        @want_list = @want_list_or_done_list
       end
 
     else #並び替えではなく、リンクをクリックして一覧画面へ遷移してきた場合
@@ -55,24 +44,12 @@ class ListsController < ApplicationController
     # 並び替え機能の処理（並び替えボタンを押すとパラメータにsortが入る)
     if params[:sort].present?
       if @genre.present?
-        case params[:sort]
-        when nil || "1" # 追加順or選択されてない
-          @done_list = @user.lists.order_addition(true, @genre, params)
-        when "2" # 日時降順
-          @done_list = @user.lists.order_desc_or_asc(true, @genre, :desc, params)
-        when "3" # 日時昇順
-          @done_list = @user.lists.order_desc_or_asc(true, @genre, :asc, params)
-        end
+        genre_exist_sort(@user.lists, true, @genre)
+        @done_list = @want_list_or_done_list
 
       else # ジャンルがALLの場合
-        case params[:sort]
-        when nil || "1" # 追加順or選択されてない
-          @done_list = @user.lists.all_order_addition(true, params)
-        when "2" # 日時降順
-          @done_list = @user.lists.all_order_desc_or_asc(true, :desc, params)
-        when "3" # 日時昇順
-          @done_list = @user.lists.all_order_desc_or_asc(true, :asc, params)
-        end
+        all_genre_sort(@user.lists, true)
+        @done_list = @want_list_or_done_list
       end
 
     else #並び替えではなく、リンクをクリックして一覧画面へ遷移してきた場合

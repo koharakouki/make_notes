@@ -44,4 +44,5 @@ class List < ApplicationRecord
   # ジャンル無
   scope :all_watched_update_add_index, ->(truth, params) { where(is_watched: truth).order(updated_at: :desc).
   	                                                       page(params[:page]).per(15)}
+
 end
