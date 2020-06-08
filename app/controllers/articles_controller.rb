@@ -18,14 +18,8 @@ class ArticlesController < ApplicationController
   def index
     # いいねした記事のみを表示するためにリンクのパラメータに[:favorite]を持たせる
     if params[:favorite].present?
-      articles = []
-      Article.includes(:favorites).all.each do |article|
-        article.favorites.each do |favorite|
-          if favorite.user_id == current_user.id
-            articles << favorite.article
-          end
-        end
-      end
+      articles = Article.joins(:favorites).where(user_id: current_user.id)
+
       # 配列に対してのページネーションなので記述の仕方が違う
       @articles = Kaminari.paginate_array(articles).page(params[:page]).per(8)
     else

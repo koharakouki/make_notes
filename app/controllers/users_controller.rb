@@ -41,14 +41,16 @@ class UsersController < ApplicationController
 
     # チャートを表示するための処理
     genres = @user.genres
-    hash = {}
+    @chart = {}
     genres.each do |genre|
-      value = genre.lists.where(user_id: @user.id).
-        where(genre_id: genre.id).where(is_watched: true).count
-      hash.merge!(genre.name => value)
+      # value = genre.lists.where(user_id: @user.id).
+      #   where(genre_id: genre.id).where(is_watched: true).count
+      value = genre.lists.where("user_id = ? AND genre_id = ? AND is_watched = ?", @user.id, genre.id, true).count
+      @chart.merge!(genre.name => value)
     end
-    @chart = hash
+    # @chart = hash
   end
+
 
   private #----------------------------------------------------------------------
 
@@ -57,8 +59,8 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    @user = User.find(params[:id])
-    if @user != current_user
+    # @user = User.find(params[:id])
+    if User.find(params[:id]) != current_user
       redirect_to root_path
     end
   end
