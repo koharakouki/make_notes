@@ -35,9 +35,9 @@ class ApplicationController < ActionController::Base
 
 
 
-  def routing_error
-    raise ActionController::RoutingError, params[:path]
-  end
+  # def routing_error
+  #   raise ActionController::RoutingError, params[:path]
+  # end
 
 
   def render_404
